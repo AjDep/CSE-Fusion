@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Bartleet Order Book Fetcher",
+  "version": "1.0",
+  "description": "Fetch order book data for multiple securities",
+  "permissions": [
+    "downloads",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://invest.bartleetreligare.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Fetch Order Books"
+  },
+   "web_accessible_resources": [{
+    "resources": ["xlsx.full.min.js"],
+    "matches": ["<all_urls>"]
+  }]
+}

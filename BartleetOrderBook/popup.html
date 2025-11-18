@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Order Book Fetcher</title>
+  </head>
+  <body>
+    <h3>Fetch Order Book Data</h3>
+    <div style="display: flex;">
+    <div>
+        <textarea id="securities" rows="20" cols="50" placeholder="Enter securities, comma-separated"></textarea><br>
+    </div>
+    <div>
+        <button id="fetchWatchlistBtn">Fetch Watchlist</button>
+        <button id="fetchAllBtn">Fetch All Data of blotter book</button>
+        <button id="fetchTotalsBtn">Fetch bid vs ask</button>
+        <button id="analyzeBidBtn">Analyze Bid & Ask</button>
+        <button id="saveToDbBtn">Save to Database</button>
+
+    </div>
+    </div>
+    
+    <!-- Add a button-->
+    <button id="exportBtn">Export to Excel</button>
+    
+    
+    <pre id="output"></pre>
+    <script src="xlsx.full.min.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

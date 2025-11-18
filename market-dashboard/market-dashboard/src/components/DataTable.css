@@ -1,0 +1,31 @@
+table {
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    font-size: small;
+    width: 100%;
+    border-color: aliceblue;
+    /* border-collapse:separate; */
+}
+th{
+    background-color: rgb(60, 60, 60);
+    text-align: center;
+    padding: 8px;
+    max-width: 170px;
+}
+td{
+    text-align: center;
+    padding: 8px;
+}
+.Pagination{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.values{
+    display: flex;
+    justify-content:space-between;
+    padding-bottom:10px;
+    padding-left:10px
+}
