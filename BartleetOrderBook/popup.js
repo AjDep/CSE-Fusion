@@ -279,7 +279,6 @@ async function sendToDatabase() {
     }
 }
 
-
 /* --------------------- Init & Event Wiring --------------------- */
 function init() {
     $("fetchAllBtn").addEventListener('click', () => {
@@ -298,35 +297,10 @@ function init() {
         const securities = $("securities").value.split(',').map(s => s.trim());
         await analyzeBidDominance(securities);
     });
-    // $("analyzeBidBtn").addEventListener("click", sendBuyerInterestToDatabase);
 
     $("exportBtn").addEventListener('click', exportToExcel);
     $("saveToDbBtn").addEventListener("click", sendToDatabase);
 
-}
-async function sendBuyerInterestToDatabase() {
-    if (!buyerInterestResults || buyerInterestResults.length === 0) {
-        alert("⚠️ No buyer interest data found. Run Bid vs Ask analysis first.");
-        return;
-    }
-
-    try {
-        const response = await fetch("http://localhost:5000/api/store-buyer-interest", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ records: buyerInterestResults }),
-        });
-
-        const result = await response.json();
-        if (response.ok) {
-            alert(`✅ ${result.inserted} buyer interest records saved successfully!`);
-        } else {
-            alert(`❌ Failed to save buyer interest: ${result.error}`);
-        }
-    } catch (err) {
-        console.error("Error sending buyer interest data:", err);
-        alert("⚠️ Error connecting to the server. Make sure the API is running.");
-    }
 }
 
 document.addEventListener('DOMContentLoaded', init);
