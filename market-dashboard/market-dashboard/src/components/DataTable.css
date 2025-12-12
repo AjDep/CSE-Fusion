@@ -9,12 +9,12 @@ table {
 th{
     background-color: rgb(60, 60, 60);
     text-align: center;
-    padding: 8px;
+    padding: 3px;
     max-width: 170px;
 }
 td{
     text-align: center;
-    padding: 8px;
+    padding:3px;
 }
 .Pagination{
     padding: 10px;
@@ -28,4 +28,8 @@ td{
     justify-content:space-between;
     padding-bottom:10px;
     padding-left:10px
+}
+.Table {
+    max-width: 800px;
+    /* overflow-x: scroll;  */
 }

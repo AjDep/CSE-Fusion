@@ -23,7 +23,7 @@ const COLUMN_LABELS = {
   top_bid_qty: "Top Bid Qty",
   top_bid_price: "Most Bid Price",
   current_bid_price: "Current Bid Price",
-  bid_dominance: "number of ppl buying vs selling (%)",
+  bid_dominance: "Ppl Count: Buy vs Sell (%)",
 };
 
 // Add this constant at the top with your other constants
@@ -139,7 +139,7 @@ export default function DataTable({ data }) {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto bg-white rounded shadow">
+      <div className="Table overflow-x-auto bg-white rounded shadow">
         <table className="min-w-full border-collapse">
           <thead className="bg-gray-100 border-b">
             {table.getHeaderGroups().map((headerGroup) => (

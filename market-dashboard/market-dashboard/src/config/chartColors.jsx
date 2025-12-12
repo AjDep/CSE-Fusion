@@ -1,7 +1,7 @@
 const chartColors = {
-  bidSplits: "#39c26b58",
-  askSplits: "#d34e4ece",
-  bidDominance: "#ff7300",
+  bidSplits: "#01b8aa",
+  askSplits: "#fd625e",
+  bidDominance: "#f3cb17",
 
   // future colors if you need
   volume: "#3b82f6",

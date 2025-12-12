@@ -1,0 +1,11 @@
+.dropdowns{
+    display: flex;
+    gap:10px;
+}
+.posistion{
+    display: flex;
+    gap:20px;
+}
+.lineDiff{
+    width: 800px;
+}

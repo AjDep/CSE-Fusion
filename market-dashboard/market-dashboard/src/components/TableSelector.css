@@ -1,0 +1,21 @@
+.dropdown{
+    background-color: rgba(168, 168, 168, 0.132);
+    border-color: antiquewhite;
+    border: 1px;
+    width:100%;
+    border-radius: 10px;
+    padding: 3px 10px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+option{
+    background-color: rgba(56, 55, 55, 0.982);
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.result-item{
+    padding: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.158);
+    cursor: pointer;
+}

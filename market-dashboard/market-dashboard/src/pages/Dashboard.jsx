@@ -6,6 +6,8 @@ import TableSelector from "../components/TableSelector";
 import DataTable from "../components/DataTable";
 import CompanySelctor from "../components/CompanySelector";
 import CompanyHistoryChart from "../components/charts/companyChart";
+import "./Dashboard.css";
+import CompanySearchBar from "../components/CompanySearchBar";
 
 // helper to format table names like "bid_vs_ask_2025_11_03_01"
 const formatTableName = (name) => {
@@ -31,10 +33,10 @@ export default function Dashboard() {
   const tables = useTables();
   const [selectedTable, setSelectedTable] = useState("");
   const data = useTableData(selectedTable);
-
   const companies = useCompanies();
   const [selectedCompany, setSelectedCompany] = useState("");
   const { history: companyHistory, loading } = useCompanyHistory(selectedCompany); // Custom hook
+
 
   const enhancedData = useMemo(() => {
     if (!data || data.length === 0) return [];
@@ -52,33 +54,37 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gray-100 p-6">
       <h1 className="text-3xl font-bold text-center mb-4">MARKET MONITOR DASHBOARD</h1>
 
+      <div className="dropdowns">
       <div className="flex justify-center mb-4">
         <TableSelector tables={tables} value={selectedTable} onChange={setSelectedTable} />
       </div>
 
       <div className="flex justify-center mb-4">
-        <CompanySelctor companies={companies} value={selectedCompany} onChange={setSelectedCompany} />
+        <CompanySearchBar setResults={setSelectedCompany}/>
       </div>
-
+      </div>
       {data.length > 0 && (
         <>
-          <div className="mt-6 bg-white p-4 rounded shadow">
-            <h3 className="text-lg font-semibold mb-2">📊 DETAILED BID-ASK DATA</h3>
+        <div className="posistion">
+          <div className="Table mt-6 bg-white p-4 rounded shadow">
+              <h3 className="text-xl font-semibold text-center mb-2">{displayTableName}</h3>
             <DataTable data={enhancedData} />
           </div>
 
-          <h2 className="text-xl font-semibold text-center mb-2">{displayTableName}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <div className="lineDiff grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white p-4 rounded shadow">
               <h3 className="text-lg font-semibold mb-2">BID-ASK SPREAD VS. BUYER-SELLER RATIO</h3>
               <LineDiffChart data={data} />
             </div>
-
             <div className="bg-white p-4 rounded shadow">
               <h3 className="text-lg font-semibold mb-2">BID VS ASK PEOPLE</h3>
               <BidAskChart data={data} />
             </div>
+            </div>
           </div>
+            
+          
 
           {selectedCompany && (
             <div className="mt-6 bg-white p-4 rounded shadow">

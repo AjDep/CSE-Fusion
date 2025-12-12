@@ -38,11 +38,12 @@ export default function LineDiffChart({ data }) {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis 
           dataKey="security" 
-          angle={-40} 
+          angle={-70} 
           textAnchor="end" 
-          height={60} 
+          height={20} 
           interval={0} 
-          tick={{ fontSize: 12 }}
+          tick={{ fontSize: 10 }}
+          tickFormatter={(value) => value.replace(/0+$/, '')}
         />
         <YAxis 
           yAxisId="left" 

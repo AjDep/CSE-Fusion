@@ -12,7 +12,7 @@ app.use(express.json({ limit: '5mb' }));
 // Routes
 app.use('/api/companies', companiesRoutes);
 app.use('/api/tables', tablesRoutes);
-app.use('/api/bid-ask', bidAskRoutes);
+app.use('/api', bidAskRoutes);
 
 
 // Health check
