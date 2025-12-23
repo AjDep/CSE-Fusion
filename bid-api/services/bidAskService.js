@@ -1,0 +1,320 @@
+// services/bidAskService.js
+const pool = require('../db');
+
+class BidAskService {
+  /* ----------------------------------
+     TABLE NAME GENERATION
+  ----------------------------------- */
+  async generateTableNameForDate(date = new Date()) {
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const dd = String(date.getDate()).padStart(2, '0');
+
+    const [tables] = await pool.query(
+      `SHOW TABLES LIKE 'bid_vs_ask_${yyyy}_${mm}_${dd}_%';`
+    );
+
+    const nextNum = Math.min(tables.length + 1, 12);
+    const suffix = String(nextNum).padStart(2, '0');
+
+    const tableName = `bid_vs_ask_${yyyy}_${mm}_${dd}_${suffix}`;
+    console.log('Generated table name:', tableName);
+    return tableName;
+  }
+
+  /* ----------------------------------
+     TABLE CREATION
+  ----------------------------------- */
+  async ensureDailyTable(tableName) {
+    const sql = `
+      CREATE TABLE IF NOT EXISTS \`${tableName}\` (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        security VARCHAR(50) NOT NULL,
+        total_bid BIGINT,
+        total_ask BIGINT,
+        diff_percent DECIMAL(10,4),
+        total_bid_splits INT,
+        total_ask_splits INT,
+        top_bid_qty BIGINT,
+        top_bid_price DECIMAL(18,6),
+        current_bid_price DECIMAL(18,6)
+      ) ENGINE=InnoDB;
+    `;
+    await pool.query(sql);
+  }
+
+  async ensureHistoryTable() {
+    const sql = `
+      CREATE TABLE IF NOT EXISTS company_history (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        security VARCHAR(50) NOT NULL,
+        recorded_at DATETIME NOT NULL,
+        total_bid BIGINT,
+        total_ask BIGINT,
+        diff_percent DECIMAL(10,4),
+        total_bid_splits INT,
+        total_ask_splits INT,
+        top_bid_qty BIGINT,
+        top_bid_price DECIMAL(18,6),
+        current_bid_price DECIMAL(18,6),
+        source_table VARCHAR(100),
+        INDEX idx_security (security),
+        INDEX idx_recorded_at (recorded_at)
+      ) ENGINE=InnoDB;
+    `;
+    await pool.query(sql);
+  }
+
+  async ensureCompaniesTable() {
+    const sql = `
+      CREATE TABLE IF NOT EXISTS companies (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        security VARCHAR(50) NOT NULL UNIQUE,
+        company_name VARCHAR(255),
+        exchange VARCHAR(50),
+        table_name VARCHAR(255),
+        first_recorded DATETIME,
+        last_recorded DATETIME,
+        total_snapshots INT DEFAULT 0,
+        is_active TINYINT DEFAULT 1,
+        INDEX idx_security (security)
+      ) ENGINE=InnoDB;
+    `;
+    await pool.query(sql);
+  }
+
+  async ensureCompanyTable(security) {
+    // Normalize security name for table (remove dots, special chars)
+    const normalized = security.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+    const tableName = `company_${normalized}`;
+
+    const sql = `
+      CREATE TABLE IF NOT EXISTS \`${tableName}\` (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        recorded_at DATETIME NOT NULL,
+        total_bid BIGINT,
+        total_ask BIGINT,
+        diff_percent DECIMAL(10,4),
+        total_bid_splits INT,
+        total_ask_splits INT,
+        top_bid_qty BIGINT,
+        top_bid_price DECIMAL(18,6),
+        current_bid_price DECIMAL(18,6),
+        source_table VARCHAR(100),
+        INDEX idx_recorded_at (recorded_at)
+      ) ENGINE=InnoDB;
+    `;
+    await pool.query(sql);
+    return tableName;
+  }
+
+  /* ----------------------------------
+     DATA INSERTION
+  ----------------------------------- */
+  async insertRecords(conn, tableName, records) {
+    if (!records.length) return 0;
+
+    const columns = [
+      'security', 'total_bid', 'total_ask', 'diff_percent',
+      'total_bid_splits', 'total_ask_splits', 'top_bid_qty',
+      'top_bid_price', 'current_bid_price'
+    ];
+
+    const placeholders = records
+      .map(() => '(' + columns.map(() => '?').join(',') + ')')
+      .join(',');
+
+    const sql = `
+      INSERT INTO \`${tableName}\` (${columns.join(',')})
+      VALUES ${placeholders}
+    `;
+
+    const values = [];
+    for (const r of records) {
+      values.push(
+        r.security,
+        Number(r.totalBid) || 0,
+        Number(r.totalAsk) || 0,
+        Number(r.diffPercent) || 0,
+        Number(r.totalBidSplits) || 0,
+        Number(r.totalAskSplits) || 0,
+        Number(r.topBidQty) || 0,
+        r.topBidPrice != null ? Number(r.topBidPrice) : null,
+        r.currentBidPrice != null ? Number(r.currentBidPrice) : null
+      );
+    }
+
+    const [result] = await conn.query(sql, values);
+    return result.affectedRows || 0;
+  }
+
+  async insertHistoryRecords(conn, tableName, records) {
+    if (!records.length) return;
+
+    const sql = `
+      INSERT INTO company_history (
+        security, recorded_at, total_bid, total_ask, diff_percent,
+        total_bid_splits, total_ask_splits, top_bid_qty,
+        top_bid_price, current_bid_price, source_table
+      )
+      VALUES ?
+    `;
+
+    const now = new Date();
+    const values = records.map(r => [
+      r.security,
+      now,
+      r.totalBid || 0,
+      r.totalAsk || 0,
+      r.diffPercent || 0,
+      r.totalBidSplits || 0,
+      r.totalAskSplits || 0,
+      r.topBidQty || 0,
+      r.topBidPrice || null,
+      r.currentBidPrice || null,
+      tableName
+    ]);
+
+    await conn.query(sql, [values]);
+  }
+
+  async insertIntoCompanyTable(conn, companyTableName, tableName, record, timestamp) {
+    const sql = `
+      INSERT INTO \`${companyTableName}\` (
+        recorded_at, total_bid, total_ask, diff_percent,
+        total_bid_splits, total_ask_splits, top_bid_qty,
+        top_bid_price, current_bid_price, source_table
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    await conn.query(sql, [
+      timestamp,
+      record.totalBid || 0,
+      record.totalAsk || 0,
+      record.diffPercent || 0,
+      record.totalBidSplits || 0,
+      record.totalAskSplits || 0,
+      record.topBidQty || 0,
+      record.topBidPrice || null,
+      record.currentBidPrice || null,
+      tableName
+    ]);
+  }
+
+  async ensureCompanyExists(conn, security, companyTableName, timestamp) {
+    const insertSql = `
+      INSERT INTO companies (security, table_name, first_recorded, last_recorded, total_snapshots, is_active)
+      VALUES (?, ?, ?, ?, 1, 1)
+      ON DUPLICATE KEY UPDATE
+        last_recorded = VALUES(last_recorded),
+        table_name = VALUES(table_name),
+        total_snapshots = total_snapshots + 1,
+        is_active = 1
+    `;
+
+    await conn.query(insertSql, [security, companyTableName, timestamp, timestamp]);
+  }
+
+  /* ----------------------------------
+     DATA RETRIEVAL
+  ----------------------------------- */
+  async getTableData(tableName) {
+    const [rows] = await pool.query(`SELECT * FROM \`${tableName}\``);
+    return rows;
+  }
+
+  async getCompanyHistory(security) {
+    const [rows] = await pool.query(
+      `SELECT * FROM company_history WHERE security = ? ORDER BY recorded_at ASC`,
+      [security]
+    );
+    return rows;
+  }
+
+  async getAllCompanies() {
+    await this.ensureCompaniesTable();
+    const [rows] = await pool.query(`SELECT * FROM companies ORDER BY security ASC`);
+    return rows;
+  }
+
+  /* ----------------------------------
+     BUSINESS LOGIC
+  ----------------------------------- */
+  validateRecord(record) {
+    return record && typeof record.security === 'string' && record.security.trim().length > 0;
+  }
+
+  async storeBidAskData(records, date) {
+    await this.ensureHistoryTable();
+    await this.ensureCompaniesTable();
+
+    if (!records.length) {
+      throw new Error('No records provided');
+    }
+
+    const dateObj = date ? new Date(date) : new Date();
+    if (isNaN(dateObj)) {
+      throw new Error('Invalid date');
+    }
+
+    const tableName = await this.generateTableNameForDate(dateObj);
+    await this.ensureDailyTable(tableName);
+
+    const validRecords = records
+      .filter(this.validateRecord)
+      .map(r => ({
+        security: r.security,
+        totalBid: r.totalBid ?? 0,
+        totalAsk: r.totalAsk ?? 0,
+        diffPercent: r.diffPercent ?? 0,
+        totalBidSplits: r.totalBidSplits ?? 0,
+        totalAskSplits: r.totalAskSplits ?? 0,
+        topBidQty: r.topBidQty ?? 0,
+        topBidPrice: r.topBidPrice ?? null,
+        currentBidPrice: r.currentBidPrice ?? null
+      }));
+
+    const conn = await pool.getConnection();
+
+    try {
+      await conn.beginTransaction();
+
+      const timestamp = new Date();
+
+      // 1. Insert into daily snapshot table (single bulk insert)
+      const inserted = await this.insertRecords(conn, tableName, validRecords);
+
+      // 2. Insert into global company_history table (bulk)
+      await this.insertHistoryRecords(conn, tableName, validRecords);
+
+      // 3. For each record ensure company table exists, insert company row, and insert into company-specific table
+      for (const record of validRecords) {
+        // Ensure per-company table exists
+        const companyTableName = await this.ensureCompanyTable(record.security);
+
+        // Ensure companies master row exists / update it
+        await this.ensureCompanyExists(conn, record.security, companyTableName, timestamp);
+
+        // Insert into the company-specific time-series table
+        await this.insertIntoCompanyTable(conn, companyTableName, tableName, record, timestamp);
+      }
+
+      await conn.commit();
+      conn.release();
+
+      return {
+        inserted,
+        table: tableName,
+        companiesUpdated: validRecords.length
+      };
+    } catch (err) {
+      await conn.rollback();
+      conn.release();
+      throw err;
+    }
+  }
+}
+
+module.exports = new BidAskService();
