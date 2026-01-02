@@ -315,6 +315,15 @@ class BidAskService {
       throw err;
     }
   }
+
+  /* ----------------------------------
+     BID DOMINANCE CALCULATION
+  ----------------------------------- */
+  calculateBidDominance(totalBid, totalAsk, bids) {
+    const diffPercent = ((totalBid - totalAsk) / totalBid) * 100;
+    const topBidEntry = bids.reduce((max, cur) => (parseFloat(cur.qty || 0) > parseFloat(max.qty || 0) ? cur : max), bids[0] || {});
+    return { diffPercent, topBidEntry };
+  }
 }
 
 module.exports = new BidAskService();

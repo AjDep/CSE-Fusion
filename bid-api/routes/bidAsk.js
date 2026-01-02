@@ -16,4 +16,7 @@ router.get('/history/:security', asyncHandler(bidAskController.getCompanyHistory
 // GET: Master companies list
 router.get('/companies/list', asyncHandler(bidAskController.getCompaniesList));
 
+// POST: Analyze bid dominance
+router.post('/analyze-bid-dominance', asyncHandler(bidAskController.analyzeBidDominance));
+
 module.exports = router;

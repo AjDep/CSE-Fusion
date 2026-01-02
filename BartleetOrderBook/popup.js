@@ -137,7 +137,7 @@ async function fetchData(securities, filterTotals = false) {
 async function analyzeBidDominance(securities) {
     setOutput("Analyzing Bid vs Ask...");
     const cleaned = normalizeSecurities(securities);
-    const results = [];
+    const orderbooks = [];
 
     for (const sec of cleaned) {
         const ob = await apiFetchOrderBook(sec);
@@ -151,51 +151,58 @@ async function analyzeBidDominance(securities) {
         if (isNaN(totalAsk) || isNaN(totalBid) || bids.length === 0) continue;
 
         const totalBidSplits = bids.reduce((s, b) => s + (parseInt(b.splits || 0) || 0), 0);
-        const totalAskSplits = asks.reduce((s, a) => s + (parseInt(a.splits || 0) || 0), 0);
 
-         buyerInterestResults.push({
+        buyerInterestResults.push({
             security: sec,
             totalBidSplits
         });
 
-        if (totalBid >= totalAsk) {
-            const diffPercent = ((totalBid - totalAsk) / totalBid) * 100;
-            const topBidEntry = bids.reduce((max, cur) => (parseFloat(cur.qty || 0) > parseFloat(max.qty || 0) ? cur : max), bids[0] || {});
-            results.push({
-                security: sec,
-                totalAsk,
-                totalBid,
-                diffPercent,
-                topBidPrice: topBidEntry.price || "N/A",
-                topBidQty: topBidEntry.qty || 0,
-                currentBidPrice: bids[0]?.price || "N/A",
-                totalBidSplits,
-                totalAskSplits
-            });
+        orderbooks.push({
+            security: sec,
+            totalBid,
+            totalAsk,
+            bids,
+            asks
+        });
+    }
+
+    // Send to backend for analysis
+    try {
+        const response = await fetch("http://localhost:5000/api/analyze-bid-dominance", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ orderbooks }),
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.error || "Failed to analyze");
         }
+
+        const results = data.results;
+        lastResults = results;
+
+        if (results.length === 0) {
+            setOutput("⚠️ No companies found where bids ≥ asks.");
+            return;
+        }
+
+        const headers = [
+            "#", "Security", "Bid Dominance (%)", "Total Bid Orders", "Total Ask Orders",
+            "Total Bid", "Total Ask", "Top Bid Qty", "Top Bid Price", "Current Highest Bid"
+        ];
+
+        const rows = results.map((r, i) => [
+            i + 1, r.security, r.diffPercent.toFixed(2), r.totalBidSplits,
+            r.totalAskSplits, formatNumber(r.totalBid), formatNumber(r.totalAsk),
+            formatNumber(r.topBidQty), r.topBidPrice, r.currentBidPrice
+        ]);
+
+        setOutput(createTable(headers, rows));
+    } catch (err) {
+        console.error("Analysis error:", err);
+        setOutput("⚠️ Error analyzing data. Make sure the API is running.");
     }
-
-    lastResults = results;
-    results.sort((a, b) => (b.diffPercent - a.diffPercent) || (b.totalBidSplits - a.totalBidSplits));
-
-    if (results.length === 0) {
-        setOutput("⚠️ No companies found where bids ≥ asks.");
-        return results;
-    }
-
-    const headers = [
-        "#", "Security", "Bid Dominance (%)", "Total Bid Orders", "Total Ask Orders",
-        "Total Bid", "Total Ask", "Top Bid Qty", "Top Bid Price", "Current Highest Bid"
-    ];
-
-    const rows = results.map((r, i) => [
-        i + 1, r.security, r.diffPercent.toFixed(2), r.totalBidSplits,
-        r.totalAskSplits, formatNumber(r.totalBid), formatNumber(r.totalAsk),
-        formatNumber(r.topBidQty), r.topBidPrice, r.currentBidPrice
-    ]);
-
-    setOutput(createTable(headers, rows));
-    return results;
 }
 
 /* --------------------- Watchlist --------------------- */

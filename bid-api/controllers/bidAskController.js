@@ -43,6 +43,42 @@ class BidAskController {
       res.status(500).json({ error: 'Failed to fetch companies list', details: error.message });
     }
   }
+
+  async analyzeBidDominance(req, res) {
+    try {
+      const { orderbooks } = req.body; // array of { security, totalBid, totalAsk, bids, asks }
+      const results = [];
+
+      for (const ob of orderbooks) {
+        const { security, totalBid, totalAsk, bids, asks } = ob;
+
+        if (isNaN(totalAsk) || isNaN(totalBid) || !bids || bids.length === 0) continue;
+
+        const totalBidSplits = bids.reduce((s, b) => s + (parseInt(b.splits || 0) || 0), 0);
+        const totalAskSplits = asks ? asks.reduce((s, a) => s + (parseInt(a.splits || 0) || 0), 0) : 0;
+
+        if (totalBid >= totalAsk) {
+          const { diffPercent, topBidEntry } = bidAskService.calculateBidDominance(totalBid, totalAsk, bids);
+          results.push({
+            security,
+            totalAsk,
+            totalBid,
+            diffPercent,
+            topBidPrice: topBidEntry.price || "N/A",
+            topBidQty: topBidEntry.qty || 0,
+            currentBidPrice: bids[0]?.price || "N/A",
+            totalBidSplits,
+            totalAskSplits
+          });
+        }
+      }
+
+      results.sort((a, b) => (b.diffPercent - a.diffPercent) || (b.totalBidSplits - a.totalBidSplits));
+      res.json({ results });
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to analyze bid dominance', details: error.message });
+    }
+  }
 }
 
 module.exports = new BidAskController();
