@@ -59,14 +59,16 @@ class BidAskController {
 
         if (totalBid >= totalAsk) {
           const { diffPercent, topBidEntry } = bidAskService.calculateBidDominance(totalBid, totalAsk, bids);
+          const pplDominance = bidAskService.calculatePplDominance(totalBidSplits, totalAskSplits);
           results.push({
             security,
             totalAsk,
             totalBid,
             diffPercent,
-            topBidPrice: topBidEntry.price || "N/A",
+            pplDominance,
+            topBidPrice: topBidEntry.price || null,
             topBidQty: topBidEntry.qty || 0,
-            currentBidPrice: bids[0]?.price || "N/A",
+            currentBidPrice: bids[0]?.price || null,
             totalBidSplits,
             totalAskSplits
           });

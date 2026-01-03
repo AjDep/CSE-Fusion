@@ -41,10 +41,10 @@ export default function Dashboard() {
   const enhancedData = useMemo(() => {
     if (!data || data.length === 0) return [];
     return data.map((row, index) => {
-      const totalBid = parseFloat(row.total_bid_splits) || 0;
-      const totalAsk = parseFloat(row.total_ask_splits) || 0;
-      const dominance = totalBid + totalAsk > 0 ? ((totalBid - totalAsk) / (totalBid + totalAsk)) * 100 : 0;
-      return { ...row, id: index + 1, bid_dominance: dominance.toFixed(2) };
+      const totalBidppl = parseFloat(row.total_bid_splits) || 0;
+      const totalAskppl = parseFloat(row.total_ask_splits) || 0;
+      const dominanceOfppl = totalBidppl + totalAskppl > 0 ? ((totalBidppl - totalAskppl) / (totalBidppl + totalAskppl)) * 100 : 0;
+      return { ...row, id: index + 1, bid_dominance: dominanceOfppl.toFixed(2) };
     });
   }, [data]);
 
@@ -68,7 +68,7 @@ export default function Dashboard() {
         <div className="posistion">
           <div className="Table mt-6 bg-white p-4 rounded shadow">
               <h3 className="text-xl font-semibold text-center mb-2">{displayTableName}</h3>
-            <DataTable data={enhancedData} />
+            <DataTable data={data} />
           </div>
 
           

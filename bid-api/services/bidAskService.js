@@ -34,6 +34,7 @@ class BidAskService {
         total_bid BIGINT,
         total_ask BIGINT,
         diff_percent DECIMAL(10,4),
+        ppl_dominance DECIMAL(10,4),
         total_bid_splits INT,
         total_ask_splits INT,
         top_bid_qty BIGINT,
@@ -42,6 +43,27 @@ class BidAskService {
       ) ENGINE=InnoDB;
     `;
     await pool.query(sql);
+
+    // Add missing columns if table already exists
+    const alterSqls = [
+      `ALTER TABLE \`${tableName}\` ADD COLUMN ppl_dominance DECIMAL(10,4)`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN total_bid_splits INT`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN total_ask_splits INT`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN top_bid_qty BIGINT`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN top_bid_price DECIMAL(18,6)`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN current_bid_price DECIMAL(18,6)`
+    ];
+
+    for (const alterSql of alterSqls) {
+      try {
+        await pool.query(alterSql);
+      } catch (error) {
+        // Ignore if column already exists
+        if (!error.message.includes('Duplicate column name')) {
+          throw error;
+        }
+      }
+    }
   }
 
   async ensureHistoryTable() {
@@ -53,6 +75,7 @@ class BidAskService {
         total_bid BIGINT,
         total_ask BIGINT,
         diff_percent DECIMAL(10,4),
+        ppl_dominance DECIMAL(10,4),
         total_bid_splits INT,
         total_ask_splits INT,
         top_bid_qty BIGINT,
@@ -64,6 +87,30 @@ class BidAskService {
       ) ENGINE=InnoDB;
     `;
     await pool.query(sql);
+
+    // Add missing columns if table already exists
+    const alterSqls = [
+      `ALTER TABLE company_history ADD COLUMN ppl_dominance DECIMAL(10,4)`,
+      `ALTER TABLE company_history ADD COLUMN total_bid_splits INT`,
+      `ALTER TABLE company_history ADD COLUMN total_ask_splits INT`,
+      `ALTER TABLE company_history ADD COLUMN top_bid_qty BIGINT`,
+      `ALTER TABLE company_history ADD COLUMN top_bid_price DECIMAL(18,6)`,
+      `ALTER TABLE company_history ADD COLUMN current_bid_price DECIMAL(18,6)`,
+      `ALTER TABLE company_history ADD COLUMN source_table VARCHAR(100)`,
+      `ALTER TABLE company_history ADD INDEX idx_security (security)`,
+      `ALTER TABLE company_history ADD INDEX idx_recorded_at (recorded_at)`
+    ];
+
+    for (const alterSql of alterSqls) {
+      try {
+        await pool.query(alterSql);
+      } catch (error) {
+        // Ignore if column/index already exists
+        if (!error.message.includes('Duplicate column name') && !error.message.includes('Duplicate key name')) {
+          throw error;
+        }
+      }
+    }
   }
 
   async ensureCompaniesTable() {
@@ -96,6 +143,7 @@ class BidAskService {
         total_bid BIGINT,
         total_ask BIGINT,
         diff_percent DECIMAL(10,4),
+        ppl_dominance DECIMAL(10,4),
         total_bid_splits INT,
         total_ask_splits INT,
         top_bid_qty BIGINT,
@@ -106,6 +154,29 @@ class BidAskService {
       ) ENGINE=InnoDB;
     `;
     await pool.query(sql);
+
+    // Add missing columns if table already exists
+    const alterSqls = [
+      `ALTER TABLE \`${tableName}\` ADD COLUMN ppl_dominance DECIMAL(10,4)`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN total_bid_splits INT`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN total_ask_splits INT`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN top_bid_qty BIGINT`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN top_bid_price DECIMAL(18,6)`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN current_bid_price DECIMAL(18,6)`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN source_table VARCHAR(100)`,
+      `ALTER TABLE \`${tableName}\` ADD INDEX idx_recorded_at (recorded_at)`
+    ];
+
+    for (const alterSql of alterSqls) {
+      try {
+        await pool.query(alterSql);
+      } catch (error) {
+        // Ignore if column/index already exists
+        if (!error.message.includes('Duplicate column name') && !error.message.includes('Duplicate key name')) {
+          throw error;
+        }
+      }
+    }
     return tableName;
   }
 
@@ -116,7 +187,7 @@ class BidAskService {
     if (!records.length) return 0;
 
     const columns = [
-      'security', 'total_bid', 'total_ask', 'diff_percent',
+      'security', 'total_bid', 'total_ask', 'diff_percent', 'ppl_dominance',
       'total_bid_splits', 'total_ask_splits', 'top_bid_qty',
       'top_bid_price', 'current_bid_price'
     ];
@@ -137,6 +208,7 @@ class BidAskService {
         Number(r.totalBid) || 0,
         Number(r.totalAsk) || 0,
         Number(r.diffPercent) || 0,
+        Number(r.pplDominance) || 0,
         Number(r.totalBidSplits) || 0,
         Number(r.totalAskSplits) || 0,
         Number(r.topBidQty) || 0,
@@ -154,7 +226,7 @@ class BidAskService {
 
     const sql = `
       INSERT INTO company_history (
-        security, recorded_at, total_bid, total_ask, diff_percent,
+        security, recorded_at, total_bid, total_ask, diff_percent, ppl_dominance,
         total_bid_splits, total_ask_splits, top_bid_qty,
         top_bid_price, current_bid_price, source_table
       )
@@ -168,6 +240,7 @@ class BidAskService {
       r.totalBid || 0,
       r.totalAsk || 0,
       r.diffPercent || 0,
+      r.pplDominance || 0,
       r.totalBidSplits || 0,
       r.totalAskSplits || 0,
       r.topBidQty || 0,
@@ -182,11 +255,11 @@ class BidAskService {
   async insertIntoCompanyTable(conn, companyTableName, tableName, record, timestamp) {
     const sql = `
       INSERT INTO \`${companyTableName}\` (
-        recorded_at, total_bid, total_ask, diff_percent,
+        recorded_at, total_bid, total_ask, diff_percent, ppl_dominance,
         total_bid_splits, total_ask_splits, top_bid_qty,
         top_bid_price, current_bid_price, source_table
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     await conn.query(sql, [
@@ -194,6 +267,7 @@ class BidAskService {
       record.totalBid || 0,
       record.totalAsk || 0,
       record.diffPercent || 0,
+      record.pplDominance || 0,
       record.totalBidSplits || 0,
       record.totalAskSplits || 0,
       record.topBidQty || 0,
@@ -260,23 +334,27 @@ class BidAskService {
     }
 
     const tableName = await this.generateTableNameForDate(dateObj);
+    console.log('Table name:', tableName);
     await this.ensureDailyTable(tableName);
 
     const validRecords = records
       .filter(this.validateRecord)
       .map(r => ({
         security: r.security,
-        totalBid: r.totalBid ?? 0,
-        totalAsk: r.totalAsk ?? 0,
-        diffPercent: r.diffPercent ?? 0,
-        totalBidSplits: r.totalBidSplits ?? 0,
-        totalAskSplits: r.totalAskSplits ?? 0,
-        topBidQty: r.topBidQty ?? 0,
-        topBidPrice: r.topBidPrice ?? null,
-        currentBidPrice: r.currentBidPrice ?? null
+        totalBid: Number(r.totalBid) || 0,
+        totalAsk: Number(r.totalAsk) || 0,
+        diffPercent: Number(r.diffPercent) || 0,
+        pplDominance: Number(r.pplDominance) || 0,
+        totalBidSplits: Number(r.totalBidSplits) || 0,
+        totalAskSplits: Number(r.totalAskSplits) || 0,
+        topBidQty: Number(r.topBidQty) || 0,
+        topBidPrice: r.topBidPrice && !isNaN(Number(r.topBidPrice)) ? Number(r.topBidPrice) : null,
+        currentBidPrice: r.currentBidPrice && !isNaN(Number(r.currentBidPrice)) ? Number(r.currentBidPrice) : null
       }));
+    console.log('Valid records:', validRecords.length);
 
     const conn = await pool.getConnection();
+    console.log('Got DB connection');
 
     try {
       await conn.beginTransaction();
@@ -310,6 +388,7 @@ class BidAskService {
         companiesUpdated: validRecords.length
       };
     } catch (err) {
+      console.error('Error in transaction:', err);
       await conn.rollback();
       conn.release();
       throw err;
@@ -320,10 +399,17 @@ class BidAskService {
      BID DOMINANCE CALCULATION
   ----------------------------------- */
   calculateBidDominance(totalBid, totalAsk, bids) {
+    if (totalBid === 0) return { diffPercent: 0, topBidEntry: {} };
     const diffPercent = ((totalBid - totalAsk) / totalBid) * 100;
     const topBidEntry = bids.reduce((max, cur) => (parseFloat(cur.qty || 0) > parseFloat(max.qty || 0) ? cur : max), bids[0] || {});
-    return { diffPercent, topBidEntry };
+    return { diffPercent: Number(diffPercent.toFixed(2)), topBidEntry };
+  }
+
+  calculatePplDominance(totalBidSplits, totalAskSplits) {
+    if (totalBidSplits + totalAskSplits === 0) return 0;
+    const dominance = ((totalBidSplits - totalAskSplits) / (totalBidSplits + totalAskSplits)) * 100;
+    return Number(dominance.toFixed(2));
   }
 }
 
-module.exports = new BidAskService();
+module.exports = new BidAskService(); 
