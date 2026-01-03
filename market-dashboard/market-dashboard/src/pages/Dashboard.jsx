@@ -38,16 +38,6 @@ export default function Dashboard() {
   const { history: companyHistory, loading } = useCompanyHistory(selectedCompany); // Custom hook
 
 
-  const enhancedData = useMemo(() => {
-    if (!data || data.length === 0) return [];
-    return data.map((row, index) => {
-      const totalBidppl = parseFloat(row.total_bid_splits) || 0;
-      const totalAskppl = parseFloat(row.total_ask_splits) || 0;
-      const dominanceOfppl = totalBidppl + totalAskppl > 0 ? ((totalBidppl - totalAskppl) / (totalBidppl + totalAskppl)) * 100 : 0;
-      return { ...row, id: index + 1, bid_dominance: dominanceOfppl.toFixed(2) };
-    });
-  }, [data]);
-
   const displayTableName = useMemo(() => formatTableName(selectedTable), [selectedTable]);
 
   return (

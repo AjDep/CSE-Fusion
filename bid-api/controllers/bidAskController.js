@@ -56,8 +56,7 @@ class BidAskController {
 
         const totalBidSplits = bids.reduce((s, b) => s + (parseInt(b.splits || 0) || 0), 0);
         const totalAskSplits = asks ? asks.reduce((s, a) => s + (parseInt(a.splits || 0) || 0), 0) : 0;
-
-        if (totalBid >= totalAsk) {
+      
           const { diffPercent, topBidEntry } = bidAskService.calculateBidDominance(totalBid, totalAsk, bids);
           const pplDominance = bidAskService.calculatePplDominance(totalBidSplits, totalAskSplits);
           results.push({
@@ -72,7 +71,7 @@ class BidAskController {
             totalBidSplits,
             totalAskSplits
           });
-        }
+        
       }
 
       results.sort((a, b) => (b.diffPercent - a.diffPercent) || (b.totalBidSplits - a.totalBidSplits));
