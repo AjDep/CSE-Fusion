@@ -25,53 +25,57 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 export default function LineDiffChart({ data }) {
-  // Process data to include bid_dominance calculation
+  // Process data to include bid_dominance from DB
   const processedData = data.map(row => ({
     ...row,
-    bid_dominance: row.total_bid_splits && row.total_ask_splits ? 
-      ((row.total_bid_splits-row.total_ask_splits) / (row.total_bid_splits + row.total_ask_splits)) * 100 : 0
+    bid_dominance: row.ppl_dominance || 0
   }));
 
+  // Calculate chart width based on data length for horizontal scrolling
+  const chartWidth = Math.max(800, data.length * 10); // Minimum width of 800px, 50px per data point
+
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <ComposedChart data={processedData} margin={{ bottom: 50 }}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis 
-          dataKey="security" 
-          angle={-70} 
-          textAnchor="end" 
-          height={20} 
-          interval={0} 
-          tick={{ fontSize: 10 }}
-          tickFormatter={(value) => value.replace(/0+$/, '')}
-        />
-        <YAxis 
-          yAxisId="left" 
-          label={{ value: 'Percentage (%)', angle: -90, position: 'insideLeft' }}
-        />
-        <Tooltip content={<CustomTooltip />}/>
-        <Line 
-          yAxisId="left" 
-          type="monotone" 
-          dataKey="diff_percent" 
-          stroke="#7aa4ffff" 
-          name="Buy Dominance"
-          dot={false}
-        />
-        <Bar 
-          yAxisId="left" 
-          dataKey="bid_dominance" 
-          name="buyer to seller in no ppl"
-          barSize={20}
-        >
-          {processedData.map((entry, index) => (
-            <Cell
-              key={`cell-${index}`}
-              fill={Number(entry.bid_dominance) < 0 ? "#b80a0aff" : "#39c26bff"}
-            />
-          ))}
-        </Bar>
-      </ComposedChart>
-    </ResponsiveContainer>
+    <div style={{ width: '100%', overflowX: 'auto' }}>
+      <ResponsiveContainer width={chartWidth} height={300}>
+        <ComposedChart data={processedData} margin={{ bottom: 50 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis 
+            dataKey="security" 
+            angle={-70} 
+            textAnchor="end" 
+            height={10} 
+            interval={0} 
+            tick={{ fontSize: 10 }}
+            tickFormatter={(value) => value.replace(/0+$/, '')}
+          />
+          <YAxis 
+            yAxisId="left" 
+            label={{ value: 'Percentage (%)', angle: -90, position: 'insideLeft' }}
+          />
+          <Tooltip content={<CustomTooltip />}/>
+          <Line 
+            yAxisId="left" 
+            type="monotone" 
+            dataKey="diff_percent" 
+            stroke="#7aa4ffff" 
+            name="Buy Dominance"
+            dot={false}
+          />
+          <Bar 
+            yAxisId="left" 
+            dataKey="bid_dominance" 
+            name="buyer to seller in no ppl"
+            barSize={20}
+          >
+            {processedData.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={Number(entry.bid_dominance) < 0 ? "#b80a0aff" : "#39c26bff"}
+              />
+            ))}
+          </Bar>
+        </ComposedChart>
+      </ResponsiveContainer>
+    </div>
   );
 }
