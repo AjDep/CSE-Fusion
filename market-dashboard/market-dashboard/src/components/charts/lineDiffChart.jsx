@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ComposedChart, Bar, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, Cell } from "recharts";
 
 const CustomTooltip = ({ active, payload, label }) => {
@@ -24,20 +25,61 @@ const CustomTooltip = ({ active, payload, label }) => {
   );
 };
 
+
 export default function LineDiffChart({ data }) {
-  // Process data to include bid_dominance from DB
+  const [startIndex, setStartIndex] = useState(0);
+  const itemsPerPage = 50;
+
   const processedData = data.map(row => ({
     ...row,
     bid_dominance: row.ppl_dominance || 0
   }));
 
-  // Calculate chart width based on data length for horizontal scrolling
-  const chartWidth = Math.max(800, data.length * 10); // Minimum width of 800px, 50px per data point
+  const visibleData = processedData.slice(startIndex, startIndex + itemsPerPage);
+
+  const visibleValues = visibleData.flatMap(d => [
+    Number(d.diff_percent) || 0,
+    Number(d.bid_dominance) || 0
+  ]);
+  const minValue = Math.min(...visibleValues);
+  const maxValue = Math.max(...visibleValues);
+  const padding = (maxValue - minValue) * 0.1 || 1;
+  const yDomain = [minValue - padding, maxValue + padding];
+
+  const canGoBack = startIndex > 0;
+  const canGoForward = startIndex + itemsPerPage < processedData.length;
 
   return (
-    <div style={{ width: '100%', overflowX: 'auto' }}>
-      <ResponsiveContainer width={chartWidth} height={300}>
-        <ComposedChart data={processedData} margin={{ bottom: 50 }}>
+    <div style={{ width: '100%' }}>
+      <div style={{ marginBottom: '10px', display: 'flex', gap: '10px', alignItems: 'center'  }}>
+        <button 
+          onClick={() => setStartIndex(Math.max(0, startIndex - itemsPerPage))}
+          disabled={!canGoBack}
+          style={{
+            padding: '5px 15px',
+            cursor: canGoBack ? 'pointer' : 'not-allowed',
+            opacity: canGoBack ? 1 : 0.5
+          }}
+        >
+          ← Previous
+        </button>
+        <button 
+          onClick={() => setStartIndex(startIndex + itemsPerPage)}
+          disabled={!canGoForward}
+          style={{
+            padding: '5px 15px',
+            cursor: canGoForward ? 'pointer' : 'not-allowed',
+            opacity: canGoForward ? 1 : 0.5
+          }}
+        >
+          Next →
+        </button>
+        <span style={{ fontSize: '14px', color: '#666' }}>
+          Showing {startIndex + 1}-{Math.min(startIndex + itemsPerPage, processedData.length)} of {processedData.length}
+        </span>
+      </div>
+      <ResponsiveContainer width="100%" height={300}>
+        <ComposedChart data={visibleData} margin={{ bottom: 50 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis 
             dataKey="security" 
@@ -50,6 +92,8 @@ export default function LineDiffChart({ data }) {
           />
           <YAxis 
             yAxisId="left" 
+            domain={yDomain}
+            tickFormatter={(value) => value.toFixed(0)}
             label={{ value: 'Percentage (%)', angle: -90, position: 'insideLeft' }}
           />
           <Tooltip content={<CustomTooltip />}/>
@@ -67,7 +111,7 @@ export default function LineDiffChart({ data }) {
             name="buyer to seller in no ppl"
             barSize={20}
           >
-            {processedData.map((entry, index) => (
+            {visibleData.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={Number(entry.bid_dominance) < 0 ? "#b80a0aff" : "#39c26bff"}

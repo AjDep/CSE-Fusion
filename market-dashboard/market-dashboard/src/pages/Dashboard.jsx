@@ -68,9 +68,13 @@ export default function Dashboard() {
               <LineDiffChart data={data} />
             </div>
             <div className="bg-white p-4 rounded shadow">
-              <h3 className="text-lg font-semibold mb-2">BID VS ASK PEOPLE</h3>
-              <BidAskChart data={data} />
-            </div>
+                <h3 className="text-lg font-semibold mb-2">BID VS ASK PEOPLE</h3>
+                <BidAskChart data={[...data].sort((a, b) => {
+                  const bidA = Number(a.total_bid_splits) || 0;
+                  const bidB = Number(b.total_bid_splits) || 0;
+                  return bidB - bidA;
+                })} />
+              </div>
             </div>
           </div>
             

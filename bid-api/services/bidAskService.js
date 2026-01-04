@@ -320,80 +320,158 @@ class BidAskService {
     return record && typeof record.security === 'string' && record.security.trim().length > 0;
   }
 
-  async storeBidAskData(records, date) {
-    await this.ensureHistoryTable();
-    await this.ensureCompaniesTable();
+async storeBidAskData(records, date) {
+  await this.ensureHistoryTable();
+  await this.ensureCompaniesTable();
 
-    if (!records.length) {
-      throw new Error('No records provided');
-    }
+  if (!records.length) {
+    throw new Error('No records provided');
+  }
 
-    const dateObj = date ? new Date(date) : new Date();
-    if (isNaN(dateObj)) {
-      throw new Error('Invalid date');
-    }
+  const dateObj = date ? new Date(date) : new Date();
+  if (isNaN(dateObj)) {
+    throw new Error('Invalid date');
+  }
 
-    const tableName = await this.generateTableNameForDate(dateObj);
-    console.log('Table name:', tableName);
-    await this.ensureDailyTable(tableName);
+  const tableName = await this.generateTableNameForDate(dateObj);
+  console.log('Table name:', tableName);
 
-    const validRecords = records
-      .filter(this.validateRecord)
-      .map(r => ({
-        security: r.security,
-        totalBid: Number(r.totalBid) || 0,
-        totalAsk: Number(r.totalAsk) || 0,
-        diffPercent: Number(r.diffPercent) || 0,
-        pplDominance: Number(r.pplDominance) || 0,
-        totalBidSplits: Number(r.totalBidSplits) || 0,
-        totalAskSplits: Number(r.totalAskSplits) || 0,
-        topBidQty: Number(r.topBidQty) || 0,
-        topBidPrice: r.topBidPrice && !isNaN(Number(r.topBidPrice)) ? Number(r.topBidPrice) : null,
-        currentBidPrice: r.currentBidPrice && !isNaN(Number(r.currentBidPrice)) ? Number(r.currentBidPrice) : null
-      }));
-    console.log('Valid records:', validRecords.length);
+  // Parse table name correctly using regex
+  // Expected format: bid_vs_ask_YYYY_MM_DD_BB
+  const match = tableName.match(/^bid_vs_ask_(\d{4})_(\d{2})_(\d{2})_(\d{2})$/);
 
-    const conn = await pool.getConnection();
-    console.log('Got DB connection');
+  if (!match) {
+    console.error(`Table name parsing failed for: ${tableName}`);
+    throw new Error(`Invalid table name format: ${tableName}. Expected format: bid_vs_ask_YYYY_MM_DD_BB`);
+  }
 
-    try {
-      await conn.beginTransaction();
+  const [, year, month, day, batch] = match;
+  // Validate year, month, day, batch
+  if (!year || !month || !day || !batch) {
+    console.error('Parsed values:', { year, month, day, batch });
+    throw new Error(`Failed to parse snapshot date/batch from table name: ${tableName}`);
+  }
+  // Validate date
+  const snapshotDate = `${year}-${month}-${day}`;
+  if (isNaN(Date.parse(snapshotDate))) {
+    console.error('Invalid snapshotDate:', snapshotDate);
+    throw new Error(`Parsed snapshotDate is not a valid date: ${snapshotDate}`);
+  }
+  const snapshotBatch = batch;
 
-      const timestamp = new Date();
+  console.log('Parsed snapshot date:', snapshotDate);
+  console.log('Parsed snapshot batch:', snapshotBatch);
+
+  await this.ensureDailyTable(tableName);
+
+  const validRecords = records
+    .filter(this.validateRecord)
+    .map(r => ({
+      security: r.security,
+      totalBid: Number(r.totalBid) || 0,
+      totalAsk: Number(r.totalAsk) || 0,
+      diffPercent: Number(r.diffPercent) || 0,
+      pplDominance: Number(r.pplDominance) || 0,
+      totalBidSplits: Number(r.totalBidSplits) || 0,
+      totalAskSplits: Number(r.totalAskSplits) || 0,
+      topBidQty: Number(r.topBidQty) || 0,
+      topBidPrice: r.topBidPrice && !isNaN(Number(r.topBidPrice)) ? Number(r.topBidPrice) : null,
+      currentBidPrice: r.currentBidPrice && !isNaN(Number(r.currentBidPrice)) ? Number(r.currentBidPrice) : null
+    }));
+  console.log('Valid records:', validRecords.length);
+
+  const conn = await pool.getConnection();
+  console.log('Got DB connection');
+
+  try {
+    await conn.beginTransaction();
+
+    const timestamp = new Date();
 
       // 1. Insert into daily snapshot table (single bulk insert)
-      const inserted = await this.insertRecords(conn, tableName, validRecords);
+    const inserted = await this.insertRecords(conn, tableName, validRecords);
 
-      // 2. Insert into global company_history table (bulk)
-      await this.insertHistoryRecords(conn, tableName, validRecords);
+    // 1.5 Insert into master table with correctly parsed date and batch
+    await this.insertIntoMasterTable(conn, tableName, snapshotDate, snapshotBatch, validRecords);
 
-      // 3. For each record ensure company table exists, insert company row, and insert into company-specific table
-      for (const record of validRecords) {
-        // Ensure per-company table exists
-        const companyTableName = await this.ensureCompanyTable(record.security);
+    // 2. Insert into global company_history table (bulk insert)
+    await this.insertHistoryRecords(conn, tableName, validRecords);
 
-        // Ensure companies master row exists / update it
-        await this.ensureCompanyExists(conn, record.security, companyTableName, timestamp);
+    // 3. For each record ensure company table exists, insert company row, and insert into company-specific table
+    for (const record of validRecords) {
+      // Ensure per-company table exists
+      const companyTableName = await this.ensureCompanyTable(record.security);
 
-        // Insert into the company-specific time-series table
-        await this.insertIntoCompanyTable(conn, companyTableName, tableName, record, timestamp);
-      }
+      // Ensure companies master row exists / update it
+      await this.ensureCompanyExists(conn, record.security, companyTableName, timestamp);
 
-      await conn.commit();
-      conn.release();
-
-      return {
-        inserted,
-        table: tableName,
-        companiesUpdated: validRecords.length
-      };
-    } catch (err) {
-      console.error('Error in transaction:', err);
-      await conn.rollback();
-      conn.release();
-      throw err;
+      // Insert into the company-specific time-series table
+      await this.insertIntoCompanyTable(conn, companyTableName, tableName, record, timestamp);
     }
+
+    await conn.commit();
+    conn.release();
+
+    return {
+      inserted,
+      table: tableName,
+      snapshotDate,
+      snapshotBatch,
+      companiesUpdated: validRecords.length
+    };
+  } catch (err) {
+    console.error('Error in transaction:', err);
+    await conn.rollback();
+    conn.release();
+    throw err;
   }
+}
+
+  /* ----------------------------------
+   MASTER TABLE INSERTION
+----------------------------------- */
+async insertIntoMasterTable(conn,sourceTable, snapshotDate, snapshotBatch, records) {
+  if (!records.length) return;
+
+  const sql = `
+    INSERT IGNORE INTO bid_vs_ask_master (
+      snapshot_date,
+      snapshot_batch,
+      source_table,
+      recorded_at,
+      security,
+      total_bid,
+      total_ask,
+      diff_percent,
+      ppl_dominance,
+      total_bid_splits,
+      total_ask_splits,
+      top_bid_qty,
+      top_bid_price,
+      current_bid_price
+    )
+    VALUES ?
+  `;
+
+  const values = records.map(r => [
+    snapshotDate,
+    snapshotBatch,
+    sourceTable,
+    new Date(), // recorded_at (or you can use r.recordedAt if available)
+    r.security,
+    r.totalBid,
+    r.totalAsk,
+    r.diffPercent,
+    r.pplDominance,
+    r.totalBidSplits,
+    r.totalAskSplits,
+    r.topBidQty,
+    r.topBidPrice,
+    r.currentBidPrice
+  ]);
+
+  await conn.query(sql, [values]);
+}
 
   /* ----------------------------------
      BID DOMINANCE CALCULATION
