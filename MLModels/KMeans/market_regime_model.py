@@ -2,18 +2,14 @@ import joblib
 import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from feature_engineering import add_obi
 
 FEATURES = ['diff_percent', 'ppl_dominance', 'obi']
 N_CLUSTERS = 4
 RANDOM_STATE = 42
-
-
-def add_obi(df: pd.DataFrame) -> pd.DataFrame:
-    df = df.copy()
-    df['obi'] = (df['total_bid'] - df['total_ask']) / (df['total_bid'] + df['total_ask'])
-    df['obi'] = df['obi'].fillna(0)
-    return df
-
 
 def train_model(df: pd.DataFrame):
     df = add_obi(df)
