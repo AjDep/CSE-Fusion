@@ -5,6 +5,7 @@ import pandas as pd
 from model import MarketTransformer
 import sys
 import os
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from feature_engineering import add_obi
 
@@ -31,7 +32,8 @@ def create_sequences(data, time_steps):
 
 def predict_transformer(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Returns transformer-only predictions
+    Transformer-based momentum prediction.
+    Output is standardized for multi-model fusion.
     """
 
     # 1️⃣ Feature engineering
@@ -57,23 +59,27 @@ def predict_transformer(df: pd.DataFrame) -> pd.DataFrame:
 
     # 6️⃣ Align predictions with rows
     result = df.iloc[TIME_STEPS - 1:].copy()
-    result['transformer_confidence'] = probs
+    result['score'] = probs
 
-    # 7️⃣ Human readable signal
-    result['transformer_signal'] = result['transformer_confidence'].apply(
+    # 7️⃣ Trading signal
+    result['signal'] = result['score'].apply(
         lambda x: "BUY" if x > 0.6 else ("SELL" if x < 0.4 else "HOLD")
     )
 
+    # 8️⃣ Final standardized output
     return result[[
         'security',
-        'recorded_at',
-        'transformer_confidence',
-        'transformer_signal'
-    ]]
+        'recorded_at'
+    ]].assign(
+        score=result['score'].astype(float),
+        signal=result['signal'],
+        model='transformer'
+    )
 
 
-df = pd.read_csv("../DataSets/market-dashboard.csv")
-
-output = predict_transformer(df)
-
-print(output.tail(10))
+# ---- local test ----
+if __name__ == "__main__":
+    df = pd.read_csv("../DataSets/market-dashboard.csv")
+    output = predict_transformer(df)
+    print(output.tail(10))
+    output.to_csv("transformer_predictions.csv", index=False)

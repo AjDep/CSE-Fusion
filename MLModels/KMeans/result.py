@@ -1,9 +1,29 @@
+import os
 import pandas as pd
 from predict import predict_today
+
 df_today = pd.read_csv("../DataSets/today1.csv")
 
 result = predict_today(df_today)
 
-watchlist = result[result["cluster"] == 2]  # Whale Accumulation
+# Keep only what we need
+output = result[[
+    "security",
+    "regime",
+    "action"
+]].copy()
 
-print(watchlist[["security", "regime", "action"]])
+# Standardise columns
+output.rename(columns={
+    "action": "signal"
+}, inplace=True)
+
+output["score"] = None  # K-Means has no probability
+output["model"] = "kmeans"
+
+# Save
+os.makedirs("../outputs", exist_ok=True)
+output.to_csv("../outputs/kmeans_output.csv", index=False)
+
+print("✅ K-Means output saved")
+print(output.head())
