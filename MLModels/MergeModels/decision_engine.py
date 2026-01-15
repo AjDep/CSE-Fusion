@@ -1,22 +1,38 @@
-def final_trade_decision(row):
-    """
-    Combines all 3 model outputs into one decision
-    """
+import pandas as pd
 
-    # ❌ Risk filter
-    if row["market_regime"] in ["Panic Selling", "Extreme Volatility"]:
-        return "NO TRADE"
+def fuse_signals(kmeans: pd.DataFrame,
+                 classifier: pd.DataFrame,
+                 transformer: pd.DataFrame) -> pd.DataFrame:
 
-    # 🚀 Strong buy
-    if (
-        row["gb_confidence"] > 0.65 and
-        row["transformer_confidence"] > 0.60 and
-        row["market_regime"] == "Whale Accumulation"
-    ):
-        return "STRONG BUY"
+    # Merge all models on security
+    df = kmeans.merge(classifier, on="security", how="left")
+    df = df.merge(transformer, on="security", how="left")
 
-    # ⚠️ Weak / uncertain
-    if row["gb_confidence"] < 0.45:
-        return "WAIT"
+    final_signals = []
 
-    return "HOLD"
+    for _, row in df.iterrows():
+        regime = row.get("regime")
+        km_signal = row.get("signal_kmeans")
+        clf_signal = row.get("signal_classifier")
+        tr_signal = row.get("signal_transformer")
+
+        # 🚨 Rule 1: Panic overrides everything
+        if regime == "🛑 Panic Crash":
+            final = "🔻 SELL"
+
+        # 🐳 Rule 2: Whale + Momentum
+        elif regime == "🐳 Whale Accumulation" and tr_signal == "BUY":
+            final = "🟢 STRONG BUY"
+
+        # ⚖️ Rule 3: Agreement
+        elif clf_signal == "BUY" and tr_signal == "BUY":
+            final = "🟢 BUY"
+
+        # ⏸️ Rule 4: Default safe
+        else:
+            final = "⚖️ HOLD"
+
+        final_signals.append(final)
+
+    df["final_signal"] = final_signals
+    return df

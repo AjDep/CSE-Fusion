@@ -1,14 +1,36 @@
 import os
 import pandas as pd
 from predict_transformer import predict_transformer
+from aggregate_transformer import aggregate_transformer
 
 if __name__ == "__main__":
+
+    # 1️⃣ Load data
     df = pd.read_csv("../DataSets/market-dashboard.csv")
 
-    output = predict_transformer(df)
+    # 2️⃣ Run transformer (time-based momentum)
+    transformer_raw = predict_transformer(df)
 
+    # 3️⃣ Aggregate transformer output (per security)
+    transformer_summary = aggregate_transformer(transformer_raw)
+
+    # 4️⃣ Save outputs
     os.makedirs("../outputs", exist_ok=True)
-    output.to_csv("../outputs/transformer_output.csv", index=False)
 
-    print("✅ Transformer output saved")
-    print(output.tail(5))
+    transformer_raw.to_csv(
+        "../outputs/transformer_output_raw.csv",
+        index=False
+    )
+
+    transformer_summary.to_csv(
+        "../outputs/transformer_output_summary.csv",
+        index=False
+    )
+
+    # 5️⃣ Logs
+    print("✅ Transformer raw output saved (time-based)")
+    print("✅ Transformer summary output saved (per security)")
+    print("\n🔹 Raw output sample:")
+    print(transformer_raw.tail(5))
+    print("\n🔹 Summary output sample:")
+    print(transformer_summary.head(5))
