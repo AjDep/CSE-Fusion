@@ -1,7 +1,24 @@
-import pandas as pd
+import os
+import sys
+
+# Ensure shared helpers are importable
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from bid_api_client import load_with_fallback
 from price_direction_model import prepare_training_data, train_model, save_model
 
-df = pd.read_csv("../DataSets/market-dashboard.csv")
+REQUIRED_COLUMNS = [
+	"security",
+	"recorded_at",
+	"current_bid_price",
+	"diff_percent",
+	"ppl_dominance",
+	"total_bid",
+	"total_ask",
+	"top_bid_qty",
+]
+
+df = load_with_fallback(required_columns=REQUIRED_COLUMNS, allow_fallback=False)
 
 X, y, df_clean = prepare_training_data(df)
 

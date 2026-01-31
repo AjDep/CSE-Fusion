@@ -5,13 +5,25 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 import sys
 import os
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from bid_api_client import load_with_fallback
 from feature_engineering import add_obi
 from Transformers.model import MarketTransformer
 
 FEATURES = ['diff_percent', 'ppl_dominance', 'obi', 'total_bid', 'total_ask']
 TIME_STEPS = 5
 EPOCHS = 50
+REQUIRED_COLUMNS = [
+    'security',
+    'recorded_at',
+    'current_bid_price',
+    'diff_percent',
+    'ppl_dominance',
+    'total_bid',
+    'total_ask'
+]
 
 def create_sequences(X, y, time_steps):
     Xs, ys = [], []
@@ -20,8 +32,8 @@ def create_sequences(X, y, time_steps):
         ys.append(y[i + time_steps])
     return np.array(Xs), np.array(ys)
 
-# Load data
-df = pd.read_csv("../DataSets/market-dashboard.csv")
+# Load data from API (no CSV fallback)
+df = load_with_fallback(required_columns=REQUIRED_COLUMNS, allow_fallback=False)
 df = add_obi(df)
 df = df.sort_values(['security', 'recorded_at'])
 
