@@ -1,5 +1,5 @@
 ('C:\\Users\\LENOVO\\Desktop\\Tools '
- '101\\HowManyShareCanIBuy\\build\\index\\PYZ-00.pyz',
+ '101\\HOWMANYSHARECANIBUY\\build\\INDEX\\PYZ-00.pyz',
  [('__future__',
    'C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\__future__.py',
    'PYMODULE'),
@@ -365,9 +365,6 @@
    'PYMODULE'),
   ('tkinter.messagebox',
    'C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\tkinter\\messagebox.py',
-   'PYMODULE'),
-  ('tkinter.ttk',
-   'C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\tkinter\\ttk.py',
    'PYMODULE'),
   ('token',
    'C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\token.py',

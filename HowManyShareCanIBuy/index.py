@@ -1,12 +1,16 @@
 import tkinter as tk
-from tkinter import messagebox, ttk
+from tkinter import messagebox
+import math
 
-# --- Variables to store calculated data ---
+# ================= GLOBAL STATE =================
 shares = 0
 total_buy_cost = 0.0
+sell_shares = 0
+
+# ================= LOGIC =================
 
 def calculate_shares():
-    global shares, total_buy_cost
+    global shares, total_buy_cost, sell_shares
     try:
         amount = float(amount_entry.get())
         price = float(price_entry.get())
@@ -16,290 +20,228 @@ def calculate_shares():
         total_buy_cost = shares * price * (1 + service_charge)
         balance = amount - total_buy_cost
 
-        # Update result cards
         shares_value.config(text=str(shares))
         total_cost_value.config(text=f"Rs. {total_buy_cost:,.2f}")
         balance_value.config(text=f"Rs. {balance:,.2f}")
-        
-        result_frame.pack(fill="both", expand=True, padx=15, pady=10)
+
+        sell_shares_entry.delete(0, tk.END)
+        sell_shares_entry.insert(0, str(shares))
+
+        result_frame.pack(fill="x", pady=8)
         copy_btn.config(state="normal")
 
     except ValueError:
         messagebox.showerror("Invalid Input", "Please enter valid numbers.")
-        result_frame.pack_forget()
-        copy_btn.config(state="disabled")
 
 def calculate_profit():
-    global shares, total_buy_cost
+    global sell_shares
     try:
         if shares == 0:
             messagebox.showwarning("No Purchase", "Please calculate your purchase first.")
             return
 
         sell_price = float(sell_price_entry.get())
-        sell_commission = 0.0112
-        total_sell = shares * sell_price * (1 - sell_commission)
+        commission = 0.0112
 
-        profit = total_sell - total_buy_cost
-        roi = (profit / total_buy_cost) * 100
+        sell_input = sell_shares_entry.get().strip()
+        sell_shares = shares if sell_input == "" else int(sell_input)
 
-        status = "Profit" if profit >= 0 else "Loss"
-        color = "#27ae60" if profit >= 0 else "#e74c3c"
-        icon = "📈" if profit >= 0 else "📉"
+        if sell_shares <= 0 or sell_shares > shares:
+            messagebox.showerror("Invalid Shares", "Invalid number of shares to sell.")
+            return
 
-        # Update profit display
-        sell_total_value.config(text=f"Rs. {total_sell:,.2f}")
-        profit_value.config(text=f"Rs. {abs(profit):,.2f}", fg=color)
-        profit_label_text.config(text=f"{icon} Net {status}", fg=color)
-        roi_value.config(text=f"{roi:+.2f}%", fg=color)
-        
-        profit_display_frame.pack(fill="both", expand=True, pady=10)
+        total_sell = sell_shares * sell_price * (1 - commission)
+        buy_cost_part = (sell_shares / shares) * total_buy_cost
+
+        profit = total_sell - buy_cost_part
+        roi = (profit / buy_cost_part) * 100
+
+        show_profit(total_sell, profit, roi)
+        cash_result_frame.pack_forget()
 
     except ValueError:
-        messagebox.showerror("Invalid Input", "Please enter a valid selling price.")
-        profit_display_frame.pack_forget()
+        messagebox.showerror("Invalid Input", "Please enter valid numbers.")
 
-def copy_result():
-    result_text = (
-        f"🧾 Purchase Summary\n"
-        f"Shares: {shares}\n"
-        f"Total Cost: Rs. {total_buy_cost:,.2f}\n"
-    )
-    
-    profit_text = profit_label_text.cget("text")
-    if profit_text:
-        result_text += (
-            f"\n💰 Selling Summary\n"
-            f"Total Selling: {sell_total_value.cget('text')}\n"
-            f"{profit_text}: {profit_value.cget('text')}\n"
-            f"ROI: {roi_value.cget('text')}"
-        )
-    
-    root.clipboard_clear()
-    root.clipboard_append(result_text)
-    messagebox.showinfo("Copied", "Results copied to clipboard!")
+def calculate_cash_out():
+    try:
+        if shares == 0:
+            messagebox.showwarning("No Purchase", "Please calculate your purchase first.")
+            return
 
-def create_card(parent, bg_color):
-    card = tk.Frame(parent, bg=bg_color, relief="flat", bd=0)
-    card.pack_configure(padx=10)  # Add horizontal padding to all cards
-    return card
+        sell_price = float(sell_price_entry.get())
+        cash_needed = float(cash_out_entry.get())
+        commission = 0.0112
 
-def create_input_field(parent, row, label_text, default_value=""):
-    tk.Label(parent, text=label_text, font=("Segoe UI", 10, "bold"), 
-             bg="#f8f9fa", fg="#2c3e50", anchor="w").grid(row=row, column=0, sticky="w", padx=15, pady=(12, 4))
-    entry = tk.Entry(parent, font=("Segoe UI", 11), relief="solid", bd=1, 
-                     bg="white", fg="#2c3e50", insertbackground="#3498db")
-    entry.grid(row=row, column=1, sticky="ew", padx=15, pady=(0, 8), ipady=8)
-    if default_value:
-        entry.insert(0, default_value)
-    return entry
+        net_per_share = sell_price * (1 - commission)
+        shares_needed = math.ceil(cash_needed / net_per_share)
 
-def _on_mousewheel(event, canvas):
-    # Identify which canvas triggered the event
-    widget = event.widget
-    while widget is not None:
-        if widget in (left_canvas, right_canvas):
-            canvas = widget
-            break
-        widget = widget.master
-    
-    if canvas:
-        canvas.yview_scroll(int(-1*(event.delta/120)), "units")
+        if shares_needed > shares:
+            messagebox.showerror(
+                "Not Possible",
+                f"You need {shares_needed} shares but only own {shares}."
+            )
+            return
 
-# --- GUI setup ---
+        total_sell = shares_needed * net_per_share
+        buy_cost_part = (shares_needed / shares) * total_buy_cost
+
+        profit = total_sell - buy_cost_part
+        roi = (profit / buy_cost_part) * 100
+
+        sell_shares_needed_value.config(text=str(shares_needed))
+        show_profit(total_sell, profit, roi)
+        cash_result_frame.pack(fill="x", pady=8)
+
+    except ValueError:
+        messagebox.showerror("Invalid Input", "Please enter valid numbers.")
+
+def show_profit(total_sell, profit, roi):
+    status = "Profit" if profit >= 0 else "Loss"
+    color = "#27ae60" if profit >= 0 else "#e74c3c"
+    icon = "📈" if profit >= 0 else "📉"
+
+    sell_total_value.config(text=f"Rs. {total_sell:,.2f}")
+    profit_label.config(text=f"{icon} Net {status}", fg=color)
+    profit_value.config(text=f"Rs. {abs(profit):,.2f}", fg=color)
+    roi_value.config(text=f"{roi:+.2f}%", fg=color)
+
+    profit_frame.pack(fill="x", pady=8)
+
+# ================= UI =================
+
 root = tk.Tk()
-root.title("Stock Calculator")
-root.geometry("1000x800")  # Slightly taller window
-root.minsize(800, 600)     # Set minimum window size
+root.title("Stock Profit & Cash-Out Calculator")
+root.geometry("900x680")
 root.configure(bg="#ecf0f1")
+root.resizable(False, False)
 
 # Header
-header = tk.Frame(root, bg="#3498db", height=70)
-header.pack(fill="x")
-header.pack_propagate(False)
+tk.Label(
+    root,
+    text="📊 Stock Profit, ROI & Cash-Out Calculator",
+    font=("Segoe UI", 16, "bold"),
+    bg="#3498db",
+    fg="white",
+    pady=12
+).pack(fill="x")
 
-tk.Label(header, text="📊 Stock Profit & ROI Calculator", 
-         font=("Segoe UI", 18, "bold"), bg="#3498db", fg="white").pack(pady=20)
+main = tk.Frame(root, bg="#ecf0f1")
+main.pack(fill="both", expand=True, padx=15, pady=12)
 
-# Main container for side-by-side layout
-main_container = tk.Frame(root, bg="#ecf0f1")
-main_container.pack(fill="both", expand=True, padx=20, pady=(10, 20))
+# ---------- LEFT: BUY ----------
+left = tk.Frame(main, bg="#ecf0f1")
+left.pack(side="left", fill="both", expand=True, padx=8)
 
-# ============= LEFT SIDE: PURCHASE CALCULATOR =============
-left_frame = tk.Frame(main_container, bg="#ecf0f1")
-left_frame.pack(side="left", fill="both", expand=True, padx=(0, 5))
+tk.Label(left, text="💰 Purchase Calculator", font=("Segoe UI", 12, "bold"), bg="#ecf0f1", fg="#2c3e50").pack(pady=(0, 8))
 
-# Canvas and Scrollbar for left side
-left_canvas = tk.Canvas(left_frame, bg="#ecf0f1", highlightthickness=0)
-left_scrollbar = ttk.Scrollbar(left_frame, orient="vertical", command=left_canvas.yview)
-left_scrollable = tk.Frame(left_canvas, bg="#ecf0f1")
+buy_card = tk.Frame(left, bg="#ffffff", relief="solid", bd=1)
+buy_card.pack(fill="x")
 
-left_scrollable.bind(
-    "<Configure>",
-    lambda e: left_canvas.configure(scrollregion=left_canvas.bbox("all"))
-)
+def labeled_entry(parent, label, default=None):
+    frame = tk.Frame(parent, bg="#ffffff")
+    frame.pack(fill="x", padx=12, pady=6)
+    tk.Label(frame, text=label, font=("Segoe UI", 9), bg="#ffffff", fg="#34495e").pack(anchor="w")
+    e = tk.Entry(frame, font=("Segoe UI", 10), relief="solid", bd=1)
+    e.pack(fill="x", ipady=3)
+    if default:
+        e.insert(0, default)
+    return e
 
-left_canvas.create_window((0, 0), window=left_scrollable, anchor="nw", width=460)  # Fixed width
-left_canvas.configure(yscrollcommand=left_scrollbar.set)
+amount_entry = labeled_entry(buy_card, "💵 Total Money (LKR)")
+price_entry = labeled_entry(buy_card, "💰 Share Price (LKR)")
+charge_entry = labeled_entry(buy_card, "📊 Service Charge (%)", "1.12")
 
-left_canvas.pack(side="left", fill="both", expand=True)
-left_scrollbar.pack(side="right", fill="y")
+tk.Frame(buy_card, height=8, bg="#ffffff").pack()
 
-# Bind mousewheel only to this canvas
-left_canvas.bind("<Enter>", lambda e: left_canvas.bind_all("<MouseWheel>", lambda e: _on_mousewheel(e, left_canvas)))
-left_canvas.bind("<Leave>", lambda e: left_canvas.unbind_all("<MouseWheel>"))
+tk.Button(left, text="Calculate Purchase", command=calculate_shares,
+          bg="#27ae60", fg="white", font=("Segoe UI", 10, "bold"), 
+          cursor="hand2", relief="flat", pady=8).pack(pady=8, fill="x")
 
-# Left Header
-tk.Label(left_scrollable, text="💰 Purchase Calculator", 
-         font=("Segoe UI", 15, "bold"), bg="#ecf0f1", fg="#2c3e50").pack(pady=(10, 15))
+result_frame = tk.Frame(left, bg="#ffffff", relief="solid", bd=1)
+result_frame.pack_forget()
 
-# Input Section
-input_card = create_card(left_scrollable, "#f8f9fa")
-input_card.pack(fill="x", padx=15, pady=10)
+tk.Label(result_frame, text="Results", font=("Segoe UI", 9, "bold"), bg="#ffffff", fg="#7f8c8d").pack(pady=(8, 4))
 
-input_frame = tk.Frame(input_card, bg="#f8f9fa")
-input_frame.pack(fill="x", pady=15)
-input_frame.columnconfigure(1, weight=1)
+info_grid = tk.Frame(result_frame, bg="#ffffff")
+info_grid.pack(fill="x", padx=12, pady=8)
 
-amount_entry = create_input_field(input_frame, 0, "💵 Total Money (LKR)")
-price_entry = create_input_field(input_frame, 1, "💰 Share Price (LKR)")
-charge_entry = create_input_field(input_frame, 2, "📊 Service Charge (%)", "1.12")
+tk.Label(info_grid, text="Shares:", font=("Segoe UI", 9), bg="#ffffff", anchor="w").grid(row=0, column=0, sticky="w", pady=2)
+shares_value = tk.Label(info_grid, text="0", font=("Segoe UI", 11, "bold"), bg="#ffffff", anchor="e")
+shares_value.grid(row=0, column=1, sticky="e", pady=2)
 
-# Button Frame
-btn_frame = tk.Frame(left_scrollable, bg="#ecf0f1")
-btn_frame.pack(pady=15)
+tk.Label(info_grid, text="Total Cost:", font=("Segoe UI", 9), bg="#ffffff", anchor="w").grid(row=1, column=0, sticky="w", pady=2)
+total_cost_value = tk.Label(info_grid, text="Rs. 0.00", font=("Segoe UI", 10), bg="#ffffff", anchor="e", fg="#2c3e50")
+total_cost_value.grid(row=1, column=1, sticky="e", pady=2)
 
-calc_btn = tk.Button(btn_frame, text="Calculate Purchase", command=calculate_shares, 
-                     font=("Segoe UI", 11, "bold"), bg="#27ae60", fg="white", 
-                     relief="flat", cursor="hand2", padx=25, pady=12, activebackground="#229954")
-calc_btn.pack()
+tk.Label(info_grid, text="Balance:", font=("Segoe UI", 9), bg="#ffffff", anchor="w").grid(row=2, column=0, sticky="w", pady=2)
+balance_value = tk.Label(info_grid, text="Rs. 0.00", font=("Segoe UI", 10), bg="#ffffff", anchor="e", fg="#16a085")
+balance_value.grid(row=2, column=1, sticky="e", pady=2)
 
-# Result Section
-result_frame = create_card(left_scrollable, "#ffffff")
+info_grid.columnconfigure(1, weight=1)
 
-tk.Label(result_frame, text="Purchase Summary", font=("Segoe UI", 13, "bold"), 
-         bg="#ffffff", fg="#2c3e50").pack(pady=(15, 10))
+tk.Frame(result_frame, height=8, bg="#ffffff").pack()
 
-result_grid = tk.Frame(result_frame, bg="#ffffff")
-result_grid.pack(fill="x", padx=15, pady=10)
+# ---------- RIGHT: SELL & CASH OUT ----------
+right = tk.Frame(main, bg="#ecf0f1")
+right.pack(side="right", fill="both", expand=True, padx=8)
 
-# Shares
-shares_card = tk.Frame(result_grid, bg="#ecf0f1", relief="flat")
-shares_card.pack(fill="x", pady=5)
-tk.Label(shares_card, text="Shares Purchased", font=("Segoe UI", 9), bg="#ecf0f1", fg="#7f8c8d").pack(pady=(10, 0))
-shares_value = tk.Label(shares_card, text="0", font=("Segoe UI", 18, "bold"), bg="#ecf0f1", fg="#2c3e50")
-shares_value.pack(pady=(5, 10))
+tk.Label(right, text="💸 Selling & Cash-Out", font=("Segoe UI", 12, "bold"), bg="#ecf0f1", fg="#2c3e50").pack(pady=(0, 8))
 
-# Total Cost
-cost_card = tk.Frame(result_grid, bg="#ecf0f1", relief="flat")
-cost_card.pack(fill="x", pady=5)
-tk.Label(cost_card, text="Total Cost (incl. charges)", font=("Segoe UI", 9), bg="#ecf0f1", fg="#7f8c8d").pack(pady=(10, 0))
-total_cost_value = tk.Label(cost_card, text="Rs. 0.00", font=("Segoe UI", 16, "bold"), bg="#ecf0f1", fg="#2c3e50")
-total_cost_value.pack(pady=(5, 10))
+sell_card = tk.Frame(right, bg="#ffffff", relief="solid", bd=1)
+sell_card.pack(fill="x")
 
-# Balance
-balance_card = tk.Frame(result_grid, bg="#ecf0f1", relief="flat")
-balance_card.pack(fill="x", pady=5)
-tk.Label(balance_card, text="Remaining Balance", font=("Segoe UI", 9), bg="#ecf0f1", fg="#7f8c8d").pack(pady=(10, 0))
-balance_value = tk.Label(balance_card, text="Rs. 0.00", font=("Segoe UI", 16, "bold"), bg="#ecf0f1", fg="#2c3e50")
-balance_value.pack(pady=(5, 10))
+sell_price_entry = labeled_entry(sell_card, "💸 Selling Price per Share (LKR)")
+sell_shares_entry = labeled_entry(sell_card, "📦 Shares to Sell (default = all)")
 
-tk.Label(result_frame, text="", bg="#ffffff").pack(pady=10)
+tk.Frame(sell_card, height=4, bg="#ffffff").pack()
 
-# ============= RIGHT SIDE: SELLING CALCULATOR =============
-right_frame = tk.Frame(main_container, bg="#ecf0f1")
-right_frame.pack(side="right", fill="both", expand=True, padx=(5, 0))
+tk.Button(right, text="Calculate Profit", command=calculate_profit,
+          bg="#e67e22", fg="white", font=("Segoe UI", 10, "bold"), 
+          cursor="hand2", relief="flat", pady=8).pack(pady=8, fill="x")
 
-# Canvas and Scrollbar for right side
-right_canvas = tk.Canvas(right_frame, bg="#ecf0f1", highlightthickness=0)
-right_scrollbar = ttk.Scrollbar(right_frame, orient="vertical", command=right_canvas.yview)
-right_scrollable = tk.Frame(right_canvas, bg="#ecf0f1")
+cash_out_entry = labeled_entry(sell_card, "💵 Cash to Take Out (LKR)")
 
-right_scrollable.bind(
-    "<Configure>",
-    lambda e: right_canvas.configure(scrollregion=right_canvas.bbox("all"))
-)
+tk.Frame(sell_card, height=8, bg="#ffffff").pack()
 
-right_canvas.create_window((0, 0), window=right_scrollable, anchor="nw", width=460)  # Fixed width
-right_canvas.configure(yscrollcommand=right_scrollbar.set)
+tk.Button(right, text="Calculate Cash-Out", command=calculate_cash_out,
+          bg="#9b59b6", fg="white", font=("Segoe UI", 10, "bold"), 
+          cursor="hand2", relief="flat", pady=8).pack(pady=8, fill="x")
 
-right_canvas.pack(side="left", fill="both", expand=True)
-right_scrollbar.pack(side="right", fill="y")
+cash_result_frame = tk.Frame(right, bg="#fff3cd", relief="solid", bd=1)
+cash_result_frame.pack_forget()
 
-# Bind mousewheel only to this canvas
-right_canvas.bind("<Enter>", lambda e: right_canvas.bind_all("<MouseWheel>", lambda e: _on_mousewheel(e, right_canvas)))
-right_canvas.bind("<Leave>", lambda e: right_canvas.unbind_all("<MouseWheel>"))
+tk.Label(cash_result_frame, text="Shares Needed", font=("Segoe UI", 9), bg="#fff3cd", fg="#856404").pack(pady=(6, 2))
+sell_shares_needed_value = tk.Label(cash_result_frame, text="0", font=("Segoe UI", 14, "bold"), bg="#fff3cd", fg="#856404")
+sell_shares_needed_value.pack(pady=(0, 6))
 
-# Right Header
-tk.Label(right_scrollable, text="💸 Selling Calculator", 
-         font=("Segoe UI", 15, "bold"), bg="#ecf0f1", fg="#2c3e50").pack(pady=(10, 15))
+profit_frame = tk.Frame(right, bg="#ffffff", relief="solid", bd=1)
+profit_frame.pack_forget()
 
-# Selling Section
-sell_section_frame = create_card(right_scrollable, "#f8f9fa")
-sell_section_frame.pack(fill="x", padx=15, pady=10)
+tk.Label(profit_frame, text="Profit Analysis", font=("Segoe UI", 9, "bold"), bg="#ffffff", fg="#7f8c8d").pack(pady=(8, 4))
 
-tk.Label(sell_section_frame, text="Enter Selling Details", 
-         font=("Segoe UI", 12, "bold"), bg="#f8f9fa", fg="#2c3e50").pack(pady=(15, 10))
+profit_grid = tk.Frame(profit_frame, bg="#ffffff")
+profit_grid.pack(fill="x", padx=12, pady=8)
 
-sell_input_frame = tk.Frame(sell_section_frame, bg="#f8f9fa")
-sell_input_frame.pack(pady=10, padx=15)
+tk.Label(profit_grid, text="Sell Total:", font=("Segoe UI", 9), bg="#ffffff", anchor="w").grid(row=0, column=0, sticky="w", pady=2)
+sell_total_value = tk.Label(profit_grid, text="Rs. 0.00", font=("Segoe UI", 10), bg="#ffffff", anchor="e")
+sell_total_value.grid(row=0, column=1, sticky="e", pady=2)
 
-tk.Label(sell_input_frame, text="💸 Selling Price per Share (LKR)", 
-         font=("Segoe UI", 10), bg="#f8f9fa", fg="#2c3e50").pack(pady=(0, 5), anchor="w")
-sell_price_entry = tk.Entry(sell_input_frame, font=("Segoe UI", 11), relief="solid", 
-                            bd=1, bg="white", fg="#2c3e50", insertbackground="#3498db")
-sell_price_entry.pack(fill="x", ipady=6)
+profit_label = tk.Label(profit_grid, text="", font=("Segoe UI", 9), bg="#ffffff", anchor="w")
+profit_label.grid(row=1, column=0, sticky="w", pady=2)
+profit_value = tk.Label(profit_grid, text="Rs. 0.00", font=("Segoe UI", 11, "bold"), bg="#ffffff", anchor="e")
+profit_value.grid(row=1, column=1, sticky="e", pady=2)
 
-tk.Label(sell_input_frame, text="(Commission: 1.12% will be deducted)", 
-         font=("Segoe UI", 8), bg="#f8f9fa", fg="#7f8c8d").pack(pady=(5, 0))
+tk.Label(profit_grid, text="ROI:", font=("Segoe UI", 9), bg="#ffffff", anchor="w").grid(row=2, column=0, sticky="w", pady=2)
+roi_value = tk.Label(profit_grid, text="0.00%", font=("Segoe UI", 10), bg="#ffffff", anchor="e")
+roi_value.grid(row=2, column=1, sticky="e", pady=2)
 
-calc_profit_btn = tk.Button(sell_section_frame, text="Calculate Profit & ROI", command=calculate_profit, 
-          font=("Segoe UI", 11, "bold"), bg="#e67e22", fg="white", 
-          relief="flat", cursor="hand2", padx=25, pady=12, activebackground="#d35400")
-calc_profit_btn.pack(pady=15)
+profit_grid.columnconfigure(1, weight=1)
 
-tk.Label(sell_section_frame, text="", bg="#f8f9fa").pack(pady=5)
+tk.Frame(profit_frame, height=8, bg="#ffffff").pack()
 
-# Profit Display
-profit_display_frame = tk.Frame(right_scrollable, bg="#ffffff", relief="flat")
-
-tk.Label(profit_display_frame, text="Selling Summary", font=("Segoe UI", 13, "bold"), 
-         bg="#ffffff", fg="#2c3e50").pack(pady=(15, 10))
-
-profit_grid = tk.Frame(profit_display_frame, bg="#ffffff")
-profit_grid.pack(fill="x", padx=15, pady=10)
-
-# Selling Total
-sell_card = tk.Frame(profit_grid, bg="#ecf0f1", relief="flat")
-sell_card.pack(fill="x", pady=5)
-tk.Label(sell_card, text="Total Selling (after commission)", font=("Segoe UI", 9), bg="#ecf0f1", fg="#7f8c8d").pack(pady=(10, 0))
-sell_total_value = tk.Label(sell_card, text="Rs. 0.00", font=("Segoe UI", 16, "bold"), bg="#ecf0f1", fg="#2c3e50")
-sell_total_value.pack(pady=(5, 10))
-
-# Profit/Loss
-profit_card = tk.Frame(profit_grid, bg="#ecf0f1", relief="flat")
-profit_card.pack(fill="x", pady=5)
-profit_label_text = tk.Label(profit_card, text="Net Profit", font=("Segoe UI", 9), bg="#ecf0f1", fg="#7f8c8d")
-profit_label_text.pack(pady=(10, 0))
-profit_value = tk.Label(profit_card, text="Rs. 0.00", font=("Segoe UI", 18, "bold"), bg="#ecf0f1", fg="#27ae60")
-profit_value.pack(pady=(5, 10))
-
-# ROI
-roi_card = tk.Frame(profit_grid, bg="#ecf0f1", relief="flat")
-roi_card.pack(fill="x", pady=5)
-tk.Label(roi_card, text="Return on Investment (ROI)", font=("Segoe UI", 9), bg="#ecf0f1", fg="#7f8c8d").pack(pady=(10, 0))
-roi_value = tk.Label(roi_card, text="0.00%", font=("Segoe UI", 16, "bold"), bg="#ecf0f1", fg="#2c3e50")
-roi_value.pack(pady=(5, 10))
-
-tk.Label(profit_display_frame, text="", bg="#ffffff").pack(pady=10)
-
-# Copy button at the bottom
-copy_frame = tk.Frame(root, bg="#ecf0f1")
-copy_frame.pack(side="bottom", pady=10)
-
-copy_btn = tk.Button(copy_frame, text="📋 Copy All Results", command=copy_result, 
-                     font=("Segoe UI", 11, "bold"), bg="#3498db", fg="white", 
-                     relief="flat", cursor="hand2", padx=30, pady=12, state="disabled", activebackground="#2980b9")
-copy_btn.pack()
+copy_btn = tk.Button(root, text="📋 Copy Results", bg="#3498db", fg="white",
+                     font=("Segoe UI", 10, "bold"), state="disabled",
+                     cursor="hand2", relief="flat", pady=8)
+copy_btn.pack(pady=(8, 12), padx=15, fill="x")
 
 root.mainloop()
