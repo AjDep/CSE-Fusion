@@ -3,21 +3,31 @@ import runpy
 import sys
 from pathlib import Path
 
+# Set UTF-8 encoding for stdout/stderr on Windows BEFORE any other imports
+if sys.platform == 'win32':
+    import io
+    if hasattr(sys.stdout, 'buffer'):
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace', line_buffering=True)
+    if hasattr(sys.stderr, 'buffer'):
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace', line_buffering=True)
+
 import pandas as pd
 
 from decision_engine import fuse_signals
 from db_handler import DatabaseHandler
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import get_selected_table
 
 
 def run_result_script(script_path: Path, label: str) -> None:
-    print(f"\n▶ Running {label} results...")
+    print(f"\n> Running {label} results...")
     original_cwd = Path.cwd()
     original_sys_path = list(sys.path)
     try:
         os.chdir(script_path.parent)
         sys.path.insert(0, str(script_path.parent))
         runpy.run_path(str(script_path), run_name="__main__")
-        print(f"✅ {label} results completed")
+        print(f"[OK] {label} results completed")
     finally:
         os.chdir(original_cwd)
         sys.path = original_sys_path
@@ -38,19 +48,24 @@ transformer = pd.read_csv(root_dir / "outputs" / "transformer_output_summary.csv
 # Generate final signals
 final = fuse_signals(kmeans, classifier, transformer)
 
+# Get the source table that was analyzed
+source_table = get_selected_table()
+if not source_table:
+    source_table = "today1.csv"  # Fallback to CSV if no table selected
+
 # Save to database
 db = DatabaseHandler()
 try:
     db.connect()
-    table_name = db.save_to_database(final)
-    print(f"\n✅ Final signals generated and saved to database table: {table_name}")
+    table_name = db.save_to_database(final, source_table=source_table)
+    print(f"\n[SUCCESS] Final signals generated and saved to database table: {table_name}")
 finally:
     db.close()
 
 # Also save to CSV for backup
 os.makedirs("outputs", exist_ok=True)
 final.to_csv("outputs/final_trading_signals.csv", index=False)
-print("✅ Backup CSV saved")
+print("[OK] Backup CSV saved")
 
-print("\n📊 Sample of generated signals:")
+print("\n[INFO] Sample of generated signals:")
 print(final[['security', 'regime', 'final_signal']].head(20))

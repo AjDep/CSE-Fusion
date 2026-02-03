@@ -113,6 +113,71 @@ class BidAskController {
       res.status(500).json({ error: 'Failed to sync table to ML models', details: error.message });
     }
   }
+
+  async runMLAnalysis(req, res) {
+    try {
+      const { tableName } = req.body;
+      
+      if (!tableName) {
+        return res.status(400).json({ error: 'tableName is required' });
+      }
+
+      // Sync the table first
+      const fs = require('fs');
+      const path = require('path');
+      const configPath = path.join(__dirname, '../../MLModels/selected_table.json');
+      fs.writeFileSync(configPath, JSON.stringify({ table_name: tableName }, null, 2));
+
+      // Run the Python ML analysis script
+      const { spawn } = require('child_process');
+      const pythonScript = path.join(__dirname, '../../MLModels/MergeModels/run_fusion.py');
+      
+      return new Promise((resolve, reject) => {
+        const python = spawn('python', [pythonScript], {
+          cwd: path.dirname(pythonScript),
+          stdio: 'pipe'
+        });
+
+        let output = '';
+        let error = '';
+
+        python.stdout.on('data', (data) => {
+          output += data.toString();
+          console.log(`ML Output: ${data}`);
+        });
+
+        python.stderr.on('data', (data) => {
+          error += data.toString();
+          console.error(`ML Error: ${data}`);
+        });
+
+        python.on('close', (code) => {
+          if (code === 0) {
+            res.json({
+              success: true,
+              message: `ML analysis completed successfully for table: ${tableName}`,
+              output: output
+            });
+          } else {
+            res.status(500).json({
+              error: 'ML analysis failed',
+              details: error || 'Unknown error',
+              code: code
+            });
+          }
+        });
+
+        python.on('error', (err) => {
+          res.status(500).json({
+            error: 'Failed to start ML analysis',
+            details: err.message
+          });
+        });
+      });
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to run ML analysis', details: error.message });
+    }
+  }
 }
 
 module.exports = new BidAskController();

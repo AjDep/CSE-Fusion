@@ -10,13 +10,14 @@ from dotenv import load_dotenv
 load_dotenv('../.env')
 
 class DatabaseHandler:
-    def __init__(self):
+    def __init__(self, table_name='ml_trading_signals'):
         self.host = os.getenv('DB_HOST', 'localhost')
         self.user = os.getenv('DB_USER', 'root')
         self.password = os.getenv('DB_PASS', '')
         self.database = os.getenv('DB_NAME', 'trading_db')
         self.port = int(os.getenv('DB_PORT', 3306))
         self.connection = None
+        self.table_name = table_name  # Fixed table name
     
     def connect(self):
         """Establish database connection"""
@@ -28,56 +29,53 @@ class DatabaseHandler:
                 database=self.database,
                 port=self.port
             )
-            print(f"✅ Connected to MySQL database: {self.database}")
+            print(f"[OK] Connected to MySQL database: {self.database}")
             return self.connection
         except Error as e:
-            print(f"❌ Error connecting to MySQL: {e}")
+            print(f"[ERROR] Error connecting to MySQL: {e}")
             raise
     
-    def generate_table_name(self):
-        """Generate table name with format: YYYY_MM_DD_Day_HH:MM"""
-        now = datetime.now()
-        day_name = now.strftime('%a')  # Mon, Tue, etc.
-        table_name = now.strftime('%Y_%m_%d') + '_' + day_name + '_' + now.strftime('%H:%M')
-        return table_name
-    
-    def create_table(self, table_name, df):
-        """Create table if it doesn't exist"""
+    def create_or_replace_table(self, df):
+        """Drop existing table and create new one with fresh schema"""
         if not self.connection:
             raise Exception("Database not connected")
         
         cursor = self.connection.cursor()
         
-        # Drop table if exists (optional - comment out if you want to append)
-        # cursor.execute(f"DROP TABLE IF EXISTS `{table_name}`")
-        
-        # Build CREATE TABLE statement
-        columns = []
-        for col, dtype in df.dtypes.items():
-            col_name = col.replace(' ', '_').replace('-', '_')
-            if dtype == 'object':
-                col_type = 'VARCHAR(255)'
-            elif dtype == 'float64':
-                col_type = 'DECIMAL(10, 6)'
-            elif dtype == 'int64':
-                col_type = 'INT'
-            else:
-                col_type = 'VARCHAR(255)'
-            
-            columns.append(f"`{col_name}` {col_type}")
-        
-        create_statement = f"CREATE TABLE IF NOT EXISTS `{table_name}` ({', '.join(columns)})"
-        
         try:
+            # Drop table if exists to ensure fresh data
+            cursor.execute(f"DROP TABLE IF EXISTS `{self.table_name}`")
+            print(f"[DROP] Dropped existing table: {self.table_name}")
+            
+            # Build CREATE TABLE statement
+            columns = []
+            columns.append("id INT AUTO_INCREMENT PRIMARY KEY")
+            columns.append("updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+            columns.append("source_table VARCHAR(255)")  # Add source table column
+            
+            for col, dtype in df.dtypes.items():
+                col_name = col.replace(' ', '_').replace('-', '_')
+                if dtype == 'object':
+                    col_type = 'VARCHAR(255)'
+                elif dtype == 'float64':
+                    col_type = 'DECIMAL(10, 6)'
+                elif dtype == 'int64':
+                    col_type = 'INT'
+                else:
+                    col_type = 'VARCHAR(255)'
+                
+                columns.append(f"`{col_name}` {col_type}")
+            
+            create_statement = f"CREATE TABLE `{self.table_name}` ({', '.join(columns)})"
             cursor.execute(create_statement)
-            print(f"✅ Table created/verified: {table_name}")
+            print(f"[OK] Created fresh table: {self.table_name}")
         except Error as e:
-            print(f"❌ Error creating table: {e}")
+            print(f"[ERROR] Error creating table: {e}")
             raise
         finally:
             cursor.close()
     
-    def insert_data(self, table_name, df):
+    def insert_data(self, df, source_table=None):
         """Insert dataframe into database"""
         if not self.connection:
             raise Exception("Database not connected")
@@ -86,42 +84,45 @@ class DatabaseHandler:
         
         try:
             for _, row in df.iterrows():
-                columns = ', '.join([f"`{col}`" for col in df.columns])
-                placeholders = ', '.join(['%s'] * len(df.columns))
-                insert_statement = f"INSERT INTO `{table_name}` ({columns}) VALUES ({placeholders})"
+                # Add source_table to columns
+                columns = ['source_table'] + list(df.columns)
+                placeholders = ', '.join(['%s'] * len(columns))
+                columns_str = ', '.join([f"`{col}`" for col in columns])
+                insert_statement = f"INSERT INTO `{self.table_name}` ({columns_str}) VALUES ({placeholders})"
                 
-                values = [None if pd.isna(v) else v for v in row.values]
+                # Add source_table value to the beginning of values
+                values = [source_table] + [None if pd.isna(v) else v for v in row.values]
                 cursor.execute(insert_statement, values)
             
             self.connection.commit()
-            print(f"✅ Inserted {len(df)} rows into {table_name}")
+            print(f"[OK] Inserted {len(df)} rows into {self.table_name}")
         except Error as e:
             self.connection.rollback()
-            print(f"❌ Error inserting data: {e}")
+            print(f"[ERROR] Error inserting data: {e}")
             raise
         finally:
             cursor.close()
     
-    def save_to_database(self, df):
-        """Main method to save dataframe to database with timestamp-based table name"""
+    def save_to_database(self, df, source_table=None):
+        """Main method to save dataframe to database - overwrites existing table"""
         try:
-            # Generate table name
-            table_name = self.generate_table_name()
+            # Drop and recreate table with fresh schema
+            self.create_or_replace_table(df)
             
-            # Create table
-            self.create_table(table_name, df)
+            # Insert data with source table info
+            self.insert_data(df, source_table)
             
-            # Insert data
-            self.insert_data(table_name, df)
-            
-            print(f"\n✨ Trading signals successfully saved to table: {table_name}")
-            return table_name
+            print(f"\n[SUCCESS] Trading signals successfully saved to table: {self.table_name}")
+            print(f"[INFO] Total records: {len(df)}")
+            if source_table:
+                print(f"[INFO] Source table: {source_table}")
+            return self.table_name
         except Exception as e:
-            print(f"❌ Failed to save to database: {e}")
+            print(f"[ERROR] Failed to save to database: {e}")
             raise
     
     def close(self):
         """Close database connection"""
         if self.connection:
             self.connection.close()
-            print("✅ Database connection closed")
+            print("[OK] Database connection closed")
