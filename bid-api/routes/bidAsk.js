@@ -19,4 +19,7 @@ router.get('/companies/list', asyncHandler(bidAskController.getCompaniesList));
 // POST: Analyze bid dominance
 router.post('/analyze-bid-dominance', asyncHandler(bidAskController.analyzeBidDominance));
 
+// POST: Sync selected table to ML models
+router.post('/sync-table-to-ml', asyncHandler(bidAskController.syncTableToML));
+
 module.exports = router;

@@ -2,12 +2,12 @@ import os
 import pandas as pd
 from predict_transformer import predict_transformer
 from aggregate_transformer import aggregate_transformer
-from config import TODAY_DATA_FILE
+from db_loader import load_data
 
 if __name__ == "__main__":
 
-    # 1️⃣ Load data
-    df = pd.read_csv(TODAY_DATA_FILE)
+    # 1️⃣ Load data from database table (if selected) or CSV
+    df = load_data()
 
     # 2️⃣ Run transformer (time-based momentum)
     transformer_raw = predict_transformer(df)

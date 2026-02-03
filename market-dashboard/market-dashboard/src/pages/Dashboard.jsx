@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useTables, useTableData, useCompanies, useCompanyHistory } from "../hooks/useMarketData";
 import LineDiffChart from "../components/charts/lineDiffChart";
 import BidAskChart from "../components/charts/BidAskChart";
@@ -37,8 +37,36 @@ export default function Dashboard() {
   const [selectedCompany, setSelectedCompany] = useState("");
   const { history: companyHistory, loading } = useCompanyHistory(selectedCompany); // Custom hook
 
+  // Sync selected table to ML models when it changes
+  useEffect(() => {
+    if (selectedTable) {
+      syncTableToML(selectedTable);
+    }
+  }, [selectedTable]);
 
   const displayTableName = useMemo(() => formatTableName(selectedTable), [selectedTable]);
+
+  // Function to sync selected table to ML models backend
+  const syncTableToML = async (tableName) => {
+    try {
+      const response = await fetch('http://localhost:5000/api/sync-table-to-ml', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ tableName }),
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        console.log('✅ ML models synced:', result.message);
+      } else {
+        console.error('Failed to sync table to ML models');
+      }
+    } catch (error) {
+      console.error('Error syncing table to ML models:', error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">

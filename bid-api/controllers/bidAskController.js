@@ -80,6 +80,39 @@ class BidAskController {
       res.status(500).json({ error: 'Failed to analyze bid dominance', details: error.message });
     }
   }
+
+  async syncTableToML(req, res) {
+    try {
+      const { tableName } = req.body;
+      
+      if (!tableName) {
+        return res.status(400).json({ error: 'tableName is required' });
+      }
+
+      // Write the selected table to the ML models' config
+      const fs = require('fs');
+      const path = require('path');
+      
+      // Path to the ML models' config
+      const configPath = path.join(__dirname, '../../MLModels/selected_table.json');
+      
+      // Create the directory if it doesn't exist
+      const configDir = path.dirname(configPath);
+      if (!fs.existsSync(configDir)) {
+        fs.mkdirSync(configDir, { recursive: true });
+      }
+      
+      // Write the selected table to JSON
+      fs.writeFileSync(configPath, JSON.stringify({ table_name: tableName }, null, 2));
+      
+      res.json({ 
+        success: true, 
+        message: `ML models synced to use table: ${tableName}` 
+      });
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to sync table to ML models', details: error.message });
+    }
+  }
 }
 
 module.exports = new BidAskController();

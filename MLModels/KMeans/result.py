@@ -1,9 +1,10 @@
 import os
 import pandas as pd
 from predict import predict_today
-from config import TODAY_DATA_FILE
+from db_loader import load_data
 
-df_today = pd.read_csv(TODAY_DATA_FILE)
+# Load data from database table (if selected) or CSV
+df_today = load_data()
 
 result = predict_today(df_today)
 
