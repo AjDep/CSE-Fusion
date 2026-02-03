@@ -54,9 +54,14 @@ export default function Dashboard() {
       <h1 className="text-3xl font-bold text-center mb-4">MARKET MONITOR DASHBOARD</h1>
 
       <div className="dropdowns">
-      <div className="flex justify-center mb-4 gap-4">
-        <TableSelector tables={tables} value={selectedTable} onChange={setSelectedTable} />
-        <button
+        <div className="table-selector">
+          <TableSelector tables={tables} value={selectedTable} onChange={setSelectedTable} />
+        </div>
+        <div className="company-selector">
+          <CompanySearchBar setResults={setSelectedCompany}/>
+        </div>
+        <div className="MLBtn">
+          <button
           onClick={handleRunML}
           disabled={isRunningML || !selectedTable}
           className={`px-4 py-2 rounded font-semibold transition ${
@@ -67,17 +72,14 @@ export default function Dashboard() {
         >
           {isRunningML ? 'Running...' : 'Get ML Insights'}
         </button>
-      </div>
-
-      {mlStatus && (
-        <div className="flex justify-center mb-4">
-          <p className="text-sm font-semibold">{mlStatus}</p>
         </div>
+        {mlStatus && (
+          <p className="text-sm font-semibold">{mlStatus}</p>
       )}
 
-      <div className="flex justify-center mb-4">
-        <CompanySearchBar setResults={setSelectedCompany}/>
-      </div>
+      
+
+      
       </div>
       {data.length > 0 && (
         <>

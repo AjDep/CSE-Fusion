@@ -1,39 +1,280 @@
 security,regime,signal,score,model
-NTB.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-HASU.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-NTB.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-SHAW.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-RPBH.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-MSL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
-AGST.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-AMF.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-RFL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-HHL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-CALH.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
-TRAN.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-AINS.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-HPFL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
-OSEA.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-UML.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+SIL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+SOY.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+CTC.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+MFPE.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+MASK.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+EXT.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+LPL.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+KZOO.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
 JKL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-SIGV.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
-NEH.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-CTBL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-LIOC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
-SMOT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
-FCT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
-AFSL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-PKME.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-RHL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-SDB.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-SIL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-CIC.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+HASU.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+GLAS.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+SHAW.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+AGAL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+SLND.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+LITE.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+ODEL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+HDFC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+CALT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+EAST.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+SMOT.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+BUKI.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+DIAL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+VFIN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+HUNA.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+MHDL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+UDPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+BPPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+TPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+MELS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+SEMB.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+SEYB.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
 LHCL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-SFIN.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-COOP.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+HAPU.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+RIL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+PLC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+KPHL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+CERA.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+CIT.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+RCL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+CINS.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+NTB.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+ACL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+CALH.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+EMER.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+LVEF.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+COMD.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+SUN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+EDEN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+SAMP.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+STAF.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+BIL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+HELA.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+KHL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+HPWR.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+CINS.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+ATLL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+CHMX.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+COCO.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+SEYB.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+TESS.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+COMB.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+WLTH.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+NTB.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+SINH.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+SFCL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+CONN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+HAYL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+SIGV.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+LALU.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+CITW.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+LPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+LIOC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+PHAR.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+UBF.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+CSD.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+LMF.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+LVEN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+COMB.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+AGST.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+INME.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+LPRT.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+COLO.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+HBS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+VONE.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+MERC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+RHL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+CRL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+CITH.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+GREG.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+ALUM.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+ACME.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+HVA.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+COCR.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+TANG.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+ASIR.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
 TJL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
-RGEM.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-VONE.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-PLC.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-DOCK.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
-UCAR.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+RENU.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+LFIN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+AMF.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+TAJ.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+HSIG.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+VLL.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+MADU.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+SDF.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+LOLC.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+BFL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+KOTA.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+PLR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+TYRE.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+RHL.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans
+REEF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+OFEQ.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+DOCK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+SIRA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+LUMX.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+GHLL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+UBC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+AEL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+SLTL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CINV.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+SEMB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+HHL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+COCO.X0000,😴 Neutral Market,Wait / Ignore,,kmeans
+FCT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+AFSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+JINS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+ELPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+MEL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CFIN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+PKME.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+WIND.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+HARI.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+RFL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CHL.X0000,😴 Neutral Market,Wait / Ignore,,kmeans
+HEXP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+PAP.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+WATA.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+TESS.X0000,😴 Neutral Market,Wait / Ignore,,kmeans
+ASPH.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+KGAL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+BALA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+LAMB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+RAL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+HPFL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+LGL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+SHL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+YORK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+KVAL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+CHOT.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+VPEL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CABO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+NDB.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+COOP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+AGPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+LDEV.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+CIC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+MGT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+CCS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+CFVF.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+LGIL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+ETWO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+KAHA.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+CARE.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CLND.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+RICH.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+LOFC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+RPBH.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+ABL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+SFIN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+AAF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+JAT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+REXP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CBNK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+MARA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CFI.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+PARQ.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+AMSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+KHC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+DIMO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+AGST.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+ECL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+NHL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+RHTL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+TKYO.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+HOPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+ASCO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+HNBF.X0000,😴 Neutral Market,Wait / Ignore,,kmeans
+WAPO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+HPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+MULL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+OSEA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+NAMU.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+UCAR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CTEA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CIND.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+LION.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CWL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+JKH.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+LWL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+SCAP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+TKYO.X0000,😴 Neutral Market,Wait / Ignore,,kmeans
+PINS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+AINS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CDB.X0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CARS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CFLB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+LCBF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+HNBF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+HNB.X0000,😴 Neutral Market,Wait / Ignore,,kmeans
+SHOT.X0000,😴 Neutral Market,Wait / Ignore,,kmeans
+DFCC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+JETS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans
+CTBL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+UML.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+ONAL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+DIPD.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+GUAR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+AFS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+JFP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+MSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CSLK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+UAL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+ALLI.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+DIST.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+PABC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+AHPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CDB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+LGL.X0000,😴 Neutral Market,Wait / Ignore,,kmeans
+BOGA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+TSML.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+HAYC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+BERU.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+BREW.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+AHUN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+APLA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+BRWN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+LLUB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+EML.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+PACK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+HNB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+SDB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CIC.X0000,😴 Neutral Market,Wait / Ignore,,kmeans
+EBCR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+TILE.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+ABAN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+GRAN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+KCAB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+LHL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+LCEY.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+TAFL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+VLL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+RCH.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+SERV.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+TRAN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+DPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+ASIY.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CHL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+AAIC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+MAL.X0000,😴 Neutral Market,Wait / Ignore,,kmeans
+RWSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+MBSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+MCPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+SHOT.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+PMB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CALF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+SINS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+TAP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CARG.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+CTLD.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+BOPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+BRR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+MDL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+ATL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+PALM.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+PEG.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+BFN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans
+ASHO.N0000,🛑 Panic Crash,Exit / Avoid,,kmeans
+KFP.N0000,🛑 Panic Crash,Exit / Avoid,,kmeans
+SPEN.N0000,🛑 Panic Crash,Exit / Avoid,,kmeans
