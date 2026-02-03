@@ -1,8 +1,9 @@
 import os
 import pandas as pd
 from predict import predict_today
+from config import TODAY_DATA_FILE
 
-df_today = pd.read_csv("../DataSets/today1.csv")
+df_today = pd.read_csv(TODAY_DATA_FILE)
 
 result = predict_today(df_today)
 

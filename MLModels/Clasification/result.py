@@ -1,11 +1,12 @@
 import os
 import pandas as pd
 from predict_price import predict_next_move
+from config import TODAY_DATA_FILE
 
 pd.set_option('display.max_rows', None)
 
 # Load data
-df_today = pd.read_csv("../DataSets/today1.csv")
+df_today = pd.read_csv(TODAY_DATA_FILE)
 
 # Run classifier
 result = predict_next_move(df_today)
