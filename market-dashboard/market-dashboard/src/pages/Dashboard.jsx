@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { useTables, useTableData, useCompanies, useCompanyHistory } from "../hooks/useMarketData";
+import { useTables, useTableData, useCompanies, useCompanyHistory, useMLActions } from "../hooks/useMarketData";
 import LineDiffChart from "../components/charts/lineDiffChart";
 import BidAskChart from "../components/charts/BidAskChart";
 import TableSelector from "../components/TableSelector";
@@ -36,74 +36,18 @@ export default function Dashboard() {
   const companies = useCompanies();
   const [selectedCompany, setSelectedCompany] = useState("");
   const { history: companyHistory, loading } = useCompanyHistory(selectedCompany); // Custom hook
-  const [isRunningML, setIsRunningML] = useState(false);
-  const [mlStatus, setMlStatus] = useState("");
+  const { isRunningML, mlStatus, syncTable, runML } = useMLActions();
 
   // Sync selected table to ML models when it changes
   useEffect(() => {
     if (selectedTable) {
-      syncTableToML(selectedTable);
+      syncTable(selectedTable);
     }
-  }, [selectedTable]);
+  }, [selectedTable, syncTable]);
 
   const displayTableName = useMemo(() => formatTableName(selectedTable), [selectedTable]);
 
-  // Function to sync selected table to ML models backend
-  const syncTableToML = async (tableName) => {
-    try {
-      const response = await fetch('http://localhost:5000/api/sync-table-to-ml', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ tableName }),
-      });
-      
-      if (response.ok) {
-        const result = await response.json();
-        console.log('✅ ML models synced:', result.message);
-      } else {
-        console.error('Failed to sync table to ML models');
-      }
-    } catch (error) {
-      console.error('Error syncing table to ML models:', error);
-    }
-  };
-
-  // Function to run ML analysis
-  const runMLAnalysis = async () => {
-    if (!selectedTable) {
-      setMlStatus("❌ Please select a table first");
-      return;
-    }
-
-    setIsRunningML(true);
-    setMlStatus("🔄 Running ML analysis...");
-
-    try {
-      const response = await fetch('http://localhost:5000/api/run-ml-analysis', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ tableName: selectedTable }),
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        setMlStatus(`✅ ${result.message}`);
-        console.log('ML Analysis complete:', result);
-      } else {
-        const error = await response.json();
-        setMlStatus(`❌ ML analysis failed: ${error.error}`);
-      }
-    } catch (error) {
-      console.error('Error running ML analysis:', error);
-      setMlStatus("❌ Error running ML analysis");
-    } finally {
-      setIsRunningML(false);
-    }
-  };
+  const handleRunML = () => runML(selectedTable);
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -113,7 +57,7 @@ export default function Dashboard() {
       <div className="flex justify-center mb-4 gap-4">
         <TableSelector tables={tables} value={selectedTable} onChange={setSelectedTable} />
         <button
-          onClick={runMLAnalysis}
+          onClick={handleRunML}
           disabled={isRunningML || !selectedTable}
           className={`px-4 py-2 rounded font-semibold transition ${
             isRunningML || !selectedTable
@@ -121,7 +65,7 @@ export default function Dashboard() {
               : 'bg-blue-600 text-white hover:bg-blue-700'
           }`}
         >
-          {isRunningML ? '⏳ Running...' : '🤖 Get ML Insights'}
+          {isRunningML ? 'Running...' : 'Get ML Insights'}
         </button>
       </div>
 

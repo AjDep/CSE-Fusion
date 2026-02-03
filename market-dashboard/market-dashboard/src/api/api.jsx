@@ -8,3 +8,9 @@ export const fetchCompanies = () => axios.get(`${API_BASE}/companies`);
 export function fetchCompanyHistory(security) {
   return axios.get(`${API_BASE}/companies/${encodeURIComponent(security)}`);
 }
+
+export const syncTableToML = (tableName) =>
+  axios.post(`${API_BASE}/sync-table-to-ml`, { tableName });
+
+export const runMLAnalysis = (tableName) =>
+  axios.post(`${API_BASE}/run-ml-analysis`, { tableName });

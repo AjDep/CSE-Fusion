@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { fetchTables, fetchTableData ,fetchCompanies,fetchCompanyHistory} from "../api/api";
+import {
+  fetchTables,
+  fetchTableData,
+  fetchCompanies,
+  fetchCompanyHistory,
+  syncTableToML,
+  runMLAnalysis
+} from "../api/api";
 
 export function useTables() {
   const [tables, setTables] = useState([]);
@@ -62,5 +69,48 @@ export function useCompanyHistory(security) {
   }, [security]);
 
   return { history, loading, error };
+}
+
+export function useMLActions() {
+  const [isRunningML, setIsRunningML] = useState(false);
+  const [mlStatus, setMlStatus] = useState("");
+
+  const syncTable = async (tableName) => {
+    try {
+      const response = await syncTableToML(tableName);
+      if (response?.data?.message) {
+        console.log('[ML] Synced:', response.data.message);
+      }
+      return response.data;
+    } catch (error) {
+      console.error('Error syncing table to ML models:', error);
+      throw error;
+    }
+  };
+
+  const runML = async (tableName) => {
+    if (!tableName) {
+      setMlStatus("Please select a table first");
+      return null;
+    }
+
+    setIsRunningML(true);
+    setMlStatus("Running ML analysis...");
+
+    try {
+      const response = await runMLAnalysis(tableName);
+      const message = response?.data?.message || 'ML analysis completed';
+      setMlStatus(message);
+      return response.data;
+    } catch (error) {
+      const apiMessage = error?.response?.data?.error || 'ML analysis failed';
+      setMlStatus(apiMessage);
+      return null;
+    } finally {
+      setIsRunningML(false);
+    }
+  };
+
+  return { isRunningML, mlStatus, syncTable, runML };
 }
 
