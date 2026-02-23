@@ -1,280 +1,219 @@
 security,regime,signal_x,score_x,model_x,score_y,signal_y,model_y,transformer_avg_score,transformer_last_score,buy_ratio,sell_ratio,hold_ratio,total_signals,transformer_momentum,final_signal
-SIL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3699624410582354,🔻 SELL / WAIT,classifier,0.31525519490242,0.31525519490242,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SOY.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3588270171052619,🔻 SELL / WAIT,classifier,0.2994133830070495,0.2994133830070495,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CTC.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3506493323197154,🔻 SELL / WAIT,classifier,0.2921269834041595,0.2921269834041595,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MFPE.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3249262383224012,🔻 SELL / WAIT,classifier,0.3020374774932861,0.3020374774932861,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MASK.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3480501495663536,🔻 SELL / WAIT,classifier,0.3017059564590454,0.3017059564590454,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-EXT.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.37807042808386,🔻 SELL / WAIT,classifier,0.3189870417118072,0.3189870417118072,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LPL.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4140029913892709,⚖️ HOLD,classifier,0.3052391409873962,0.3052391409873962,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-KZOO.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3064020327404876,🔻 SELL / WAIT,classifier,0.2775106430053711,0.2775106430053711,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-JKL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3547866305864572,🔻 SELL / WAIT,classifier,0.2914763689041137,0.2914763689041137,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HASU.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.302710160426734,🔻 SELL / WAIT,classifier,0.3113684952259063,0.3113684952259063,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-GLAS.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4032635122549354,⚖️ HOLD,classifier,0.3106474578380584,0.3106474578380584,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SHAW.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3239462284687469,🔻 SELL / WAIT,classifier,0.3111633062362671,0.3111633062362671,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AGAL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.337567416447107,🔻 SELL / WAIT,classifier,0.3066684305667877,0.3066684305667877,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SLND.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3581374391831814,🔻 SELL / WAIT,classifier,0.3047910928726196,0.3047910928726196,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LITE.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3190502497639113,🔻 SELL / WAIT,classifier,0.309905469417572,0.309905469417572,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ODEL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3568028362371169,🔻 SELL / WAIT,classifier,0.3153969049453735,0.3153969049453735,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HDFC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3395222364713026,🔻 SELL / WAIT,classifier,0.3178404867649078,0.3178404867649078,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CALT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4078383831205014,⚖️ HOLD,classifier,0.327807754278183,0.327807754278183,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-EAST.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.2795845154151749,🔻 SELL / WAIT,classifier,0.3133023083209991,0.3133023083209991,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SMOT.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3295422220560247,🔻 SELL / WAIT,classifier,0.3193342089653015,0.3193342089653015,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-BUKI.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3606381508458008,🔻 SELL / WAIT,classifier,0.3146349787712097,0.3146349787712097,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-DIAL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.448948264927589,⚖️ HOLD,classifier,0.3152451813220978,0.3152451813220978,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-VFIN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3724613265597277,🔻 SELL / WAIT,classifier,0.3202723264694214,0.3202723264694214,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HUNA.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3453310660097057,🔻 SELL / WAIT,classifier,0.3201324641704559,0.3201324641704559,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MHDL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.2554543965167088,🔻 SELL / WAIT,classifier,0.3146490454673767,0.3146490454673767,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-UDPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3379769032658932,🔻 SELL / WAIT,classifier,0.3140420913696289,0.3140420913696289,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-BPPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3675116150998024,🔻 SELL / WAIT,classifier,0.3049818277359009,0.3049818277359009,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3687057209944112,🔻 SELL / WAIT,classifier,0.3305311799049377,0.3305311799049377,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MELS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3796090074675015,🔻 SELL / WAIT,classifier,0.3142105937004089,0.3142105937004089,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SEMB.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.0413548664779968,🔻 SELL / WAIT,classifier,0.0396002829074859,0.0396002829074859,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SEYB.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3293286098564292,🔻 SELL / WAIT,classifier,0.2327484041452407,0.2327484041452407,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LHCL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3104026553411171,🔻 SELL / WAIT,classifier,0.3283490538597107,0.3283490538597107,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HAPU.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.307358023362678,🔻 SELL / WAIT,classifier,0.3349744379520416,0.3349744379520416,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-RIL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.2634861195478991,🔻 SELL / WAIT,classifier,0.3335517644882202,0.3335517644882202,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-PLC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3803770513630662,🔻 SELL / WAIT,classifier,0.3232986330986023,0.3232986330986023,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-KPHL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3446672193376105,🔻 SELL / WAIT,classifier,0.3341727554798126,0.3341727554798126,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CERA.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4582427135773839,⚖️ HOLD,classifier,0.3285328149795532,0.3285328149795532,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CIT.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.2397711940560117,🔻 SELL / WAIT,classifier,0.3358551859855652,0.3358551859855652,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-RCL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3767328667645103,🔻 SELL / WAIT,classifier,0.3183267414569855,0.3183267414569855,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CINS.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3942020233411923,🔻 SELL / WAIT,classifier,0.3275630176067352,0.3275630176067352,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-NTB.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3370230431221071,🔻 SELL / WAIT,classifier,0.3537069261074066,0.3537069261074066,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ACL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3604619909100194,🔻 SELL / WAIT,classifier,0.3246616721153259,0.3246616721153259,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CALH.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3470370322011449,🔻 SELL / WAIT,classifier,0.3252535462379455,0.3252535462379455,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-EMER.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4154537103577698,⚖️ HOLD,classifier,0.3613194227218628,0.3613194227218628,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LVEF.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3206541316628275,🔻 SELL / WAIT,classifier,0.328819990158081,0.328819990158081,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-COMD.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.5957620773362822,⚖️ HOLD,classifier,0.3407768309116363,0.3407768309116363,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SUN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3586759488371046,🔻 SELL / WAIT,classifier,0.3248263895511627,0.3248263895511627,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-EDEN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3702333738986012,🔻 SELL / WAIT,classifier,0.3239058554172516,0.3239058554172516,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SAMP.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.391165869370673,🔻 SELL / WAIT,classifier,0.3280846178531647,0.3280846178531647,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-STAF.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4217863031686324,⚖️ HOLD,classifier,0.3233158886432647,0.3233158886432647,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-BIL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.1160261864167085,🔻 SELL / WAIT,classifier,0.0848643034696579,0.0848643034696579,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HELA.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.136999370475525,🔻 SELL / WAIT,classifier,0.1360563188791275,0.1360563188791275,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-KHL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4162734499620188,⚖️ HOLD,classifier,0.3215067386627197,0.3215067386627197,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HPWR.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3650497755820982,🔻 SELL / WAIT,classifier,0.3336497247219085,0.3336497247219085,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CINS.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4519960366206796,⚖️ HOLD,classifier,0.3504799008369446,0.3504799008369446,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ATLL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4091160699137472,⚖️ HOLD,classifier,0.2087431699037552,0.2087431699037552,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CHMX.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4309398643107426,⚖️ HOLD,classifier,0.3440610766410827,0.3440610766410827,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-COCO.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4085430796410287,⚖️ HOLD,classifier,0.3777050971984863,0.3777050971984863,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SEYB.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4149620464915314,⚖️ HOLD,classifier,0.2062902897596359,0.2062902897596359,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TESS.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.2090450827880388,🔻 SELL / WAIT,classifier,0.2035762369632721,0.2035762369632721,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-COMB.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3378351822245232,🔻 SELL / WAIT,classifier,0.3485442399978637,0.3485442399978637,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-WLTH.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3776951726056572,🔻 SELL / WAIT,classifier,0.3426538705825805,0.3426538705825805,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-NTB.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4786487980662154,⚖️ HOLD,classifier,0.3852145671844482,0.3852145671844482,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SINH.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3480455506507169,🔻 SELL / WAIT,classifier,0.3750344514846802,0.3750344514846802,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SFCL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4786487980662154,⚖️ HOLD,classifier,0.1676083952188491,0.1676083952188491,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CONN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3973176911751686,🔻 SELL / WAIT,classifier,0.3434136509895324,0.3434136509895324,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HAYL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4719424693021057,⚖️ HOLD,classifier,0.3803035318851471,0.3803035318851471,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SIGV.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.423259189451974,⚖️ HOLD,classifier,0.3318624496459961,0.3318624496459961,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LALU.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.499641068153362,⚖️ HOLD,classifier,0.3506692051887512,0.3506692051887512,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CITW.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.157563727306289,🔻 SELL / WAIT,classifier,0.0751399472355842,0.0751399472355842,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.5203741958605568,⚖️ HOLD,classifier,0.3288305103778839,0.3288305103778839,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LIOC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4283904836589243,⚖️ HOLD,classifier,0.3479157984256744,0.3479157984256744,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-PHAR.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4383253584249733,⚖️ HOLD,classifier,0.3316981196403503,0.3316981196403503,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-UBF.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.1986658190306471,🔻 SELL / WAIT,classifier,0.1097441539168357,0.1097441539168357,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CSD.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4177274674643051,⚖️ HOLD,classifier,0.3391983211040497,0.3391983211040497,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LMF.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4065401848061072,⚖️ HOLD,classifier,0.347636878490448,0.347636878490448,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LVEN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4499529879101582,⚖️ HOLD,classifier,0.3570629954338074,0.3570629954338074,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-COMB.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4353597129633497,⚖️ HOLD,classifier,0.340735375881195,0.340735375881195,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AGST.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4091631820685907,⚖️ HOLD,classifier,0.3977329432964325,0.3977329432964325,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-INME.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.5769278381811835,⚖️ HOLD,classifier,0.3590892553329468,0.3590892553329468,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LPRT.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4567484584636442,⚖️ HOLD,classifier,0.3781776130199432,0.3781776130199432,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-COLO.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.443334257451439,⚖️ HOLD,classifier,0.3630574941635132,0.3630574941635132,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HBS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4032815544198682,⚖️ HOLD,classifier,0.3528101742267608,0.3528101742267608,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-VONE.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.461530904407005,⚖️ HOLD,classifier,0.35092893242836,0.35092893242836,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MERC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4287332275492546,⚖️ HOLD,classifier,0.3323813378810882,0.3323813378810882,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-RHL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3830593738105805,🔻 SELL / WAIT,classifier,0.398949533700943,0.398949533700943,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CRL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3503388641293906,🔻 SELL / WAIT,classifier,0.336321622133255,0.336321622133255,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CITH.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.2432883498473982,🔻 SELL / WAIT,classifier,0.391532689332962,0.391532689332962,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-GREG.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3746962122067479,🔻 SELL / WAIT,classifier,0.3980885446071625,0.3980885446071625,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ALUM.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3554809174416645,🔻 SELL / WAIT,classifier,0.3286762833595276,0.3286762833595276,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ACME.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3590181370287919,🔻 SELL / WAIT,classifier,0.3617688715457916,0.3617688715457916,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HVA.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4133836210229324,⚖️ HOLD,classifier,0.3607825338840484,0.3607825338840484,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-COCR.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3932256775976077,🔻 SELL / WAIT,classifier,0.3244118690490722,0.3244118690490722,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TANG.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3501942034506022,🔻 SELL / WAIT,classifier,0.3669507503509521,0.3669507503509521,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ASIR.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4317283553052416,⚖️ HOLD,classifier,0.3528763651847839,0.3528763651847839,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TJL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4693882269180828,⚖️ HOLD,classifier,0.3172324895858764,0.3172324895858764,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-RENU.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3787770842646221,🔻 SELL / WAIT,classifier,0.3976759016513824,0.3976759016513824,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LFIN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4075872670604491,⚖️ HOLD,classifier,0.3401078283786773,0.3401078283786773,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AMF.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4064572891475305,⚖️ HOLD,classifier,0.3724553287029266,0.3724553287029266,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TAJ.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4699573410856537,⚖️ HOLD,classifier,0.3334789872169494,0.3334789872169494,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HSIG.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3528049774452504,🔻 SELL / WAIT,classifier,0.3447174429893493,0.3447174429893493,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-VLL.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.426541020209826,⚖️ HOLD,classifier,0.3600015938282013,0.3600015938282013,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MADU.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3769547990675702,🔻 SELL / WAIT,classifier,0.3809466063976288,0.3809466063976288,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SDF.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.442872262957065,⚖️ HOLD,classifier,0.3421938121318817,0.3421938121318817,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LOLC.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4116876279059651,⚖️ HOLD,classifier,0.386854887008667,0.386854887008667,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-BFL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3626738615224382,🔻 SELL / WAIT,classifier,0.3311048150062561,0.3311048150062561,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-KOTA.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3554809174416645,🔻 SELL / WAIT,classifier,0.3266421854496002,0.3266421854496002,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-PLR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3608009761366948,🔻 SELL / WAIT,classifier,0.3839728534221649,0.3839728534221649,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TYRE.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3875534382360979,🔻 SELL / WAIT,classifier,0.3425223529338836,0.3425223529338836,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-RHL.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4356964598343833,⚖️ HOLD,classifier,0.4073971211910248,0.4073971211910248,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-REEF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2771983398691363,🔻 SELL / WAIT,classifier,0.3557088673114776,0.3557088673114776,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-OFEQ.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.5377558027851865,⚖️ HOLD,classifier,0.4227958619594574,0.4227958619594574,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-DOCK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4572191845750166,⚖️ HOLD,classifier,0.3831281661987304,0.3831281661987304,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SIRA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3624266479220379,🔻 SELL / WAIT,classifier,0.4024900794029236,0.4024900794029236,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-LUMX.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3608009761366948,🔻 SELL / WAIT,classifier,0.4119528234004974,0.4119528234004974,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-GHLL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3599264297237721,🔻 SELL / WAIT,classifier,0.348027765750885,0.348027765750885,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-UBC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4118344029945198,⚖️ HOLD,classifier,0.3443944454193115,0.3443944454193115,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AEL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.5200894141726211,⚖️ HOLD,classifier,0.337725430727005,0.337725430727005,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SLTL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3769547990675702,🔻 SELL / WAIT,classifier,0.4027658104896545,0.4027658104896545,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-CINV.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4785763706278555,⚖️ HOLD,classifier,0.3853725492954254,0.3853725492954254,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SEMB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.0656882413031102,🔻 SELL / WAIT,classifier,0.047250423580408,0.047250423580408,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HHL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3993656999535853,🔻 SELL / WAIT,classifier,0.3354830145835876,0.3354830145835876,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-COCO.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3487492105170287,🔻 SELL / WAIT,classifier,0.3837935626506805,0.3837935626506805,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-FCT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.402971517311094,⚖️ HOLD,classifier,0.3575204908847809,0.3575204908847809,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AFSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4836752605850892,⚖️ HOLD,classifier,0.4064809083938598,0.4064809083938598,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-JINS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4907083917578229,⚖️ HOLD,classifier,0.3409574031829834,0.3409574031829834,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ELPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3902697656205393,🔻 SELL / WAIT,classifier,0.4046666324138641,0.4046666324138641,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-MEL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3420763686526629,🔻 SELL / WAIT,classifier,0.3514617085456848,0.3514617085456848,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CFIN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.436887327338451,⚖️ HOLD,classifier,0.3615607917308807,0.3615607917308807,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-PKME.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4812571241929931,⚖️ HOLD,classifier,0.3735755085945129,0.3735755085945129,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-WIND.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3957235237175655,🔻 SELL / WAIT,classifier,0.3639151453971863,0.3639151453971863,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HARI.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.5137043878201834,⚖️ HOLD,classifier,0.3764628469944,0.3764628469944,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-RFL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4785763706278555,⚖️ HOLD,classifier,0.398919403553009,0.398919403553009,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CHL.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4518910085805664,⚖️ HOLD,classifier,0.3852889537811279,0.3852889537811279,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HEXP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4218644749494155,⚖️ HOLD,classifier,0.4227229356765747,0.4227229356765747,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-PAP.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3554809174416645,🔻 SELL / WAIT,classifier,0.3259495794773102,0.3259495794773102,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-WATA.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4181887699416037,⚖️ HOLD,classifier,0.3503813743591308,0.3503813743591308,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TESS.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3000211279506873,🔻 SELL / WAIT,classifier,0.3298072814941406,0.3298072814941406,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ASPH.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.0429365451743725,🔻 SELL / WAIT,classifier,0.0459125265479087,0.0459125265479087,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-KGAL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3902697656205393,🔻 SELL / WAIT,classifier,0.3606152236461639,0.3606152236461639,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-BALA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4293738653639641,⚖️ HOLD,classifier,0.2339008748531341,0.2339008748531341,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LAMB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4291186017270164,⚖️ HOLD,classifier,0.3729676902294159,0.3729676902294159,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-RAL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3219103504593098,🔻 SELL / WAIT,classifier,0.3946120142936706,0.3946120142936706,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HPFL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3771586541158886,🔻 SELL / WAIT,classifier,0.3638212084770202,0.3638212084770202,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LGL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3769547990675702,🔻 SELL / WAIT,classifier,0.3894758224487304,0.3894758224487304,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SHL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.2522118811426208,🔻 SELL / WAIT,classifier,0.3423548340797424,0.3423548340797424,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-YORK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4591403673035395,⚖️ HOLD,classifier,0.4097175002098083,0.4097175002098083,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-KVAL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4142173779339484,⚖️ HOLD,classifier,0.3513383567333221,0.3513383567333221,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CHOT.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4346149898902406,⚖️ HOLD,classifier,0.4084502756595611,0.4084502756595611,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-VPEL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3447203953802941,🔻 SELL / WAIT,classifier,0.3600641191005707,0.3600641191005707,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CABO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4056541124635903,⚖️ HOLD,classifier,0.3762795925140381,0.3762795925140381,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-NDB.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4048306156779322,⚖️ HOLD,classifier,0.3380460143089294,0.3380460143089294,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-COOP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.1986962475215985,🔻 SELL / WAIT,classifier,0.0877613127231597,0.0877613127231597,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AGPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4348809273590253,⚖️ HOLD,classifier,0.3406670391559601,0.3406670391559601,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LDEV.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4218521883096625,⚖️ HOLD,classifier,0.3420570790767669,0.3420570790767669,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CIC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3743347505156106,🔻 SELL / WAIT,classifier,0.379974216222763,0.379974216222763,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MGT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3616804813717085,🔻 SELL / WAIT,classifier,0.3598107695579529,0.3598107695579529,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CCS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4218521883096625,⚖️ HOLD,classifier,0.3381267488002777,0.3381267488002777,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CFVF.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3645932596400571,🔻 SELL / WAIT,classifier,0.3506893813610077,0.3506893813610077,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LGIL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3741315049519755,🔻 SELL / WAIT,classifier,0.3891249597072601,0.3891249597072601,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ETWO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3846997769578157,🔻 SELL / WAIT,classifier,0.3627148568630218,0.3627148568630218,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-KAHA.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4487475658788385,⚖️ HOLD,classifier,0.3443873226642608,0.3443873226642608,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CARE.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3896827256674348,🔻 SELL / WAIT,classifier,0.3943348228931427,0.3943348228931427,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CLND.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4721129837723154,⚖️ HOLD,classifier,0.410689115524292,0.410689115524292,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-RICH.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4159664979302158,⚖️ HOLD,classifier,0.3854257464408874,0.3854257464408874,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LOFC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.1591344832538936,🔻 SELL / WAIT,classifier,0.1358225792646408,0.1358225792646408,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-RPBH.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.474846826547511,⚖️ HOLD,classifier,0.4185841977596283,0.4185841977596283,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-ABL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3070803752090581,🔻 SELL / WAIT,classifier,,,,,,,,⚖️ HOLD
-SFIN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4625328450612329,⚖️ HOLD,classifier,0.3897590637207031,0.3897590637207031,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AAF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3748175110137227,🔻 SELL / WAIT,classifier,,,,,,,,⚖️ HOLD
-JAT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3336169224741435,🔻 SELL / WAIT,classifier,0.3492979407310486,0.3492979407310486,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-REXP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.395536301223806,🔻 SELL / WAIT,classifier,0.3976391851902008,0.3976391851902008,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CBNK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2352473901807855,🔻 SELL / WAIT,classifier,0.3334627747535705,0.3334627747535705,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MARA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3534397464590221,🔻 SELL / WAIT,classifier,0.3849751353263855,0.3849751353263855,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CFI.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.485594287098991,⚖️ HOLD,classifier,0.4080284535884857,0.4080284535884857,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-PARQ.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4140654432534403,⚖️ HOLD,classifier,0.3335700035095215,0.3335700035095215,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AMSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3746850745367325,🔻 SELL / WAIT,classifier,0.3599532842636108,0.3599532842636108,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-KHC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4625328450612329,⚖️ HOLD,classifier,0.3466818034648895,0.3466818034648895,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-DIMO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4749984191493309,⚖️ HOLD,classifier,0.3628090023994446,0.3628090023994446,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AGST.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4511889975791119,⚖️ HOLD,classifier,0.404958963394165,0.404958963394165,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-ECL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3702994367196116,🔻 SELL / WAIT,classifier,0.3852750062942505,0.3852750062942505,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-NHL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3335183105114822,🔻 SELL / WAIT,classifier,0.3816172778606415,0.3816172778606415,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-RHTL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4495554187378917,⚖️ HOLD,classifier,0.379351258277893,0.379351258277893,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TKYO.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4412392879958298,⚖️ HOLD,classifier,0.3345257341861725,0.3345257341861725,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HOPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4264266741859122,⚖️ HOLD,classifier,0.3635614216327667,0.3635614216327667,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ASCO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.377483028774084,🔻 SELL / WAIT,classifier,0.3964040875434875,0.3964040875434875,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HNBF.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3741315049519755,🔻 SELL / WAIT,classifier,0.3772295713424682,0.3772295713424682,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-WAPO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3279560562981642,🔻 SELL / WAIT,classifier,0.388274222612381,0.388274222612381,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4446554884149328,⚖️ HOLD,classifier,0.3367795646190643,0.3367795646190643,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MULL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.105320719864733,🔻 SELL / WAIT,classifier,0.212504968047142,0.212504968047142,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-OSEA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4040248089095282,⚖️ HOLD,classifier,0.427984744310379,0.427984744310379,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-NAMU.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4345723454432057,⚖️ HOLD,classifier,0.3739832043647766,0.3739832043647766,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-UCAR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4516727633680771,⚖️ HOLD,classifier,0.4058052003383636,0.4058052003383636,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-CTEA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4178647751873443,⚖️ HOLD,classifier,0.3958337306976318,0.3958337306976318,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CIND.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4264266741859122,⚖️ HOLD,classifier,0.3818454444408417,0.3818454444408417,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LION.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4681022040674983,⚖️ HOLD,classifier,0.4056361615657806,0.4056361615657806,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-CWL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.367104396945888,🔻 SELL / WAIT,classifier,0.3928089141845703,0.3928089141845703,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-JKH.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.265780621356917,🔻 SELL / WAIT,classifier,0.3176855742931366,0.3176855742931366,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LWL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.383721927686528,🔻 SELL / WAIT,classifier,0.4128874838352203,0.4128874838352203,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-SCAP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2744193193501157,🔻 SELL / WAIT,classifier,0.3211541175842285,0.3211541175842285,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TKYO.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3493463928766987,🔻 SELL / WAIT,classifier,0.3681263923645019,0.3681263923645019,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-PINS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4200971256966206,⚖️ HOLD,classifier,0.3433377146720886,0.3433377146720886,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AINS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3977628990839105,🔻 SELL / WAIT,classifier,0.3922938406467438,0.3922938406467438,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CDB.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4163375105992669,⚖️ HOLD,classifier,0.3452801704406738,0.3452801704406738,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CARS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.474846826547511,⚖️ HOLD,classifier,0.4061386883258819,0.4061386883258819,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-CFLB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.389887551476238,🔻 SELL / WAIT,classifier,0.4045272767543793,0.4045272767543793,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-LCBF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4062663957967509,⚖️ HOLD,classifier,0.3775462210178375,0.3775462210178375,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HNBF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.283722867691729,🔻 SELL / WAIT,classifier,0.3327886462211609,0.3327886462211609,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HNB.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2902548171508182,🔻 SELL / WAIT,classifier,0.3796626329421997,0.3796626329421997,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SHOT.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4026465280588735,⚖️ HOLD,classifier,0.3945021331310272,0.3945021331310272,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-DFCC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3920316863001024,🔻 SELL / WAIT,classifier,0.3676336109638214,0.3676336109638214,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-JETS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.364909131456757,🔻 SELL / WAIT,classifier,0.3497133553028106,0.3497133553028106,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CTBL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3741315049519755,🔻 SELL / WAIT,classifier,0.3843526840209961,0.3843526840209961,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-UML.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3427366915037307,🔻 SELL / WAIT,classifier,0.3470403552055359,0.3470403552055359,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ONAL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.395536301223806,🔻 SELL / WAIT,classifier,0.4302603602409363,0.4302603602409363,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-DIPD.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3600040931446877,🔻 SELL / WAIT,classifier,0.385189950466156,0.385189950466156,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-GUAR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3874087551395652,🔻 SELL / WAIT,classifier,0.4143663346767425,0.4143663346767425,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-AFS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3619894834686241,🔻 SELL / WAIT,classifier,0.3821715116500854,0.3821715116500854,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-JFP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.334679075198928,🔻 SELL / WAIT,classifier,0.350511223077774,0.350511223077774,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4258382996775623,⚖️ HOLD,classifier,0.3725813627243042,0.3725813627243042,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CSLK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3367084237158031,🔻 SELL / WAIT,classifier,0.3468035459518432,0.3468035459518432,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-UAL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3699845885957418,🔻 SELL / WAIT,classifier,0.3517290949821472,0.3517290949821472,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ALLI.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3554644781079739,🔻 SELL / WAIT,classifier,0.3448539674282074,0.3448539674282074,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-DIST.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4754242178982254,⚖️ HOLD,classifier,0.3467439413070678,0.3467439413070678,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-PABC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3984089078731025,🔻 SELL / WAIT,classifier,0.3467425405979156,0.3467425405979156,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AHPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4370795929812986,⚖️ HOLD,classifier,0.3900676667690277,0.3900676667690277,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CDB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.5008885453035369,⚖️ HOLD,classifier,0.3569004535675049,0.3569004535675049,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LGL.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3843489806211763,🔻 SELL / WAIT,classifier,0.3617932796478271,0.3617932796478271,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-BOGA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3739630521418641,🔻 SELL / WAIT,classifier,0.3334184885025024,0.3334184885025024,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TSML.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3977628990839105,🔻 SELL / WAIT,classifier,0.3847334384918213,0.3847334384918213,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HAYC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4886354866625311,⚖️ HOLD,classifier,0.4237900674343109,0.4237900674343109,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-BERU.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.1081567240918859,🔻 SELL / WAIT,classifier,0.083402507007122,0.083402507007122,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-BREW.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4279073458257834,⚖️ HOLD,classifier,0.3648328781127929,0.3648328781127929,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AHUN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4076606745998965,⚖️ HOLD,classifier,0.3716920614242553,0.3716920614242553,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-APLA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4138276283855261,⚖️ HOLD,classifier,0.363109141588211,0.363109141588211,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-BRWN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4908732573240045,⚖️ HOLD,classifier,0.3625280857086181,0.3625280857086181,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LLUB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4395098292069126,⚖️ HOLD,classifier,0.3443028330802917,0.3443028330802917,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-EML.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4199178866191744,⚖️ HOLD,classifier,0.4118674397468567,0.4118674397468567,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-PACK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3606437785270255,🔻 SELL / WAIT,classifier,0.3679244518280029,0.3679244518280029,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-HNB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4514510870481818,⚖️ HOLD,classifier,0.3587853908538818,0.3587853908538818,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SDB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3628220309784541,🔻 SELL / WAIT,classifier,0.3926456868648529,0.3926456868648529,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CIC.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3366870861817793,🔻 SELL / WAIT,classifier,0.3712629377841949,0.3712629377841949,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-EBCR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3977628990839105,🔻 SELL / WAIT,classifier,0.3792552351951599,0.3792552351951599,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TILE.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3430346440904792,🔻 SELL / WAIT,classifier,0.3718218207359314,0.3718218207359314,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ABAN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4454295906707948,⚖️ HOLD,classifier,,,,,,,,⚖️ HOLD
-GRAN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4000579552027493,⚖️ HOLD,classifier,0.4066799283027649,0.4066799283027649,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-KCAB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3985758937245462,🔻 SELL / WAIT,classifier,0.3531505465507507,0.3531505465507507,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LHL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.395536301223806,🔻 SELL / WAIT,classifier,0.3932009935379028,0.3932009935379028,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-LCEY.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4076606745998965,⚖️ HOLD,classifier,0.3843376040458679,0.3843376040458679,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TAFL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3779721325559284,🔻 SELL / WAIT,classifier,0.3505037724971771,0.3505037724971771,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-VLL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4105599307273498,⚖️ HOLD,classifier,0.3514133989810943,0.3514133989810943,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-RCH.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3930401714848837,🔻 SELL / WAIT,classifier,0.3891121745109558,0.3891121745109558,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SERV.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4143921791485989,⚖️ HOLD,classifier,0.2321565449237823,0.2321565449237823,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-TRAN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4098888491899612,⚖️ HOLD,classifier,0.4054480493068695,0.4054480493068695,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-DPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3741315049519755,🔻 SELL / WAIT,classifier,0.3769767880439758,0.3769767880439758,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ASIY.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3741315049519755,🔻 SELL / WAIT,classifier,0.3579294383525848,0.3579294383525848,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CHL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4602326184853142,⚖️ HOLD,classifier,0.3858571648597717,0.3858571648597717,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-AAIC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.320772274082302,🔻 SELL / WAIT,classifier,,,,,,,,⚖️ HOLD
-MAL.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3463973595545423,🔻 SELL / WAIT,classifier,0.3868789374828338,0.3868789374828338,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-RWSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2833117581580964,🔻 SELL / WAIT,classifier,0.3536078929901123,0.3536078929901123,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MBSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3230348684834006,🔻 SELL / WAIT,classifier,0.3803045749664306,0.3803045749664306,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MCPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3452190294565497,🔻 SELL / WAIT,classifier,0.372276246547699,0.372276246547699,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SHOT.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2869833694862438,🔻 SELL / WAIT,classifier,0.3826600015163421,0.3826600015163421,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-PMB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3289820949571008,🔻 SELL / WAIT,classifier,0.3957757949829101,0.3957757949829101,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CALF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3090584507258093,🔻 SELL / WAIT,classifier,0.3568250834941864,0.3568250834941864,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-SINS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.338581818024221,🔻 SELL / WAIT,classifier,0.408870667219162,0.408870667219162,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
-TAP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3034093922745532,🔻 SELL / WAIT,classifier,0.3570753335952759,0.3570753335952759,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CARG.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3483527265548616,🔻 SELL / WAIT,classifier,0.3580386638641357,0.3580386638641357,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-CTLD.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3835228289393019,🔻 SELL / WAIT,classifier,0.3707504272460937,0.3707504272460937,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-BOPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3483527265548616,🔻 SELL / WAIT,classifier,0.3412066996097564,0.3412066996097564,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-BRR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.416301660372083,⚖️ HOLD,classifier,0.3752810060977936,0.3752810060977936,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-MDL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4023489601441675,⚖️ HOLD,classifier,0.3642131388187408,0.3642131388187408,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ATL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4426566055978651,⚖️ HOLD,classifier,0.2772996127605438,0.2772996127605438,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-PALM.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3700214419282543,🔻 SELL / WAIT,classifier,0.3562729656696319,0.3562729656696319,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-PEG.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.369193637061973,🔻 SELL / WAIT,classifier,0.3469817340373993,0.3469817340373993,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-BFN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.372805469613475,🔻 SELL / WAIT,classifier,0.3556807041168213,0.3556807041168213,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
-ASHO.N0000,🛑 Panic Crash,Exit / Avoid,,kmeans,0.7202834915279964,🚀 BUY,classifier,0.3595810830593109,0.3595810830593109,0.0,1.0,0.0,1.0,Bearish,🔻 SELL
-KFP.N0000,🛑 Panic Crash,Exit / Avoid,,kmeans,0.6068294545299794,🚀 BUY,classifier,0.3487789928913116,0.3487789928913116,0.0,1.0,0.0,1.0,Bearish,🔻 SELL
-SPEN.N0000,🛑 Panic Crash,Exit / Avoid,,kmeans,0.2622539409883054,🔻 SELL / WAIT,classifier,0.3524861633777618,0.3524861633777618,0.0,1.0,0.0,1.0,Bearish,🔻 SELL
+NTB.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.2902982515261755,🔻 SELL / WAIT,classifier,0.2848541140556335,0.2848541140556335,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LDEV.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4459186850622058,⚖️ HOLD,classifier,0.2759626507759094,0.2759626507759094,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CONN.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3406951816835902,🔻 SELL / WAIT,classifier,0.2886941730976105,0.2886941730976105,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+NAMU.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3239462284687469,🔻 SELL / WAIT,classifier,0.2871980369091034,0.2871980369091034,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+AGPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.430830437293818,⚖️ HOLD,classifier,0.3121338784694671,0.3121338784694671,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SHL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.2622405985821583,🔻 SELL / WAIT,classifier,0.2790164053440094,0.2790164053440094,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+MELS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.329252156962295,🔻 SELL / WAIT,classifier,0.2993246018886566,0.2993246018886566,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LPL.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.339441636560526,🔻 SELL / WAIT,classifier,0.2968336641788482,0.2968336641788482,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LHCL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3545466897266964,🔻 SELL / WAIT,classifier,0.2958517968654632,0.2958517968654632,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CCS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3238446013255293,🔻 SELL / WAIT,classifier,0.3049147427082062,0.3049147427082062,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+RENU.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.335641939487005,🔻 SELL / WAIT,classifier,0.2924571633338928,0.2924571633338928,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LIOC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4493301349090765,⚖️ HOLD,classifier,0.3072417378425598,0.3072417378425598,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+WLTH.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3416640040008782,🔻 SELL / WAIT,classifier,0.3149116933345794,0.3149116933345794,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CPRT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3453811768086764,🔻 SELL / WAIT,classifier,0.2951011657714844,0.2951011657714844,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+PLC.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3058008086726089,🔻 SELL / WAIT,classifier,0.300462931394577,0.300462931394577,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3787248867284443,🔻 SELL / WAIT,classifier,0.3078661262989044,0.3078661262989044,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+TESS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.2021518160616909,🔻 SELL / WAIT,classifier,0.2616618573665619,0.2616618573665619,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+TESS.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.2484039955692266,🔻 SELL / WAIT,classifier,0.252032995223999,0.252032995223999,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+PARQ.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3165685423331085,🔻 SELL / WAIT,classifier,0.3146924078464508,0.3146924078464508,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+TPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3709718023041926,🔻 SELL / WAIT,classifier,0.3270208239555359,0.3270208239555359,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+UDPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3411106037267113,🔻 SELL / WAIT,classifier,0.3054186105728149,0.3054186105728149,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+KHL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3682118758595618,🔻 SELL / WAIT,classifier,0.3301954567432403,0.3301954567432403,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+ODEL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3076564385804013,🔻 SELL / WAIT,classifier,0.3232403099536896,0.3232403099536896,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+BALA.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3376968471072312,🔻 SELL / WAIT,classifier,0.1611667722463607,0.1611667722463607,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+JINS.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3037583397252027,🔻 SELL / WAIT,classifier,0.3214726150035858,0.3214726150035858,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+COCO.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3287327780111796,🔻 SELL / WAIT,classifier,0.3059473931789398,0.3059473931789398,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CFLB.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3242489807224944,🔻 SELL / WAIT,classifier,0.3128741383552551,0.3128741383552551,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CSLK.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3323419177022638,🔻 SELL / WAIT,classifier,0.3192071616649627,0.3192071616649627,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+BRWN.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.2488577461225744,🔻 SELL / WAIT,classifier,0.3390889167785644,0.3390889167785644,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HNB.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.2710803194545076,🔻 SELL / WAIT,classifier,0.3450614511966705,0.3450614511966705,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+TYRE.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3186742098149702,🔻 SELL / WAIT,classifier,0.3414317369461059,0.3414317369461059,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+NDB.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3743170070870733,🔻 SELL / WAIT,classifier,0.3277947902679443,0.3277947902679443,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+BPPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4936295183253243,⚖️ HOLD,classifier,0.3190994262695312,0.3190994262695312,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+RHTL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4843397158956765,⚖️ HOLD,classifier,0.332948088645935,0.332948088645935,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+UBF.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.1142547285769227,🔻 SELL / WAIT,classifier,0.113942340016365,0.113942340016365,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CALT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4562369913296506,⚖️ HOLD,classifier,0.3206567168235779,0.3206567168235779,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CABO.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4671077805006504,⚖️ HOLD,classifier,0.3786067366600036,0.3786067366600036,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+BREW.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4519960366206796,⚖️ HOLD,classifier,0.3416427671909332,0.3416427671909332,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+RFL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4475455509640934,⚖️ HOLD,classifier,0.3542040288448334,0.3542040288448334,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CITW.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.0660814239518661,🔻 SELL / WAIT,classifier,0.0656739175319671,0.0656739175319671,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CIC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3530145342710717,🔻 SELL / WAIT,classifier,0.3375491797924042,0.3375491797924042,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SEYB.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4212870104306342,⚖️ HOLD,classifier,0.2482004761695861,0.2482004761695861,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HPL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4685387681459233,⚖️ HOLD,classifier,0.3380905389785766,0.3380905389785766,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HHL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4243183147971186,⚖️ HOLD,classifier,0.3264107406139374,0.3264107406139374,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CRL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3733117272122369,🔻 SELL / WAIT,classifier,0.3605686128139496,0.3605686128139496,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SUN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4132375432732096,⚖️ HOLD,classifier,0.3153887093067169,0.3153887093067169,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HAYL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4394863954306361,⚖️ HOLD,classifier,0.3322667479515075,0.3322667479515075,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CALH.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3608337702685336,🔻 SELL / WAIT,classifier,0.3245424330234527,0.3245424330234527,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+DIST.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3792816595292539,🔻 SELL / WAIT,classifier,0.3310131132602691,0.3310131132602691,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+NTB.X0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4400232963227226,⚖️ HOLD,classifier,0.3899178206920624,0.3899178206920624,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+KHC.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4415261590610424,⚖️ HOLD,classifier,0.359697937965393,0.359697937965393,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+COLO.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4116876279059651,⚖️ HOLD,classifier,0.3670268058776855,0.3670268058776855,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LMF.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3422572062362301,🔻 SELL / WAIT,classifier,0.3471610844135284,0.3471610844135284,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+ASPH.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.0463256869009361,🔻 SELL / WAIT,classifier,0.0407301783561706,0.0407301783561706,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+PAP.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4106008720589187,⚖️ HOLD,classifier,0.3351232707500458,0.3351232707500458,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+JKL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4615615257706335,⚖️ HOLD,classifier,0.3706772327423095,0.3706772327423095,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+ATLL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4293738653639641,⚖️ HOLD,classifier,0.1999053061008453,0.1999053061008453,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LOFC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.2108754225611783,🔻 SELL / WAIT,classifier,0.1603113710880279,0.1603113710880279,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+RCH.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.427266397203586,⚖️ HOLD,classifier,0.3589519560337066,0.3589519560337066,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+VLL.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3727952289308211,🔻 SELL / WAIT,classifier,0.346782922744751,0.346782922744751,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+AEL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.417742941454134,⚖️ HOLD,classifier,0.3581556677818298,0.3581556677818298,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+MARA.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.3608009761366948,🔻 SELL / WAIT,classifier,0.3765719830989837,0.3765719830989837,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HELA.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.1883254864758851,🔻 SELL / WAIT,classifier,0.162689208984375,0.162689208984375,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+MFPE.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3599264297237721,🔻 SELL / WAIT,classifier,0.3410697877407074,0.3410697877407074,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+AMSL.N0000,🚀 Retail Momentum,"Ride the wave (short-term, use stop-loss)",,kmeans,0.4501788861984294,⚖️ HOLD,classifier,0.345836877822876,0.345836877822876,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+JETS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4851525693831221,⚖️ HOLD,classifier,0.3308016359806061,0.3308016359806061,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+ACL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.426952078368446,⚖️ HOLD,classifier,0.3262946009635925,0.3262946009635925,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+BFL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4421916451168496,⚖️ HOLD,classifier,0.3367097079753876,0.3367097079753876,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+OSEA.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3599264297237721,🔻 SELL / WAIT,classifier,0.3617885112762451,0.3617885112762451,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+ONAL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4091631820685907,⚖️ HOLD,classifier,0.4097051918506622,0.4097051918506622,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+KAHA.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4077346514395105,⚖️ HOLD,classifier,0.3434165716171264,0.3434165716171264,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LALU.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4001049598243554,⚖️ HOLD,classifier,0.3652454316616058,0.3652454316616058,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SAMP.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3240946897362295,🔻 SELL / WAIT,classifier,0.328910082578659,0.328910082578659,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+TRAN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3849240842249042,🔻 SELL / WAIT,classifier,0.4104158878326416,0.4104158878326416,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+UBC.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3530492275203114,🔻 SELL / WAIT,classifier,0.3479917347431183,0.3479917347431183,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LCBF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2906470726242638,🔻 SELL / WAIT,classifier,0.3454312682151794,0.3454312682151794,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+TKYO.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.5598476934257886,⚖️ HOLD,classifier,0.3363799452781677,0.3363799452781677,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CIC.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3833326039635893,🔻 SELL / WAIT,classifier,0.4180603623390198,0.4180603623390198,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+CTC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4711008544822223,⚖️ HOLD,classifier,0.397938996553421,0.397938996553421,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+ACME.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3761947500086902,🔻 SELL / WAIT,classifier,0.3550291955471039,0.3550291955471039,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CHL.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4560537860059857,⚖️ HOLD,classifier,0.3595310151576996,0.3595310151576996,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+BERU.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2771983398691363,🔻 SELL / WAIT,classifier,0.3550426363945007,0.3550426363945007,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CINV.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4319318479098871,⚖️ HOLD,classifier,0.3864388763904571,0.3864388763904571,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+JAT.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4007564321986893,⚖️ HOLD,classifier,0.33473601937294,0.33473601937294,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+COOP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.098411040537109,🔻 SELL / WAIT,classifier,0.0877346247434616,0.0877346247434616,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SEMB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.0656882413031102,🔻 SELL / WAIT,classifier,0.0505601577460765,0.0505601577460765,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+MSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4845661204628185,⚖️ HOLD,classifier,0.3554990589618683,0.3554990589618683,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+REEF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.1750099430168959,🔻 SELL / WAIT,classifier,0.2699654400348663,0.2699654400348663,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+AGST.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3947116700304561,🔻 SELL / WAIT,classifier,0.3912084996700287,0.3912084996700287,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+MGT.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3972030945418157,🔻 SELL / WAIT,classifier,0.3607569336891174,0.3607569336891174,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CLND.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4830959096930978,⚖️ HOLD,classifier,0.3843216896057129,0.3843216896057129,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+OFEQ.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4207962046521646,⚖️ HOLD,classifier,0.4140158891677856,0.4140158891677856,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+EMER.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3613217392916544,🔻 SELL / WAIT,classifier,0.3518910408020019,0.3518910408020019,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CFIN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3752377966970848,🔻 SELL / WAIT,classifier,0.3363479077816009,0.3363479077816009,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+BIL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.1883254864758851,🔻 SELL / WAIT,classifier,0.1030057892203331,0.1030057892203331,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+WATA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3973309446448823,🔻 SELL / WAIT,classifier,0.3834156394004822,0.3834156394004822,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+WAPO.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4769190583397095,⚖️ HOLD,classifier,0.3385123908519745,0.3385123908519745,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+PINS.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4442095689285709,⚖️ HOLD,classifier,0.3383338749408722,0.3383338749408722,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+RGEM.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3778818699017953,🔻 SELL / WAIT,classifier,0.4138879776000976,0.4138879776000976,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+UCAR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4605831991376273,⚖️ HOLD,classifier,0.4092004299163818,0.4092004299163818,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+JKH.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3857522302261937,🔻 SELL / WAIT,classifier,0.3410267233848572,0.3410267233848572,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CITH.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2223404405647467,🔻 SELL / WAIT,classifier,0.3884718716144562,0.3884718716144562,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+VFIN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4060849657149791,⚖️ HOLD,classifier,0.3375292122364044,0.3375292122364044,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CWL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3427528295316452,🔻 SELL / WAIT,classifier,0.3931618332862854,0.3931618332862854,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+TAFL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3927697953172846,🔻 SELL / WAIT,classifier,0.3294715285301208,0.3294715285301208,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+VPEL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3616804813717085,🔻 SELL / WAIT,classifier,0.3479106426239013,0.3479106426239013,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LGL.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4167711141440641,⚖️ HOLD,classifier,0.300565242767334,0.300565242767334,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LFIN.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3910716781565798,🔻 SELL / WAIT,classifier,0.3181534111499786,0.3181534111499786,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+MBSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3741315049519755,🔻 SELL / WAIT,classifier,0.3759772777557373,0.3759772777557373,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HBS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2576875807148872,🔻 SELL / WAIT,classifier,0.3726307451725006,0.3726307451725006,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+ASIR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3329091322678153,🔻 SELL / WAIT,classifier,0.3491203188896179,0.3491203188896179,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SHOT.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4349631329755006,⚖️ HOLD,classifier,0.4096935391426086,0.4096935391426086,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+ABAN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4681022040674983,⚖️ HOLD,classifier,,,,,,,,⚖️ HOLD
+RHL.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3788503224600357,🔻 SELL / WAIT,classifier,0.3647040724754333,0.3647040724754333,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CBNK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3857522302261937,🔻 SELL / WAIT,classifier,0.3260915279388428,0.3260915279388428,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+DOCK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.372321163591251,🔻 SELL / WAIT,classifier,0.378618836402893,0.378618836402893,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HVA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4297236337566379,⚖️ HOLD,classifier,0.3622638583183288,0.3622638583183288,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+TKYO.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4412392879958298,⚖️ HOLD,classifier,0.3368816077709198,0.3368816077709198,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SEYB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4349631329755006,⚖️ HOLD,classifier,0.0892638117074966,0.0892638117074966,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HNBF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3534397464590221,🔻 SELL / WAIT,classifier,0.378836065530777,0.378836065530777,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+KOTA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3302350206330596,🔻 SELL / WAIT,classifier,0.3607442677021026,0.3607442677021026,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SEMB.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.0444260774628805,🔻 SELL / WAIT,classifier,0.0421959124505519,0.0421959124505519,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CSD.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3838835865973142,🔻 SELL / WAIT,classifier,0.3589767515659332,0.3589767515659332,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+VONE.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4915160924468173,⚖️ HOLD,classifier,0.3965857923030853,0.3965857923030853,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+STAF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3584727632062454,🔻 SELL / WAIT,classifier,0.31857830286026,0.31857830286026,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+RAL.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3481691075225934,🔻 SELL / WAIT,classifier,0.3303162753582001,0.3303162753582001,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+AFSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3718797374573087,🔻 SELL / WAIT,classifier,0.402279794216156,0.402279794216156,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+EBCR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3972188199495784,🔻 SELL / WAIT,classifier,0.3763235807418823,0.3763235807418823,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CFVF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3600040931446877,🔻 SELL / WAIT,classifier,0.3701521158218384,0.3701521158218384,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HASU.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4264266741859122,⚖️ HOLD,classifier,0.3621152341365814,0.3621152341365814,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SINH.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3896944961541761,🔻 SELL / WAIT,classifier,0.3688157796859741,0.3688157796859741,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+AHUN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3779721325559284,🔻 SELL / WAIT,classifier,0.3569759726524353,0.3569759726524353,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+DIPD.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.3601920973731727,🔻 SELL / WAIT,classifier,0.3281415700912475,0.3281415700912475,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+MULL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.1591344832538936,🔻 SELL / WAIT,classifier,0.2599884271621704,0.2599884271621704,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+EXT.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.359698370331985,🔻 SELL / WAIT,classifier,0.3714677393436432,0.3714677393436432,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LUMX.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3153078753816594,🔻 SELL / WAIT,classifier,0.3959625959396362,0.3959625959396362,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HSIG.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4054159692048231,⚖️ HOLD,classifier,0.3734327554702759,0.3734327554702759,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+AGST.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3335183105114822,🔻 SELL / WAIT,classifier,0.3996402025222778,0.3996402025222778,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+DIAL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3256054587786331,🔻 SELL / WAIT,classifier,0.3416441082954407,0.3416441082954407,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+DPL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2576875807148872,🔻 SELL / WAIT,classifier,0.3720676004886627,0.3720676004886627,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CTHR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3577314567620411,🔻 SELL / WAIT,classifier,0.3855234086513519,0.3855234086513519,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+PMB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3741315049519755,🔻 SELL / WAIT,classifier,0.3838998079299927,0.3838998079299927,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CTBL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3541505657028669,🔻 SELL / WAIT,classifier,0.3810749053955078,0.3810749053955078,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+KPHL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3702994367196116,🔻 SELL / WAIT,classifier,0.401220440864563,0.401220440864563,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+ABL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4057864048163562,⚖️ HOLD,classifier,,,,,,,,⚖️ HOLD
+GREG.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3608085820319617,🔻 SELL / WAIT,classifier,0.3641634881496429,0.3641634881496429,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+GUAR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3470128009033689,🔻 SELL / WAIT,classifier,0.3636033833026886,0.3636033833026886,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+TSML.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4138276283855261,⚖️ HOLD,classifier,0.3683569133281708,0.3683569133281708,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CTLD.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4874312765768756,⚖️ HOLD,classifier,0.4077892005443573,0.4077892005443573,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+KCAB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3707383922897032,🔻 SELL / WAIT,classifier,0.3556351959705353,0.3556351959705353,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+YORK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2492836990020561,🔻 SELL / WAIT,classifier,0.3837396204471588,0.3837396204471588,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+MEL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3192880523018193,🔻 SELL / WAIT,classifier,0.3479256629943847,0.3479256629943847,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SCAP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3653786366614752,🔻 SELL / WAIT,classifier,0.370345801115036,0.370345801115036,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+FCT.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3940649386166774,🔻 SELL / WAIT,classifier,0.3545031547546386,0.3545031547546386,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SERV.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3207710426028703,🔻 SELL / WAIT,classifier,0.2391726374626159,0.2391726374626159,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HNB.X0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.4323993931600109,⚖️ HOLD,classifier,0.3385586440563202,0.3385586440563202,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LHL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3579991023191693,🔻 SELL / WAIT,classifier,0.4050399363040924,0.4050399363040924,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+TJL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3291484433102606,🔻 SELL / WAIT,classifier,0.3742376565933227,0.3742376565933227,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+MDL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4175760609854054,⚖️ HOLD,classifier,0.3582777678966522,0.3582777678966522,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+RCL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3221637467700836,🔻 SELL / WAIT,classifier,0.3479611873626709,0.3479611873626709,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+GRAN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4163375105992669,⚖️ HOLD,classifier,0.3421971201896667,0.3421971201896667,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+COCR.N0000,🐳 Whale Accumulation,Potential Buy (low noise),,kmeans,0.5653736009093371,⚖️ HOLD,classifier,0.3295901715755462,0.3295901715755462,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+COMB.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3801620406199404,🔻 SELL / WAIT,classifier,0.3473343551158905,0.3473343551158905,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SLTL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4349631329755006,⚖️ HOLD,classifier,0.3734357357025146,0.3734357357025146,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LLUB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4239592565481822,⚖️ HOLD,classifier,0.3618617355823517,0.3618617355823517,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+ASIY.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4327387819089991,⚖️ HOLD,classifier,0.3519659340381622,0.3519659340381622,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LWL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4128561801651816,⚖️ HOLD,classifier,0.409028947353363,0.409028947353363,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+VLL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4239592565481822,⚖️ HOLD,classifier,0.3746750652790069,0.3746750652790069,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+AUTO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.485594287098991,⚖️ HOLD,classifier,0.0809969007968902,0.0809969007968902,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LGL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3631739572441858,🔻 SELL / WAIT,classifier,0.3150694072246551,0.3150694072246551,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+JFP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.367104396945888,🔻 SELL / WAIT,classifier,0.3869060575962066,0.3869060575962066,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HPWR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3755052900207355,🔻 SELL / WAIT,classifier,0.3704796731472015,0.3704796731472015,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+WIND.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3953013326677254,🔻 SELL / WAIT,classifier,0.3614194095134735,0.3614194095134735,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+EAST.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3430346440904792,🔻 SELL / WAIT,classifier,0.3752639293670654,0.3752639293670654,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SFIN.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4278812187319502,⚖️ HOLD,classifier,0.2125411480665207,0.2125411480665207,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+COCO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4198524008460305,⚖️ HOLD,classifier,0.3683218955993652,0.3683218955993652,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+KZOO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4327387819089991,⚖️ HOLD,classifier,0.4103934168815613,0.4103934168815613,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+RWSL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3628705262855336,🔻 SELL / WAIT,classifier,0.3479394912719726,0.3479394912719726,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+UAL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3411610198236589,🔻 SELL / WAIT,classifier,0.3688803613185882,0.3688803613185882,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+UML.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3737197747135949,🔻 SELL / WAIT,classifier,0.3846722245216369,0.3846722245216369,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+MAL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3755179855490796,🔻 SELL / WAIT,classifier,0.3543693125247955,0.3543693125247955,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+LOLC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4130474570038612,⚖️ HOLD,classifier,0.3577515780925751,0.3577515780925751,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SINS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4088512216559052,⚖️ HOLD,classifier,0.3639651536941528,0.3639651536941528,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+HEXP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.323159408252717,🔻 SELL / WAIT,classifier,0.3909672796726227,0.3909672796726227,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+TILE.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.5363123702239663,⚖️ HOLD,classifier,0.3448348343372345,0.3448348343372345,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CDB.X0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4028990488526072,⚖️ HOLD,classifier,0.3506686687469482,0.3506686687469482,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+SIRA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3534397464590221,🔻 SELL / WAIT,classifier,0.3709155321121216,0.3709155321121216,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+PACK.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3741315049519755,🔻 SELL / WAIT,classifier,0.378233790397644,0.378233790397644,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+AAIC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3415825730796598,🔻 SELL / WAIT,classifier,,,,,,,,⚖️ HOLD
+BOGA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3437384917624889,🔻 SELL / WAIT,classifier,0.381091296672821,0.381091296672821,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+PKME.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3470660498848623,🔻 SELL / WAIT,classifier,0.3704260587692261,0.3704260587692261,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+MHDL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3637342357149736,🔻 SELL / WAIT,classifier,0.3891565203666687,0.3891565203666687,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CARG.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3750208803290866,🔻 SELL / WAIT,classifier,0.3617507815361023,0.3617507815361023,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+EML.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2826507617609395,🔻 SELL / WAIT,classifier,0.3671904802322387,0.3671904802322387,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+NHL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.2879210851376391,🔻 SELL / WAIT,classifier,0.4071177244186401,0.4071177244186401,0.0,0.0,1.0,1.0,Neutral,⚖️ HOLD
+HAYC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3652237660282391,🔻 SELL / WAIT,classifier,0.3578224182128906,0.3578224182128906,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+DIMO.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4055747322830637,⚖️ HOLD,classifier,0.3525905311107635,0.3525905311107635,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+AAF.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3601911736390434,🔻 SELL / WAIT,classifier,,,,,,,,⚖️ HOLD
+DFCC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3379260559258772,🔻 SELL / WAIT,classifier,0.3342295289039612,0.3342295289039612,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+RIL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3755219984940188,🔻 SELL / WAIT,classifier,0.3650440275669098,0.3650440275669098,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+ATL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4590692432128646,⚖️ HOLD,classifier,0.1807140260934829,0.1807140260934829,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+MERC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3720003160043875,🔻 SELL / WAIT,classifier,0.3350667953491211,0.3350667953491211,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+COMB.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3757323686345221,🔻 SELL / WAIT,classifier,0.3630656003952026,0.3630656003952026,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+PLR.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3546836121578349,🔻 SELL / WAIT,classifier,0.355591356754303,0.355591356754303,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+AFS.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4795334892052668,⚖️ HOLD,classifier,0.3634878098964691,0.3634878098964691,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+PABC.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.3963206504717703,🔻 SELL / WAIT,classifier,0.3585487604141235,0.3585487604141235,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+ECL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4099797319045967,⚖️ HOLD,classifier,0.3582290410995483,0.3582290410995483,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+APLA.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4201072206429066,⚖️ HOLD,classifier,0.3452236652374267,0.3452236652374267,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CWM.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.411282061734097,⚖️ HOLD,classifier,0.3565976619720459,0.3565976619720459,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+RHL.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4377041179972606,⚖️ HOLD,classifier,0.3738838136196136,0.3738838136196136,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+TAP.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4108545132892715,⚖️ HOLD,classifier,0.3338057994842529,0.3338057994842529,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+ALUM.N0000,😴 Neutral Market,Wait / Ignore,,kmeans,0.4589585560032298,⚖️ HOLD,classifier,0.3506097197532654,0.3506097197532654,0.0,1.0,0.0,1.0,Bearish,⚖️ HOLD
+CDB.N0000,🛑 Panic Crash,Exit / Avoid,,kmeans,0.4046109824803741,⚖️ HOLD,classifier,0.3574859499931335,0.3574859499931335,0.0,1.0,0.0,1.0,Bearish,🔻 SELL
+LION.N0000,🛑 Panic Crash,Exit / Avoid,,kmeans,0.6199676392952577,🚀 BUY,classifier,0.364782303571701,0.364782303571701,0.0,1.0,0.0,1.0,Bearish,🔻 SELL
+MCPL.N0000,🛑 Panic Crash,Exit / Avoid,,kmeans,0.6166031313645346,🚀 BUY,classifier,0.3412539660930633,0.3412539660930633,0.0,1.0,0.0,1.0,Bearish,🔻 SELL
+CALF.N0000,🛑 Panic Crash,Exit / Avoid,,kmeans,0.5459814358912202,⚖️ HOLD,classifier,0.3644916117191314,0.3644916117191314,0.0,1.0,0.0,1.0,Bearish,🔻 SELL
+SPEN.N0000,🛑 Panic Crash,Exit / Avoid,,kmeans,0.21086020155839,🔻 SELL / WAIT,classifier,0.3336385190486908,0.3336385190486908,0.0,1.0,0.0,1.0,Bearish,🔻 SELL
+LCEY.N0000,🛑 Panic Crash,Exit / Avoid,,kmeans,0.2679038997704715,🔻 SELL / WAIT,classifier,0.332813411951065,0.332813411951065,0.0,1.0,0.0,1.0,Bearish,🔻 SELL
