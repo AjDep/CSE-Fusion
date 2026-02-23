@@ -30,13 +30,25 @@ const formatTableName = (name) => {
 };
 
 export default function Dashboard() {
-  const tables = useTables();
+  const { tables, reloadTables } = useTables();
   const [selectedTable, setSelectedTable] = useState("");
   const data = useTableData(selectedTable);
   const companies = useCompanies();
   const [selectedCompany, setSelectedCompany] = useState("");
   const { history: companyHistory, loading } = useCompanyHistory(selectedCompany); // Custom hook
   const { isRunningML, mlStatus, syncTable, runML } = useMLActions();
+  const [showML, setShowML] = useState(false);
+  const [mlRefresh, setMlRefresh] = useState(0);
+  const mlData = useTableData(showML ? 'ml_trading_signals' : '', mlRefresh);
+
+  // Auto-select the most recent bid/ask table (fallback to any table) so data shows immediately
+  useEffect(() => {
+    if (!selectedTable && tables.length > 0) {
+      const nonMlTables = tables.filter(t => t !== 'ml_trading_signals');
+      const fallbackTables = nonMlTables.length > 0 ? nonMlTables : tables;
+      setSelectedTable(fallbackTables[fallbackTables.length - 1]);
+    }
+  }, [selectedTable, tables]);
 
   // Sync selected table to ML models when it changes
   useEffect(() => {
@@ -47,7 +59,14 @@ export default function Dashboard() {
 
   const displayTableName = useMemo(() => formatTableName(selectedTable), [selectedTable]);
 
-  const handleRunML = () => runML(selectedTable);
+  const handleRunML = async () => {
+    const result = await runML(selectedTable);
+    if (result?.success) {
+      await reloadTables();
+      setShowML(true);
+      setMlRefresh((n) => n + 1);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -70,16 +89,20 @@ export default function Dashboard() {
               : 'bg-blue-600 text-white hover:bg-blue-700'
           }`}
         >
-          {isRunningML ? 'Running...' : 'Get ML Insights'}
+          {isRunningML ? (
+            <span className="flex items-center gap-2">
+              <span className="ml-spinner" aria-hidden="true" />
+              <span>Running...</span>
+            </span>
+          ) : (
+            'Get ML Insights'
+          )}
         </button>
         </div>
         {mlStatus && (
           <p className="text-sm font-semibold">{mlStatus}</p>
       )}
-
-      
-
-      
+     
       </div>
       {data.length > 0 && (
         <>
@@ -106,7 +129,12 @@ export default function Dashboard() {
             </div>
           </div>
             
-          
+          {showML && mlData.length > 0 && (
+             <div className="mt-6 bg-white p-4 rounded shadow">
+                <h3 className="text-lg font-semibold mb-2">ML Trading Signals</h3>
+                <DataTable data={mlData} />
+              </div>
+            )}
 
           {selectedCompany && (
             <div className="mt-6 bg-white p-4 rounded shadow">

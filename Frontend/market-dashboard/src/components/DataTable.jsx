@@ -56,7 +56,7 @@ export default function DataTable({ data }) {
   const formatValue = (col, value) => {
     if (value === null || value === undefined) return "-";
     
-    if (col === "recorded_at") {
+    if (col === "recorded_at" || col === "updated_at") {
       return new Date(value).toLocaleString();
     }
     
@@ -74,8 +74,8 @@ export default function DataTable({ data }) {
   // Define columns
   const columns = useMemo(() => {
     if (!data || data.length === 0) return [];
-    
-    return COLUMN_ORDER
+
+    const orderedColumns = COLUMN_ORDER
       .filter(key => key in data[0])
       .map((key) => ({
         accessorKey: key,
@@ -95,6 +95,30 @@ export default function DataTable({ data }) {
           return String(a).localeCompare(String(b));
         },
       }));
+
+    // Append any columns not explicitly ordered (e.g., ML outputs)
+    const extraColumns = Object.keys(data[0])
+      .filter(key => !COLUMN_ORDER.includes(key))
+      .map((key) => ({
+        accessorKey: key,
+        header: COLUMN_LABELS[key] || key.replace(/_/g, " ").toUpperCase(),
+        cell: (info) => formatValue(key, info.getValue()),
+        sortingFn: (rowA, rowB, columnId) => {
+          const a = rowA.getValue(columnId);
+          const b = rowB.getValue(columnId);
+
+          const aNum = parseFloat(a);
+          const bNum = parseFloat(b);
+
+          if (!isNaN(aNum) && !isNaN(bNum)) {
+            return aNum > bNum ? 1 : aNum < bNum ? -1 : 0;
+          }
+
+          return String(a).localeCompare(String(b));
+        },
+      }));
+
+    return [...orderedColumns, ...extraColumns];
   }, [data]);
 
   const table = useReactTable({

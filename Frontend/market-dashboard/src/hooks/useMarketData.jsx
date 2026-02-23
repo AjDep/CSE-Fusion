@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   fetchTables,
   fetchTableData,
@@ -10,18 +10,25 @@ import {
 
 export function useTables() {
   const [tables, setTables] = useState([]);
-  useEffect(() => {
-    fetchTables().then(res => setTables(res.data.tables)).catch(console.error);
+  const loadTables = useCallback(() => {
+    return fetchTables()
+      .then(res => setTables(res.data.tables || []))
+      .catch(console.error);
   }, []);
-  return tables;
+
+  useEffect(() => {
+    loadTables();
+  }, [loadTables]);
+
+  return { tables, reloadTables: loadTables };
 }
 
-export function useTableData(selectedTable) {
+export function useTableData(selectedTable, refreshKey = 0) {
   const [data, setData] = useState([]);
   useEffect(() => {
     if (!selectedTable) return;
     fetchTableData(selectedTable).then(res => setData(res.data)).catch(console.error);
-  }, [selectedTable]);
+  }, [selectedTable, refreshKey]);
   return data;
 }
 

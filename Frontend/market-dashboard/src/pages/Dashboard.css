@@ -8,5 +8,23 @@
     gap:20px;
 }
 .lineDiff{
-    width: 800px;
+    width: 100%;
+}
+body{
+    padding:20px;
+}
+
+.ml-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #cbd5e1;
+    border-top-color: #2563eb;
+    border-radius: 9999px;
+    animation: mlSpin 0.7s linear infinite;
+}
+
+@keyframes mlSpin {
+    to {
+        transform: rotate(360deg);
+    }
 }
