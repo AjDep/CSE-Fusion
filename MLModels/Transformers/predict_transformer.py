@@ -23,11 +23,28 @@ MODEL_PATH = "models/transformer.pt"
 SCALER_PATH = "models/transformer_scaler.pkl"
 
 
-def create_sequences(data, time_steps):
+def create_sequences_by_security_for_inference(df, feature_cols, time_steps):
     sequences = []
-    for i in range(len(data) - time_steps + 1):
-        sequences.append(data[i:i + time_steps])
-    return np.array(sequences)
+    meta_rows = []
+
+    for _, group in df.groupby("security"):
+        group = group.sort_values("recorded_at").copy()
+
+        if len(group) < time_steps:
+            continue
+
+        X_group = group[feature_cols].values
+
+        for i in range(len(group) - time_steps):
+            sequences.append(X_group[i:i + time_steps])
+
+            # attach prediction to the last row of this window
+            meta_rows.append(
+                group.iloc[i + time_steps][['security', 'recorded_at']].to_dict()
+            )
+    X_seq = np.array(sequences)
+    meta_df = pd.DataFrame(meta_rows).reset_index(drop=True)
+    return X_seq, meta_df
 
 
 def predict_transformer(df: pd.DataFrame) -> pd.DataFrame:
@@ -36,41 +53,46 @@ def predict_transformer(df: pd.DataFrame) -> pd.DataFrame:
     Output is standardized for multi-model fusion.
     """
 
-    # 1️⃣ Feature engineering
+    # 1. Feature engineering
     df = add_obi(df)
     df = df.sort_values(['security', 'recorded_at']).copy()
 
-    # 2️⃣ Scale features
+    # 2. Scale features
     scaler = joblib.load(SCALER_PATH)
-    X_scaled = scaler.transform(df[FEATURES].fillna(0))
+    df[FEATURES] = scaler.transform(df[FEATURES].fillna(0))
 
-    # 3️⃣ Create sequences
-    X_seq = create_sequences(X_scaled, TIME_STEPS)
+    # 3. Create sequences per security
+    X_seq, meta_df = create_sequences_by_security_for_inference(
+        df=df,
+        feature_cols=FEATURES,
+        time_steps=TIME_STEPS
+    )
+
+    if len(X_seq) == 0:
+        return pd.DataFrame(columns=['security', 'recorded_at', 'score', 'signal', 'model'])
+
     X_tensor = torch.tensor(X_seq, dtype=torch.float32)
 
-    # 4️⃣ Load model
+    # 4. Load model
     model = MarketTransformer(feature_count=len(FEATURES))
     model.load_state_dict(torch.load(MODEL_PATH, map_location="cpu"))
     model.eval()
 
-    # 5️⃣ Predict
+    # 5. Predict
     with torch.no_grad():
         probs = model(X_tensor).numpy().flatten()
 
-    # 6️⃣ Align predictions with rows
-    result = df.iloc[TIME_STEPS - 1:].copy()
+    # 6. Align predictions with rows
+    result = meta_df.copy()
     result['score'] = probs
 
-    # 7️⃣ Trading signal
+    # 7. Trading signal
     result['signal'] = result['score'].apply(
         lambda x: "BUY" if x > 0.6 else ("SELL" if x < 0.4 else "HOLD")
     )
 
-    # 8️⃣ Final standardized output
-    return result[[
-        'security',
-        'recorded_at'
-    ]].assign(
+    # 8. Final standardized output
+    return result[['security', 'recorded_at']].assign(
         score=result['score'].astype(float),
         signal=result['signal'],
         model='transformer'
@@ -80,6 +102,11 @@ def predict_transformer(df: pd.DataFrame) -> pd.DataFrame:
 # ---- local test ----
 if __name__ == "__main__":
     df = pd.read_csv("../DataSets/market-dashboard.csv")
+
+    # Map timestamp column for transformer
+    df["recorded_at"] = df["created_at"]
+
     output = predict_transformer(df)
+    print(df.columns) 
     print(output.tail(10))
     output.to_csv("transformer_predictions.csv", index=False)

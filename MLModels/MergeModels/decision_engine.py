@@ -16,19 +16,27 @@ def fuse_signals(kmeans: pd.DataFrame,
         clf_signal = row.get("signal_classifier")
         tr_signal = row.get("signal_transformer")
 
-        # 🚨 Rule 1: Panic overrides everything
+        # Rule 1: Panic overrides everything
         if regime == "🛑 Panic Crash":
             final = "🔻 SELL"
 
-        # 🐳 Rule 2: Whale + Momentum
-        elif regime == "🐳 Whale Accumulation" and tr_signal == "BUY":
+        # Rule 2: Whale accumulation + classifier buy
+        elif regime == "🐳 Whale Accumulation" and clf_signal == "BUY":
             final = "🟢 STRONG BUY"
 
-        # ⚖️ Rule 3: Agreement
-        elif clf_signal == "BUY" and tr_signal == "BUY":
+        # Rule 3: classifier buy
+        elif clf_signal == "BUY":
             final = "🟢 BUY"
 
-        # ⏸️ Rule 4: Default safe
+        # Rule 4: strong bearish agreement
+        elif clf_signal == "SELL" and tr_signal == "SELL":
+            final = "🔻 SELL"
+
+        # Rule 5: transformer bullish alone
+        elif tr_signal == "BUY":
+            final = "🟢 BUY"
+
+        # Rule 6: safe default
         else:
             final = "⚖️ HOLD"
 

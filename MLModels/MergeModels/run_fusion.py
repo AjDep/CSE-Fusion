@@ -14,7 +14,7 @@ if sys.platform == 'win32':
 import pandas as pd
 
 from decision_engine import fuse_signals
-from db_handler import DatabaseHandler
+from db_handler import DatabaseHandler  
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import get_selected_table
 
@@ -41,10 +41,37 @@ run_result_script(root_dir / "Clasification" / "result.py", "Classifier")
 run_result_script(root_dir / "Transformers" / "result.py", "Transformer")
 
 # 2) Load model outputs
-kmeans = pd.read_csv(root_dir / "outputs" / "kmeans_output.csv")
-classifier = pd.read_csv(root_dir / "outputs" / "classifier_output.csv")
+# Load model outputs
+kmeans = pd.read_csv(root_dir / "outputs" / "kmeans_output.csv").rename(
+    columns={"signal": "signal_kmeans"}
+)
+
+classifier = pd.read_csv(root_dir / "outputs" / "classifier_output.csv").rename(
+    columns={"signal": "signal_classifier"}
+)
+
 transformer = pd.read_csv(root_dir / "outputs" / "transformer_output_summary.csv")
 
+# map transformer momentum into standard BUY/SELL/HOLD language
+transformer["signal_transformer"] = transformer["transformer_momentum"].map({
+    "Bullish": "BUY",
+    "Bearish": "SELL",
+    "Neutral": "HOLD"
+})
+classifier["signal_classifier"] = classifier["signal_classifier"].replace({
+    "🚀 BUY": "BUY",
+    "🔻 SELL / WAIT": "SELL",
+    "⚖️ HOLD": "HOLD"
+})
+kmeans["signal_kmeans"] = kmeans["signal_kmeans"].replace({
+    "Potential Buy (low noise)": "BUY",
+    "Ride the wave (short-term, use stop-loss)": "HOLD",
+    "Exit / Avoid": "SELL"
+})
+print("KMeans columns:", kmeans.columns.tolist())
+print("Classifier columns:", classifier.columns.tolist())
+print("Transformer columns:", transformer.columns.tolist())
+print(transformer[["security", "transformer_momentum", "signal_transformer"]].head())
 # Generate final signals
 final = fuse_signals(kmeans, classifier, transformer)
 

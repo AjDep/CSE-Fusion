@@ -5,8 +5,11 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 import sys
 import os
+from pathlib import Path
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# Ensure MLModels root is importable so shared helpers resolve
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(PROJECT_ROOT))
 
 from bid_api_client import load_with_fallback
 from feature_engineering import add_obi
@@ -25,27 +28,55 @@ REQUIRED_COLUMNS = [
     'total_ask'
 ]
 
-def create_sequences(X, y, time_steps):
+def create_sequences_by_security(df, feature_cols, target_col, time_steps):
     Xs, ys = [], []
-    for i in range(len(X) - time_steps):
-        Xs.append(X[i:i + time_steps])
-        ys.append(y[i + time_steps])
+
+    for _, group in df.groupby("security"):
+        group = group.sort_values("recorded_at").copy()
+
+        if len(group) <= time_steps:
+            continue
+
+        X_group = group[feature_cols].values
+        y_group = group[target_col].values
+
+        for i in range(len(group) - time_steps):
+            Xs.append(X_group[i:i + time_steps])
+            ys.append(y_group[i + time_steps])
+
     return np.array(Xs), np.array(ys)
 
-# Load data from API (no CSV fallback)
+
+# Load data
 df = load_with_fallback(required_columns=REQUIRED_COLUMNS, allow_fallback=False)
 df = add_obi(df)
-df = df.sort_values(['security', 'recorded_at'])
+df = df.sort_values(['security', 'recorded_at']).copy()
 
+# Create next-step target correctly
 df['next_price'] = df.groupby('security')['current_bid_price'].shift(-1)
+
+# drop rows that have no future value
+df = df.dropna(subset=['next_price']).copy()
+
 df['target_is_up'] = (df['next_price'] > df['current_bid_price']).astype(int)
-df = df.dropna(subset=['target_is_up'])
 
+# optional extra cleanup
+df = df.dropna(subset=FEATURES + ['target_is_up']).copy()
+
+# scale features
 scaler = StandardScaler()
-X_scaled = scaler.fit_transform(df[FEATURES])
-y = df['target_is_up'].values
+df[FEATURES] = scaler.fit_transform(df[FEATURES])
 
-X_seq, y_seq = create_sequences(X_scaled, y, TIME_STEPS)
+# build sequences per stock
+X_seq, y_seq = create_sequences_by_security(
+    df=df,
+    feature_cols=FEATURES,
+    target_col='target_is_up',
+    time_steps=TIME_STEPS
+)
+
+if len(X_seq) == 0:
+    raise ValueError("No valid sequences were created for transformer training.")
 
 X_tensor = torch.tensor(X_seq, dtype=torch.float32)
 y_tensor = torch.tensor(y_seq, dtype=torch.float32).view(-1, 1)
@@ -64,10 +95,7 @@ for epoch in range(EPOCHS):
     if (epoch + 1) % 10 == 0:
         print(f"Epoch {epoch+1}/{EPOCHS} | Loss: {loss.item():.4f}")
 
-# Create models directory if it doesn't exist
 os.makedirs("models", exist_ok=True)
-
-# Save artifacts
 torch.save(model.state_dict(), "models/transformer.pt")
 joblib.dump(scaler, "models/transformer_scaler.pkl")
 
