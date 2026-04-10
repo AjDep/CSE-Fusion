@@ -8,6 +8,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from feature_engineering import add_obi
+from config import TRANSFORMER_BUY_THRESHOLD, TRANSFORMER_SELL_THRESHOLD
 
 # Must match training
 FEATURES = [
@@ -88,7 +89,9 @@ def predict_transformer(df: pd.DataFrame) -> pd.DataFrame:
 
     # 7. Trading signal
     result['signal'] = result['score'].apply(
-        lambda x: "BUY" if x > 0.6 else ("SELL" if x < 0.4 else "HOLD")
+        lambda x: "BUY" if x > TRANSFORMER_BUY_THRESHOLD else (
+            "SELL" if x < TRANSFORMER_SELL_THRESHOLD else "HOLD"
+        )
     )
 
     # 8. Final standardized output

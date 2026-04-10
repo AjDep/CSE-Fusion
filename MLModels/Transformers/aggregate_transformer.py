@@ -1,4 +1,13 @@
 import pandas as pd
+import os
+import sys
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from config import (
+    TRANSFORMER_BUY_THRESHOLD,
+    TRANSFORMER_SELL_THRESHOLD,
+    TRANSFORMER_MOMENTUM_RATIO_THRESHOLD,
+)
 
 def aggregate_transformer(transformer_df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -23,9 +32,15 @@ def aggregate_transformer(transformer_df: pd.DataFrame) -> pd.DataFrame:
     # Human-readable momentum label
     summary["transformer_momentum"] = summary.apply(
         lambda row:
-            "Bullish" if row.buy_ratio > 0.6 else
-            "Bearish" if row.sell_ratio > 0.6 else
-            "Neutral",
+            "Bullish" if (
+                row.buy_ratio >= TRANSFORMER_MOMENTUM_RATIO_THRESHOLD
+                or row.transformer_avg_score >= TRANSFORMER_BUY_THRESHOLD
+            ) else (
+                "Bearish" if (
+                    row.sell_ratio >= TRANSFORMER_MOMENTUM_RATIO_THRESHOLD
+                    or row.transformer_avg_score <= TRANSFORMER_SELL_THRESHOLD
+                ) else "Neutral"
+            ),
         axis=1
     )
 
