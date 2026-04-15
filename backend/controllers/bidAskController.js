@@ -50,7 +50,16 @@ class BidAskController {
       const results = [];
 
       for (const ob of orderbooks) {
-        const { security, totalBid, totalAsk, bids, asks } = ob;
+        const {
+          security,
+          totalBid,
+          totalAsk,
+          bids,
+          asks,
+          companyName,
+          totVolume,
+          totTurnover
+        } = ob;
 
         if (isNaN(totalAsk) || isNaN(totalBid) || !bids || bids.length === 0) continue;
 
@@ -61,8 +70,11 @@ class BidAskController {
           const pplDominance = bidAskService.calculatePplDominance(totalBidSplits, totalAskSplits);
           results.push({
             security,
+            companyName: companyName || null,
             totalAsk,
             totalBid,
+            totVolume: totVolume ?? null,
+            totTurnover: totTurnover ?? null,
             diffPercent,
             pplDominance,
             topBidPrice: topBidEntry.price || null,

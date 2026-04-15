@@ -32,14 +32,27 @@ def main() -> None:
         (root / "Transformers" / "train_transformer.py", "Transformer training"),
     ]
 
+    transformer_trained = True
+
     for path, label in train_scripts:
         if not path.exists():
             print(f"[WARN] Missing script: {path}")
             continue
-        run_script(path, label)
+        try:
+            run_script(path, label)
+        except ModuleNotFoundError as error:
+            if label == "Transformer training" and error.name == "torch":
+                transformer_trained = False
+                print("[WARN] Skipping Transformer training: PyTorch is not available in this Python environment")
+                continue
+            raise
 
     if args.skip_fusion:
         print("\n[INFO] Skipping fusion as requested")
+        return
+
+    if not transformer_trained:
+        print("\n[WARN] Skipping fusion because Transformer training did not run")
         return
 
     fusion_script = root / "MergeModels" / "run_fusion.py"

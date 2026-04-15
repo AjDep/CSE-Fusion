@@ -15,7 +15,7 @@ from bid_api_client import load_with_fallback
 from feature_engineering import add_obi
 from Transformers.model import MarketTransformer
 
-FEATURES = ['diff_percent', 'ppl_dominance', 'obi', 'total_bid', 'total_ask']
+FEATURES = ['diff_percent', 'ppl_dominance', 'obi', 'total_bid', 'total_ask', 'tot_turnover', 'tot_volume']
 TIME_STEPS = 5
 EPOCHS = 50
 REQUIRED_COLUMNS = [
@@ -25,8 +25,33 @@ REQUIRED_COLUMNS = [
     'diff_percent',
     'ppl_dominance',
     'total_bid',
-    'total_ask'
+    'total_ask',
+    'tot_turnover',
+    'tot_volume'
 ]
+
+def prepare_feature_frame(df):
+    """Prepare features by coercing to numeric, handling NaN/inf, and imputing with median."""
+    df = df.copy()
+    for col in FEATURES:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors='coerce')
+            df[col] = df[col].replace([np.inf, -np.inf], np.nan)
+    
+    # Fill NaN with median of each column
+    for col in FEATURES:
+        if col in df.columns and df[col].isna().any():
+            median_val = df[col].median()
+            if pd.notna(median_val):
+                df[col].fillna(median_val, inplace=True)
+            else:
+                df[col].fillna(0, inplace=True)
+    
+    # Drop rows where target_is_up is NaN (this is critical)
+    if 'target_is_up' in df.columns:
+        df = df.dropna(subset=['target_is_up']).copy()
+    
+    return df
 
 def create_sequences_by_security(df, feature_cols, target_col, time_steps):
     Xs, ys = [], []
@@ -60,8 +85,8 @@ df = df.dropna(subset=['next_price']).copy()
 
 df['target_is_up'] = (df['next_price'] > df['current_bid_price']).astype(int)
 
-# optional extra cleanup
-df = df.dropna(subset=FEATURES + ['target_is_up']).copy()
+# Prepare features with robust NaN handling instead of dropping rows
+df = prepare_feature_frame(df)
 
 # scale features
 scaler = StandardScaler()

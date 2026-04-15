@@ -5,13 +5,15 @@ const { PORT, CLEANUP_INTERVAL_HOURS } = require('./config');
 const companiesRoutes = require('./routes/companies');
 const tablesRoutes = require('./routes/tables');
 const bidAskRoutes = require('./routes/bidAsk');
+const analysisRoutes = require('./routes/analysis');
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '5mb' }));
 
-// Routes
+// Routes - Order matters! Specific routes BEFORE catch-all routes
 app.use('/api/companies', companiesRoutes);
 app.use('/api/tables', tablesRoutes);
+app.use('/api/analysis', analysisRoutes);
 app.use('/api', bidAskRoutes);
 
 

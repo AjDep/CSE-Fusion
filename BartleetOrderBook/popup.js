@@ -1,4 +1,5 @@
 const API_BASE = "https://invest.bartleetreligare.com/atsweb";
+const WATCH_URL_BASE = `${API_BASE}/watch?action=fullWatch&format=json&exchange=CSE&bookDefId=1&watchId=20906&lastUpdatedId=0`;
 let lastResults = [];       // For bid analysis
 let lastFetchedRows = [];   // For fetchData tables
 let buyerInterestResults = [];
@@ -12,6 +13,18 @@ function normalizeSecurities(securities) {
             .map(s => (s || '').trim().toUpperCase().replace(/[^A-Z0-9\.]/g, ''))
             .filter(s => s && (s.endsWith('.N0000') || s.endsWith('.X0000')))
     ));
+}
+
+function normalizeSecurityKey(security) {
+    return (security || '').trim().toUpperCase();
+}
+
+function parseMarketNumber(value) {
+    if (value === null || value === undefined || value === '') return null;
+    const normalized = String(value).replace(/,/g, '').trim();
+    if (!normalized) return null;
+    const parsed = Number(normalized);
+    return Number.isFinite(parsed) ? parsed : null;
 }
 
 function safeJsonParse(text) {
@@ -45,6 +58,36 @@ async function apiFetchOrderBook(security) {
         console.error(`Fetch error for ${security}:`, err);
         return null;
     }
+}
+
+async function fetchWatchSnapshotBySecurity() {
+    const map = new Map();
+
+    try {
+        const url = `${WATCH_URL_BASE}&dojo.preventCache=${Date.now()}`;
+        const res = await fetch(url, {
+            credentials: 'include',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json, text/javascript, */*; q=0.01',
+                'Referer': `${API_BASE}/watch`
+            }
+        });
+
+        const text = await res.text();
+        const data = safeJsonParse(text);
+        const rows = Array.isArray(data?.data?.watch) ? data.data.watch : [];
+
+        for (const row of rows) {
+            const key = normalizeSecurityKey(row?.security);
+            if (!key) continue;
+            map.set(key, row);
+        }
+    } catch (err) {
+        console.warn('Watch snapshot fetch failed:', err);
+    }
+
+    return map;
 }
 
 function formatNumber(n) {
@@ -138,10 +181,13 @@ async function analyzeBidDominance(securities) {
     setOutput("Analyzing Bid vs Ask...");
     const cleaned = normalizeSecurities(securities);
     const orderbooks = [];
+    const watchMap = await fetchWatchSnapshotBySecurity();
 
     for (const sec of cleaned) {
         const ob = await apiFetchOrderBook(sec);
         if (!ob) continue;
+
+        const watchDetails = watchMap.get(normalizeSecurityKey(sec)) || null;
 
         const totalAsk = parseFloat(ob.totalask);
         const totalBid = parseFloat(ob.totalbids);
@@ -162,7 +208,10 @@ async function analyzeBidDominance(securities) {
             totalBid,
             totalAsk,
             bids,
-            asks
+            asks,
+            companyName: watchDetails?.companyname || null,
+            totVolume: parseMarketNumber(watchDetails?.totvolume),
+            totTurnover: parseMarketNumber(watchDetails?.totturnover)
         });
     }
 
@@ -211,7 +260,7 @@ async function fetchWatchlist() {
     setOutput("Fetching watchlist...");
 
     try {
-        const url = `${API_BASE}/watch?action=fullWatch&format=json&exchange=CSE&bookDefId=1&watchId=20906&lastUpdatedId=0`;
+        const url = `${WATCH_URL_BASE}&dojo.preventCache=${Date.now()}`;
         const res = await fetch(url, {
             credentials: 'include',
             headers: {

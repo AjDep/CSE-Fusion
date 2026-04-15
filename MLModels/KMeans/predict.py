@@ -1,5 +1,5 @@
 import pandas as pd
-from market_regime_model import load_model, add_obi, FEATURES
+from market_regime_model import load_model, add_obi, FEATURES, prepare_feature_frame
 from cluster_labels import CLUSTER_INFO
 
 
@@ -7,6 +7,7 @@ def predict_today(df_snapshot: pd.DataFrame):
     kmeans, scaler = load_model()
 
     df = add_obi(df_snapshot)
+    df = prepare_feature_frame(df)
 
     X_scaled = scaler.transform(df[FEATURES])
     df["cluster"] = kmeans.predict(X_scaled)

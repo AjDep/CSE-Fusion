@@ -1,5 +1,6 @@
 import joblib
 import pandas as pd
+import numpy as np
 from sklearn.ensemble import GradientBoostingClassifier
 import sys
 import os
@@ -12,13 +13,33 @@ FEATURES = [
     'obi',
     'total_bid',
     'total_ask',
-    'top_bid_qty'
+    'top_bid_qty',
+    'tot_turnover',
+    'tot_volume'
 ]
+
+
+def prepare_feature_frame(df: pd.DataFrame) -> pd.DataFrame:
+    prepared = df.copy()
+
+    for col in FEATURES:
+        if col not in prepared.columns:
+            prepared[col] = 0
+
+        prepared[col] = pd.to_numeric(prepared[col], errors='coerce')
+        prepared[col] = prepared[col].replace([np.inf, -np.inf], np.nan)
+
+        median_value = prepared[col].median(skipna=True)
+        fill_value = median_value if pd.notna(median_value) else 0
+        prepared[col] = prepared[col].fillna(fill_value)
+
+    return prepared
 
 
 def prepare_training_data(df: pd.DataFrame):
     df = df.sort_values(['security', 'recorded_at']).copy()
     df = add_obi(df)
+    df = prepare_feature_frame(df)
 
     df['next_price'] = df.groupby('security')['current_bid_price'].shift(-1)
     df['target_is_up'] = (df['next_price'] > df['current_bid_price']).astype(int)

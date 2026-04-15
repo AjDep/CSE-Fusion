@@ -33,6 +33,8 @@ class BidAskService {
         security VARCHAR(50) NOT NULL,
         total_bid BIGINT,
         total_ask BIGINT,
+        tot_volume BIGINT,
+        tot_turnover DECIMAL(20,4),
         diff_percent DECIMAL(10,4),
         ppl_dominance DECIMAL(10,4),
         total_bid_splits INT,
@@ -46,6 +48,12 @@ class BidAskService {
 
     // Add missing columns if table already exists
     const alterSqls = [
+      `ALTER TABLE \`${tableName}\` ADD COLUMN tot_volume BIGINT`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN tot_turnover DECIMAL(20,4)`,
+      `ALTER TABLE \`${tableName}\` DROP COLUMN buy_sentiment`,
+      `ALTER TABLE \`${tableName}\` DROP COLUMN cash_in`,
+      `ALTER TABLE \`${tableName}\` DROP COLUMN trade_price`,
+      `ALTER TABLE \`${tableName}\` DROP COLUMN trade_size`,
       `ALTER TABLE \`${tableName}\` ADD COLUMN ppl_dominance DECIMAL(10,4)`,
       `ALTER TABLE \`${tableName}\` ADD COLUMN total_bid_splits INT`,
       `ALTER TABLE \`${tableName}\` ADD COLUMN total_ask_splits INT`,
@@ -59,7 +67,7 @@ class BidAskService {
         await pool.query(alterSql);
       } catch (error) {
         // Ignore if column already exists
-        if (!error.message.includes('Duplicate column name')) {
+        if (!this.shouldIgnoreAlterError(error)) {
           throw error;
         }
       }
@@ -74,6 +82,8 @@ class BidAskService {
         recorded_at DATETIME NOT NULL,
         total_bid BIGINT,
         total_ask BIGINT,
+        tot_volume BIGINT,
+        tot_turnover DECIMAL(20,4),
         diff_percent DECIMAL(10,4),
         ppl_dominance DECIMAL(10,4),
         total_bid_splits INT,
@@ -90,6 +100,12 @@ class BidAskService {
 
     // Add missing columns if table already exists
     const alterSqls = [
+      `ALTER TABLE company_history ADD COLUMN tot_volume BIGINT`,
+      `ALTER TABLE company_history ADD COLUMN tot_turnover DECIMAL(20,4)`,
+      `ALTER TABLE company_history DROP COLUMN buy_sentiment`,
+      `ALTER TABLE company_history DROP COLUMN cash_in`,
+      `ALTER TABLE company_history DROP COLUMN trade_price`,
+      `ALTER TABLE company_history DROP COLUMN trade_size`,
       `ALTER TABLE company_history ADD COLUMN ppl_dominance DECIMAL(10,4)`,
       `ALTER TABLE company_history ADD COLUMN total_bid_splits INT`,
       `ALTER TABLE company_history ADD COLUMN total_ask_splits INT`,
@@ -106,7 +122,7 @@ class BidAskService {
         await pool.query(alterSql);
       } catch (error) {
         // Ignore if column/index already exists
-        if (!error.message.includes('Duplicate column name') && !error.message.includes('Duplicate key name')) {
+        if (!this.shouldIgnoreAlterError(error)) {
           throw error;
         }
       }
@@ -120,6 +136,8 @@ class BidAskService {
         security VARCHAR(50) NOT NULL UNIQUE,
         company_name VARCHAR(255),
         exchange VARCHAR(50),
+        latest_tot_volume BIGINT,
+        latest_tot_turnover DECIMAL(20,4),
         table_name VARCHAR(255),
         first_recorded DATETIME,
         last_recorded DATETIME,
@@ -129,6 +147,27 @@ class BidAskService {
       ) ENGINE=InnoDB;
     `;
     await pool.query(sql);
+
+    const alterSqls = [
+      `ALTER TABLE companies ADD COLUMN company_name VARCHAR(255)`,
+      `ALTER TABLE companies ADD COLUMN exchange VARCHAR(50)`,
+      `ALTER TABLE companies ADD COLUMN latest_tot_volume BIGINT`,
+      `ALTER TABLE companies ADD COLUMN latest_tot_turnover DECIMAL(20,4)`,
+      `ALTER TABLE companies DROP COLUMN latest_buy_sentiment`,
+      `ALTER TABLE companies DROP COLUMN latest_cash_in`,
+      `ALTER TABLE companies DROP COLUMN latest_trade_price`,
+      `ALTER TABLE companies DROP COLUMN latest_trade_size`
+    ];
+
+    for (const alterSql of alterSqls) {
+      try {
+        await pool.query(alterSql);
+      } catch (error) {
+        if (!this.shouldIgnoreAlterError(error)) {
+          throw error;
+        }
+      }
+    }
   }
 
   async ensureCompanyTable(security) {
@@ -142,6 +181,8 @@ class BidAskService {
         recorded_at DATETIME NOT NULL,
         total_bid BIGINT,
         total_ask BIGINT,
+        tot_volume BIGINT,
+        tot_turnover DECIMAL(20,4),
         diff_percent DECIMAL(10,4),
         ppl_dominance DECIMAL(10,4),
         total_bid_splits INT,
@@ -157,6 +198,12 @@ class BidAskService {
 
     // Add missing columns if table already exists
     const alterSqls = [
+      `ALTER TABLE \`${tableName}\` ADD COLUMN tot_volume BIGINT`,
+      `ALTER TABLE \`${tableName}\` ADD COLUMN tot_turnover DECIMAL(20,4)`,
+      `ALTER TABLE \`${tableName}\` DROP COLUMN buy_sentiment`,
+      `ALTER TABLE \`${tableName}\` DROP COLUMN cash_in`,
+      `ALTER TABLE \`${tableName}\` DROP COLUMN trade_price`,
+      `ALTER TABLE \`${tableName}\` DROP COLUMN trade_size`,
       `ALTER TABLE \`${tableName}\` ADD COLUMN ppl_dominance DECIMAL(10,4)`,
       `ALTER TABLE \`${tableName}\` ADD COLUMN total_bid_splits INT`,
       `ALTER TABLE \`${tableName}\` ADD COLUMN total_ask_splits INT`,
@@ -172,7 +219,7 @@ class BidAskService {
         await pool.query(alterSql);
       } catch (error) {
         // Ignore if column/index already exists
-        if (!error.message.includes('Duplicate column name') && !error.message.includes('Duplicate key name')) {
+        if (!this.shouldIgnoreAlterError(error)) {
           throw error;
         }
       }
@@ -187,7 +234,8 @@ class BidAskService {
     if (!records.length) return 0;
 
     const columns = [
-      'security', 'total_bid', 'total_ask', 'diff_percent', 'ppl_dominance',
+      'security', 'total_bid', 'total_ask', 'tot_volume', 'tot_turnover',
+      'diff_percent', 'ppl_dominance',
       'total_bid_splits', 'total_ask_splits', 'top_bid_qty',
       'top_bid_price', 'current_bid_price'
     ];
@@ -207,6 +255,8 @@ class BidAskService {
         r.security,
         Number(r.totalBid) || 0,
         Number(r.totalAsk) || 0,
+        Number(r.totVolume) || 0,
+        r.totTurnover != null ? Number(r.totTurnover) : null,
         Number(r.diffPercent) || 0,
         Number(r.pplDominance) || 0,
         Number(r.totalBidSplits) || 0,
@@ -226,7 +276,8 @@ class BidAskService {
 
     const sql = `
       INSERT INTO company_history (
-        security, recorded_at, total_bid, total_ask, diff_percent, ppl_dominance,
+        security, recorded_at, total_bid, total_ask, tot_volume, tot_turnover,
+        diff_percent, ppl_dominance,
         total_bid_splits, total_ask_splits, top_bid_qty,
         top_bid_price, current_bid_price, source_table
       )
@@ -239,6 +290,8 @@ class BidAskService {
       now,
       r.totalBid || 0,
       r.totalAsk || 0,
+      r.totVolume || 0,
+      r.totTurnover != null ? r.totTurnover : null,
       r.diffPercent || 0,
       r.pplDominance || 0,
       r.totalBidSplits || 0,
@@ -255,17 +308,20 @@ class BidAskService {
   async insertIntoCompanyTable(conn, companyTableName, tableName, record, timestamp) {
     const sql = `
       INSERT INTO \`${companyTableName}\` (
-        recorded_at, total_bid, total_ask, diff_percent, ppl_dominance,
+        recorded_at, total_bid, total_ask, tot_volume, tot_turnover,
+        diff_percent, ppl_dominance,
         total_bid_splits, total_ask_splits, top_bid_qty,
         top_bid_price, current_bid_price, source_table
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     await conn.query(sql, [
       timestamp,
       record.totalBid || 0,
       record.totalAsk || 0,
+      record.totVolume || 0,
+      record.totTurnover != null ? record.totTurnover : null,
       record.diffPercent || 0,
       record.pplDominance || 0,
       record.totalBidSplits || 0,
@@ -277,18 +333,32 @@ class BidAskService {
     ]);
   }
 
-  async ensureCompanyExists(conn, security, companyTableName, timestamp) {
+  async ensureCompanyExists(conn, security, companyTableName, timestamp, record) {
     const insertSql = `
-      INSERT INTO companies (security, table_name, first_recorded, last_recorded, total_snapshots, is_active)
-      VALUES (?, ?, ?, ?, 1, 1)
+      INSERT INTO companies (
+        security, company_name, table_name, first_recorded, last_recorded,
+        total_snapshots, is_active, latest_tot_volume, latest_tot_turnover
+      )
+      VALUES (?, ?, ?, ?, ?, 1, 1, ?, ?)
       ON DUPLICATE KEY UPDATE
+        company_name = COALESCE(VALUES(company_name), company_name),
         last_recorded = VALUES(last_recorded),
         table_name = VALUES(table_name),
         total_snapshots = total_snapshots + 1,
+        latest_tot_volume = VALUES(latest_tot_volume),
+        latest_tot_turnover = VALUES(latest_tot_turnover),
         is_active = 1
     `;
 
-    await conn.query(insertSql, [security, companyTableName, timestamp, timestamp]);
+    await conn.query(insertSql, [
+      security,
+      record.companyName || null,
+      companyTableName,
+      timestamp,
+      timestamp,
+      record.totVolume || 0,
+      record.totTurnover != null ? record.totTurnover : null
+    ]);
   }
 
   /* ----------------------------------
@@ -318,6 +388,50 @@ class BidAskService {
   ----------------------------------- */
   validateRecord(record) {
     return record && typeof record.security === 'string' && record.security.trim().length > 0;
+  }
+
+  parseMarketNumber(value) {
+    if (value === null || value === undefined || value === '') return null;
+    if (typeof value === 'number') return Number.isFinite(value) ? value : null;
+    const normalized = String(value).replace(/,/g, '').trim();
+    if (!normalized) return null;
+    const parsed = Number(normalized);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+
+  shouldIgnoreAlterError(error) {
+    const message = error?.message || '';
+    return (
+      message.includes('Duplicate column name') ||
+      message.includes('Duplicate key name') ||
+      message.includes("Can't DROP") ||
+      message.includes("Can't change") ||
+      message.includes('Unknown column')
+    );
+  }
+
+  async ensureMasterTableColumns() {
+    const [tables] = await pool.query(`SHOW TABLES LIKE 'bid_vs_ask_master'`);
+    if (!tables || tables.length === 0) return;
+
+    const alterSqls = [
+      `ALTER TABLE bid_vs_ask_master ADD COLUMN tot_volume BIGINT`,
+      `ALTER TABLE bid_vs_ask_master ADD COLUMN tot_turnover DECIMAL(20,4)`,
+      `ALTER TABLE bid_vs_ask_master DROP COLUMN buy_sentiment`,
+      `ALTER TABLE bid_vs_ask_master DROP COLUMN cash_in`,
+      `ALTER TABLE bid_vs_ask_master DROP COLUMN trade_price`,
+      `ALTER TABLE bid_vs_ask_master DROP COLUMN trade_size`
+    ];
+
+    for (const alterSql of alterSqls) {
+      try {
+        await pool.query(alterSql);
+      } catch (error) {
+        if (!this.shouldIgnoreAlterError(error)) {
+          throw error;
+        }
+      }
+    }
   }
 
 async storeBidAskData(records, date) {
@@ -363,20 +477,24 @@ async storeBidAskData(records, date) {
   console.log('Parsed snapshot batch:', snapshotBatch);
 
   await this.ensureDailyTable(tableName);
+  await this.ensureMasterTableColumns();
 
   const validRecords = records
     .filter(this.validateRecord)
     .map(r => ({
       security: r.security,
-      totalBid: Number(r.totalBid) || 0,
-      totalAsk: Number(r.totalAsk) || 0,
-      diffPercent: Number(r.diffPercent) || 0,
-      pplDominance: Number(r.pplDominance) || 0,
-      totalBidSplits: Number(r.totalBidSplits) || 0,
-      totalAskSplits: Number(r.totalAskSplits) || 0,
-      topBidQty: Number(r.topBidQty) || 0,
-      topBidPrice: r.topBidPrice && !isNaN(Number(r.topBidPrice)) ? Number(r.topBidPrice) : null,
-      currentBidPrice: r.currentBidPrice && !isNaN(Number(r.currentBidPrice)) ? Number(r.currentBidPrice) : null
+      companyName: r.companyName || r.company_name || r.companyname || null,
+      totalBid: this.parseMarketNumber(r.totalBid) || 0,
+      totalAsk: this.parseMarketNumber(r.totalAsk) || 0,
+      totVolume: this.parseMarketNumber(r.totVolume ?? r.tot_volume ?? r.totvolume) || 0,
+      totTurnover: this.parseMarketNumber(r.totTurnover ?? r.tot_turnover ?? r.totturnover),
+      diffPercent: this.parseMarketNumber(r.diffPercent) || 0,
+      pplDominance: this.parseMarketNumber(r.pplDominance) || 0,
+      totalBidSplits: this.parseMarketNumber(r.totalBidSplits) || 0,
+      totalAskSplits: this.parseMarketNumber(r.totalAskSplits) || 0,
+      topBidQty: this.parseMarketNumber(r.topBidQty) || 0,
+      topBidPrice: this.parseMarketNumber(r.topBidPrice),
+      currentBidPrice: this.parseMarketNumber(r.currentBidPrice)
     }));
   console.log('Valid records:', validRecords.length);
 
@@ -403,7 +521,7 @@ async storeBidAskData(records, date) {
       const companyTableName = await this.ensureCompanyTable(record.security);
 
       // Ensure companies master row exists / update it
-      await this.ensureCompanyExists(conn, record.security, companyTableName, timestamp);
+      await this.ensureCompanyExists(conn, record.security, companyTableName, timestamp, record);
 
       // Insert into the company-specific time-series table
       await this.insertIntoCompanyTable(conn, companyTableName, tableName, record, timestamp);
@@ -442,6 +560,8 @@ async insertIntoMasterTable(conn,sourceTable, snapshotDate, snapshotBatch, recor
       security,
       total_bid,
       total_ask,
+      tot_volume,
+      tot_turnover,
       diff_percent,
       ppl_dominance,
       total_bid_splits,
@@ -461,6 +581,8 @@ async insertIntoMasterTable(conn,sourceTable, snapshotDate, snapshotBatch, recor
     r.security,
     r.totalBid,
     r.totalAsk,
+    r.totVolume,
+    r.totTurnover,
     r.diffPercent,
     r.pplDominance,
     r.totalBidSplits,

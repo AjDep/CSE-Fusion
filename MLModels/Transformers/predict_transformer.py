@@ -16,7 +16,9 @@ FEATURES = [
     'ppl_dominance',
     'obi',
     'total_bid',
-    'total_ask'
+    'total_ask',
+    'tot_turnover',
+    'tot_volume'
 ]
 
 TIME_STEPS = 5
@@ -57,6 +59,9 @@ def predict_transformer(df: pd.DataFrame) -> pd.DataFrame:
     # 1. Feature engineering
     df = add_obi(df)
     df = df.sort_values(['security', 'recorded_at']).copy()
+    for col in FEATURES:
+        if col not in df.columns:
+            df[col] = 0
 
     # 2. Scale features
     scaler = joblib.load(SCALER_PATH)

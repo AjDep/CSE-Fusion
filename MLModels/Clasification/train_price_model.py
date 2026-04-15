@@ -16,6 +16,8 @@ REQUIRED_COLUMNS = [
 	"total_bid",
 	"total_ask",
 	"top_bid_qty",
+	"tot_turnover",
+	"tot_volume",
 ]
 
 df = load_with_fallback(required_columns=REQUIRED_COLUMNS, allow_fallback=False)

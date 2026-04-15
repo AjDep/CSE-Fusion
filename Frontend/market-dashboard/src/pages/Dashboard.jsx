@@ -6,6 +6,7 @@ import TableSelector from "../components/TableSelector";
 import DataTable from "../components/DataTable";
 import CompanySelctor from "../components/CompanySelector";
 import CompanyHistoryChart from "../components/charts/companyChart";
+import AnalysisPanel from "../components/AnalysisPanel";
 import "./Dashboard.css";
 import CompanySearchBar from "../components/CompanySearchBar";
 
@@ -101,9 +102,12 @@ export default function Dashboard() {
         </div>
         {mlStatus && (
           <p className="text-sm font-semibold">{mlStatus}</p>
-      )}
-     
+        )}
       </div>
+
+      {/* AI Analysis Panel */}
+      <AnalysisPanel />
+
       {data.length > 0 && (
         <>
         <div className="posistion">
