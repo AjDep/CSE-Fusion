@@ -35,6 +35,7 @@ def run_result_script(script_path: Path, label: str) -> None:
     original_sys_path = list(sys.path)
     try:
         os.chdir(script_path.parent)
+        sys.path.insert(0, str(root_dir))
         sys.path.insert(0, str(script_path.parent))
         runpy.run_path(str(script_path), run_name="__main__")
         print(f"[OK] {label} results completed")

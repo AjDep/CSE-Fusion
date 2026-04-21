@@ -1,5 +1,11 @@
 import os
+import sys
+from pathlib import Path
+
 import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 from predict_transformer import predict_transformer
 from aggregate_transformer import aggregate_transformer
 from db_loader import DBLoader
