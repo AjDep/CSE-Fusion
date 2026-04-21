@@ -53,13 +53,20 @@ def prepare_training_data(df: pd.DataFrame):
 
 
 def train_model(X_train, y_train):
+    # Compute class weights to handle imbalance (67% SELL vs 33% BUY)
+    classes = np.unique(y_train)
+    class_weights = np.array([len(y_train) / (len(classes) * np.sum(y_train == c)) for c in classes])
+    sample_weights = class_weights[y_train.astype(int)]
+
     model = GradientBoostingClassifier(
         n_estimators=100,
         learning_rate=0.1,
         max_depth=3,
+        subsample=0.8,
+        validation_fraction=0.1,
         random_state=42
     )
-    model.fit(X_train, y_train)
+    model.fit(X_train, y_train, sample_weight=sample_weights)
     return model
 
 

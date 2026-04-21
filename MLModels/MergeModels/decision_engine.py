@@ -52,18 +52,16 @@ def fuse_signals(kmeans: pd.DataFrame,
         clf_prob = _safe_probability(row.get("score_y"), clf_signal)
         tr_prob = _safe_probability(row.get("transformer_avg_score"), tr_signal)
 
-        # Rule 1: Panic overrides everything
-        if regime == "🛑 Panic Crash":
-            final = "🔻 SELL"
+        # Rule 1: (Disabled) Panic crash used to force SELL but that was overly restrictive
+        # Now all securities are evaluated via weighted score
 
         # Rule 2: Whale accumulation + classifier buy
-        elif regime == "🐳 Whale Accumulation" and clf_signal == "BUY":
+        final = None
+        if regime == "🐳 Whale Accumulation" and clf_signal == "BUY":
             final = "🟢 STRONG BUY"
 
-        # Rule 3: classifier+transformer bearish agreement dominates unless kmeans strongly disagrees
-        elif clf_signal == "SELL" and tr_signal == "SELL" and km_signal != "BUY":
-            final = "🔻 SELL"
-        else:
+        # Rule 3: Let weighted score decide if no rule matched
+        if final is None:
             signal_points = {"BUY": 1.0, "HOLD": 0.0, "SELL": -1.0}
 
             # Convert probabilities to centered confidence in [-1, +1].
